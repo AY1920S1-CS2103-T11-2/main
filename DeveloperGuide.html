@@ -1,9 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Module Appeal Management System (MAMS) - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Module Appeal Management System (MAMS) - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>ay1920s1-cs2103-t11-2</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
+</div>
+<div class="paragraph">
+<p>Acknowledgements: MAMS is adapted from AddressBook-Level3, a project created by SE-EDU initiative (available at <code><a href="https://se-education.org" class="bare">https://se-education.org</a></code>)</p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -32,20 +35,22 @@
 <li><a href="#testing">5. Testing</a></li>
 <li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
-<li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a>
-<ul class="sectlevel2">
-<li><a href="#use-case-add-module-to-a-student">C.1. Use case: Add module to a student</a></li>
+<li><a href="#user-stories">Appendix B: User Stories</a>
+<ul class="sectlevel3">
+<li><a href="#epic-as-a-admin-i-want-to-be-able-to-view-module-student-appeal-data">B.1. Epic: As a admin, I want to be able to view module/student/appeal data.</a></li>
+<li><a href="#epic-as-an-admin-i-want-to-be-able-to-edit-module-student-appeal-data">B.2. Epic: As an admin, I want to be able to edit module/student/appeal data.</a></li>
+<li><a href="#other-user-stories">B.3. Other User Stories</a></li>
+<li><a href="#user-stories-up-to-v2-0-coming-soon">B.4. User Stories up to v2.0 (coming soon!)</a></li>
 </ul>
 </li>
+<li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">7. Glossary</a></li>
-<li><a href="#product-survey">Appendix E: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix E: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">F.2. Deleting a person</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">E.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-person">E.2. Deleting a person</a></li>
+<li><a href="#saving-data">E.3. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -80,14 +85,14 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/">diagrams</a> folder.
+The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/docs/diagrams/">diagrams</a> folder.
 Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -174,13 +179,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -206,7 +211,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -258,7 +263,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -303,7 +308,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -629,27 +634,42 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="paragraph">
 <p><strong>Target user profile</strong>:</p>
 </div>
+<div class="paragraph">
+<p>A specialized Appeal Administrator that handles module appeals during
+the hectic start-of-semester module registration in the National
+University of Singapore. He/She:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>has a need to manage a significant number of contacts</p>
-</li>
-<li>
-<p>prefer desktop apps over other types</p>
-</li>
-<li>
-<p>can type fast</p>
+<p>prefers desktop apps over other types</p>
 </li>
 <li>
 <p>prefers typing over mouse input</p>
 </li>
 <li>
+<p>can type fast</p>
+</li>
+<li>
 <p>is reasonably comfortable using CLI apps</p>
+</li>
+<li>
+<p>has a need to view large lists of modules, appeal cases, and student
+particulars</p>
+</li>
+<li>
+<p>has a need to edit current student/appeal/module information to
+resolve appeal cases</p>
+</li>
+<li>
+<p>has <strong>neither the authority nor need</strong> to add/remove students, appeals,
+and modules to/from the current database (out of job purview)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: View, manage, and resolve appeals as fast as or
+faster than a typical mouse/GUI driven app.</p>
 </div>
 </div>
 </div>
@@ -659,6 +679,8 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
+<div class="sect3">
+<h4 id="epic-as-a-admin-i-want-to-be-able-to-view-module-student-appeal-data"><a class="link" href="#epic-as-a-admin-i-want-to-be-able-to-view-module-student-appeal-data">B.1. Epic: As a admin, I want to be able to view module/student/appeal data.</a></h4>
 <table class="tableblock frame-all grid-all" style="width: 59%;">
 <colgroup>
 <col style="width: 22%;">
@@ -669,70 +691,266 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Priority</th>
-<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">As a/an …</th>
+<th class="tableblock halign-left valign-top">I want to …</th>
+<th class="tableblock halign-left valign-top">So that I can…</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to view lists of students/appeals/modules</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">filter lists of students/appeals/modules by year/module
+info/type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickly find specific items of interest</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to view the full expanded details of a
+student/appeal/module</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to view lists or items side-by-side</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily
+cross-reference information between modules/students/appeals.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to find a module/appeal/student using their
+unique ID sequences</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go
+through the entire list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check for clashes between modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine if a
+student can take up the module he/she requested for</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check for clashes in a student’s timetable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine
+if a student have sufficient reason to drop the pre-allocated modules</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">group types of appeal cases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolve multiple of the
+same type of appeal cases</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the vacancy of a module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if module can take
+in additional students</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to decide which pane (left/right) the results of
+my command (list or object view) shows up on</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="epic-as-an-admin-i-want-to-be-able-to-edit-module-student-appeal-data"><a class="link" href="#epic-as-an-admin-i-want-to-be-able-to-edit-module-student-appeal-data">B.2. Epic: As an admin, I want to be able to edit module/student/appeal data.</a></h4>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a/an …</th>
+<th class="tableblock halign-left valign-top">I want to …</th>
+<th class="tableblock halign-left valign-top">So that I can…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a module to a student</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolve their appeal request</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">remove a module from a student</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">check for clashes between modules</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">determine if a student can take up the module he/she requested for</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update the name list of students taking the module</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">increase the number of MCs allocated to a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">allow the student to take more classes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add remarks to a student page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer back at a later
+time if needed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mass approve and reject</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approve and reject multiple
+appeals with one command</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a reason for the rejection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inform them why their
+appeal was not approve</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
+</div>
+<div class="sect3">
+<h4 id="other-user-stories"><a class="link" href="#other-user-stories">B.3. Other User Stories</a></h4>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a/an …</th>
+<th class="tableblock halign-left valign-top">I want to …</th>
+<th class="tableblock halign-left valign-top">So that I can…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when
+I forget how to use the App</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="user-stories-up-to-v2-0-coming-soon"><a class="link" href="#user-stories-up-to-v2-0-coming-soon">B.4. User Stories up to v2.0 (coming soon!)</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a/an …</th>
+<th class="tableblock halign-left valign-top">I want to …</th>
+<th class="tableblock halign-left valign-top">So that I can…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">send an automated email to the involved student once I
+resolve an appeal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alert them to the appeal outcomne easily and quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">encrypt all data when writing them back to disk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ensure
+security in handling sensitive student information under privacy laws</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mass approve and reject</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approve and reject multiple
+appeals with one command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">send short messages/emails to lecturers/other admin staff</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">consult them for further information that may be needed for appeal
+resolution</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">careless admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undo my previous commands</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cycle through my command history using the `up' button</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily resuse previously typed commands</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view resolved appeal cases from previous semesters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use
+them as precedents to make decisions for other appeal cases</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to toggle between different colourschemes for the
+app</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">archive appeal cases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view an uncluttered list of appeals</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get alerts on oversubscribed modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">receive early
+warnings of modules likely to receive appeal requests</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -740,27 +958,36 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the System is the MAMS application and the
+Actor is the admin, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="uc01-resolving-an-appeal-request-to-drop-a-pre-allocated-module" class="discrete">UC01: Resolving an Appeal Request to Drop a Pre-allocated Module</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
+</div>
+<div class="paragraph">
+<p>Pre-condition: System has only just been opened, and is showing a list
+of appeals by default.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>Admin views the details of the first appeal.</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>Admin displays the expanded information of the module.</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>Admin displays the expanded information of the student-of-interest.</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>Admin removes the pre-allocated module from student.</p>
+</li>
+<li>
+<p>Admin marks the appeal as approved, with an approval message to be
+displayed to the student.</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Use case ends.</strong></p>
 </div>
 </li>
 </ol>
@@ -771,19 +998,24 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The list is empty.</p>
+<p>2a. MAMS suggests an autocomplete based on the displayed appeal
+information <strong>(Coming in v2.0)</strong></p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Use case resumes at step 1.</strong></p>
 </div>
 </li>
 <li>
-<p>3a. The given index is invalid.</p>
+<p>4a. Student workload goes below the minimum MC requirement for one
+semester</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>4a1. MAMS alerts the admin and asks for confirmation</p>
+</li>
+<li>
+<p>4a2. Admin confirms the decision.</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p><strong>Use case resumes at step 5.</strong></p>
 </div>
 </li>
 </ul>
@@ -791,41 +1023,45 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
-<div class="sect2">
-<h3 id="use-case-add-module-to-a-student"><a class="link" href="#use-case-add-module-to-a-student">C.1. Use case: Add module to a student</a></h3>
+<h3 id="uc02-approve-second-appeal-in-the-list-a-request-from-student-to-add-a-module" class="discrete">UC02: Approve second appeal in the list (a request from student to add a module)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
+</div>
+<div class="paragraph">
+<p>Pre-condition: System has only just been opened, and is showing a list
+of appeals by default.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to view appeal details uploaded by student A on right pane</p>
+<p>Admin views the details of the appeals in the displayed list</p>
+</li>
+<li>
+<p>Admin requests to view appeal details of 2nd appeal in the list.</p>
 </li>
 <li>
 <p>MAMS shows the appeal details(student particulars, module requested)</p>
 </li>
 <li>
-<p>User requests to check potential clash of module requested by student with student&#8217;s existing modules</p>
+<p>Admin requests to check potential clash of module requested by
+student with student’s existing modules</p>
 </li>
 <li>
 <p>MAMS shows that there are no clashes</p>
 </li>
 <li>
-<p>User requests to add module to student</p>
+<p>Admin requests to add module to student</p>
 </li>
 <li>
 <p>MAMS adds module to student</p>
 </li>
 <li>
-<p>User requests to approve appeal</p>
+<p>Admin requests to approve appeal</p>
 </li>
 <li>
 <p>MAMS marks appeal as approved</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Use case ends.</strong></p>
 </div>
 </li>
 </ol>
@@ -836,16 +1072,35 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a. MAMS shows that there is a clash between requested module and a module student A is currently taking</p>
+<p>4a. MAMS shows that there is a clash between requested module and a
+module student A is currently taking</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. User requests to reject appeal</p>
+<p>4a1. Admin proceeds to reject appeal</p>
 </li>
 <li>
 <p>4a2. MAMS marks appeal as rejected</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>5a. MAMS indicates that the module has reached max student capacity.
+MAMS does not add the student in as the module is unable to accept any
+more students</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>5a1. Admin requests to reject appeal</p>
+</li>
+<li>
+<p>5a2. MAMS marks appeal as rejected</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
 </div>
 </li>
 </ul>
@@ -853,6 +1108,149 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
+<h3 id="uc03-approve-request-to-increase-work-load" class="discrete">UC03 Approve request to increase work load</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="paragraph">
+<p>Pre-condition: System has only just been opened, and is showing a list
+of appeals by default.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Admin views details of appeal</p>
+</li>
+<li>
+<p>Admin views expanded view of student-of-interest</p>
+</li>
+<li>
+<p>Admin sees grades of student and deems he is capable of having a
+higher workload</p>
+</li>
+<li>
+<p>Admin increases workload of the student</p>
+</li>
+<li>
+<p>Admin approves the appeal</p>
+</li>
+<li>
+<p>MAMS mark appeal as approved</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="uc04-approve-request-from-a-student-to-add-a-module-with-clashes-in-timetable" class="discrete">UC04: Approve request from a student to add a module with clashes in timetable</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="paragraph">
+<p>Pre-condition: System has only just been opened, and is showing a list
+of appeals by default.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Admin requests to check potential clash of module requested by
+student with student’s existing modules.</p>
+</li>
+<li>
+<p>MAMS shows that there are clashes.</p>
+</li>
+<li>
+<p>Admin requests to add the module to the student with clashes.</p>
+</li>
+<li>
+<p>MAMS asks for confirmation to add the module to the student.</p>
+</li>
+<li>
+<p>Admin adds a remark to the approval case.</p>
+</li>
+<li>
+<p>Admin adds the student to the module.</p>
+</li>
+<li>
+<p>Admin requests to approve appeal.</p>
+</li>
+<li>
+<p>MAMS marks appeal as approved.</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="coming-in-2-0-uc05-encrypt-and-archive-this-semester-s-appeal-cases" class="discrete">(Coming in 2.0) UC05: Encrypt and Archive this semester’s appeal cases</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="paragraph">
+<p>Pre-condition: System has only just been opened, and is showing a list
+of appeals by default.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Admin requests to encrypt this semester’s appeal cases</p>
+</li>
+<li>
+<p>MAMS requests for a password to be set</p>
+</li>
+<li>
+<p>Admin provides a password</p>
+</li>
+<li>
+<p>MAMS accepts password and encrypts this semester’s appeal cases.</p>
+</li>
+<li>
+<p>Admin requests to save the encrypted file</p>
+</li>
+<li>
+<p>MAMS prompts admin for file save location</p>
+</li>
+<li>
+<p>Admin selects a location</p>
+</li>
+<li>
+<p>MAMS saves the encrypted file to the location</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>6a. Admin chooses not to save the file</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>6a1. Admin requests to shut down MAMS</p>
+</li>
+<li>
+<p>6a2. MAMS asks the Admin if the encrypted file should be saved before
+shutting down</p>
+</li>
+<li>
+<p>6a3. Admin declines</p>
+</li>
+<li>
+<p>6a4. MAMS saves the encrypted file to a temporary location, to be
+retrieved on next startup.</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -865,18 +1263,33 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>An admin with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands
+than using the mouse.</p>
 </li>
 <li>
-<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+<p>Should be quick and efficient, with each use case above taking less
+than 5 minutes to navigate (excluding the time needed for user
+consideration and decision)</p>
 </li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+<li>
+<p>Should be convenient for users to view details of different objects
+at the same time.</p>
+</li>
+<li>
+<p>Should be able to hold up to 40000 students and 1000 modules without
+a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>Should only load data from current semesters by default.</p>
+</li>
+<li>
+<p>Should have a dark theme/comfortable visual interface as the user
+might spend long hours on MAMS.</p>
+</li>
+<li>
+<p>(Coming in 2.0) Should be able to differentiate between
+student/appeal/module data from different semesters.</p>
+</li>
 <li>
 <p>Should be able to hold up to 40000 students and 1000 modules without a noticeable sluggishness in performance for typical usage.</p>
 </li>
@@ -893,53 +1306,30 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
+<dt class="hdlist1"><a id="module"></a> Module</dt>
 <dd>
-<p>A contact detail that is not meant to be shared with others</p>
+<p>A module refers to a course taken by a National Univerisity
+of Singapore (NUS) student during a semester. These can be semester-long
+or year-long.</p>
+</dd>
+<dt class="hdlist1"><a id="appeal"></a> Appeal</dt>
+<dd>
+<p>An appeal refers to a formal request by a student seeking
+permission for receiving special exceptions to module arrangements, or
+for correcting anomalous system errors made during module allocation.</p>
+</dd>
+<dt class="hdlist1"><a id="mc"></a> MC</dt>
+<dd>
+<p>Modular Credits, a weightage of the module workload. As of
+AY2019/2020, the minimum semester workload for a student is 16 MCs, and
+without special permissions, the default maximum is typically 26 MCs.</p>
 </dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix E: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix E: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -957,7 +1347,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">E.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -995,7 +1385,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.2. Deleting a person</a></h3>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">E.2. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1027,7 +1417,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">E.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1047,4 +1437,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-02 14:24:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-02 15:26:22 UTC</div></div></div></body></html>
