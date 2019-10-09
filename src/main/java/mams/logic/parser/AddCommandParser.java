@@ -1,7 +1,7 @@
 package mams.logic.parser;
 
 import static mams.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static mams.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static mams.logic.parser.CliSyntax.PREFIX_MATID;
 import static mams.logic.parser.CliSyntax.PREFIX_NAME;
 import static mams.logic.parser.CliSyntax.PREFIX_PHONE;
 import static mams.logic.parser.CliSyntax.PREFIX_TAG;
@@ -12,11 +12,7 @@ import java.util.stream.Stream;
 import mams.commons.core.Messages;
 import mams.logic.commands.AddCommand;
 import mams.logic.parser.exceptions.ParseException;
-import mams.model.student.Address;
-import mams.model.student.Email;
-import mams.model.student.Name;
-import mams.model.student.Phone;
-import mams.model.student.Student;
+import mams.model.student.*;
 import mams.model.tag.Tag;
 
 /**
@@ -31,21 +27,22 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_MATID, PREFIX_ADDRESS, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_MATID)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        MatID matID = ParserUtil.parseMatID(argMultimap.getValue(PREFIX_MATID).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Student student = new Student(name, phone, email, address, tagList);
+        Student student = new Student(name, phone, matID, address, tagList);
 
+        //todo
         return new AddCommand(student);
     }
 

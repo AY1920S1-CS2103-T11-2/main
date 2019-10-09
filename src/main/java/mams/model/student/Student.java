@@ -16,8 +16,8 @@ public class Student {
 
     // Identity fields
     private final Name name;
+    private final MatID matID;
     private final Phone phone;
-    private final Email email;
 
     // Data fields
     private final Address address;
@@ -26,11 +26,11 @@ public class Student {
     /**
      * Every field must be present and not null.
      */
-    public Student(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
+    public Student(Name name , Phone phone, MatID matID, Address address, Set<Tag> tags) {
+        CollectionUtil.requireAllNonNull(name, phone, matID, address, tags);
         this.name = name;
         this.phone = phone;
-        this.email = email;
+        this.matID = matID;
         this.address = address;
         this.tags.addAll(tags);
     }
@@ -39,12 +39,10 @@ public class Student {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
-    }
+    public Phone getPhone() { return phone; }
 
-    public Email getEmail() {
-        return email;
+    public MatID getMatID() {
+        return matID;
     }
 
     public Address getAddress() {
@@ -70,7 +68,7 @@ public class Student {
 
         return otherStudent != null
                 && otherStudent.getName().equals(getName())
-                && (otherStudent.getPhone().equals(getPhone()) || otherStudent.getEmail().equals(getEmail()));
+                && (otherStudent.getMatID().equals(getMatID()));
     }
 
     /**
@@ -89,8 +87,7 @@ public class Student {
 
         Student otherStudent = (Student) other;
         return otherStudent.getName().equals(getName())
-                && otherStudent.getPhone().equals(getPhone())
-                && otherStudent.getEmail().equals(getEmail())
+                && otherStudent.getMatID().equals(getMatID())
                 && otherStudent.getAddress().equals(getAddress())
                 && otherStudent.getTags().equals(getTags());
     }
@@ -98,7 +95,7 @@ public class Student {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, matID, address, tags);
     }
 
     @Override
@@ -107,8 +104,8 @@ public class Student {
         builder.append(getName())
                 .append(" Phone: ")
                 .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
+                .append(" Matric ID: ")
+                .append(getMatID())
                 .append(" Address: ")
                 .append(getAddress())
                 .append(" Tags: ");

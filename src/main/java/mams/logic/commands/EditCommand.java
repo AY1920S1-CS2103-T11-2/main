@@ -2,7 +2,7 @@ package mams.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static mams.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static mams.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static mams.logic.parser.CliSyntax.PREFIX_MATID;
 import static mams.logic.parser.CliSyntax.PREFIX_NAME;
 import static mams.logic.parser.CliSyntax.PREFIX_PHONE;
 import static mams.logic.parser.CliSyntax.PREFIX_TAG;
@@ -18,11 +18,7 @@ import mams.commons.core.index.Index;
 import mams.commons.util.CollectionUtil;
 import mams.logic.commands.exceptions.CommandException;
 import mams.model.Model;
-import mams.model.student.Address;
-import mams.model.student.Email;
-import mams.model.student.Name;
-import mams.model.student.Phone;
-import mams.model.student.Student;
+import mams.model.student.*;
 import mams.model.tag.Tag;
 
 /**
@@ -38,12 +34,12 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_MATID + "MATID] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_MATID + "A0123324Y";
 
     public static final String MESSAGE_EDIT_STUDENT_SUCCESS = "Edited Student: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -94,11 +90,11 @@ public class EditCommand extends Command {
 
         Name updatedName = editStudentDescriptor.getName().orElse(studentToEdit.getName());
         Phone updatedPhone = editStudentDescriptor.getPhone().orElse(studentToEdit.getPhone());
-        Email updatedEmail = editStudentDescriptor.getEmail().orElse(studentToEdit.getEmail());
+        MatID updatedMatID = editStudentDescriptor.getMatID().orElse(studentToEdit.getMatID());
         Address updatedAddress = editStudentDescriptor.getAddress().orElse(studentToEdit.getAddress());
         Set<Tag> updatedTags = editStudentDescriptor.getTags().orElse(studentToEdit.getTags());
 
-        return new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Student(updatedName, updatedPhone, updatedMatID, updatedAddress, updatedTags);
     }
 
     @Override
@@ -126,7 +122,7 @@ public class EditCommand extends Command {
     public static class EditStudentDescriptor {
         private Name name;
         private Phone phone;
-        private Email email;
+        private MatID matid;
         private Address address;
         private Set<Tag> tags;
 
@@ -139,7 +135,7 @@ public class EditCommand extends Command {
         public EditStudentDescriptor(EditStudentDescriptor toCopy) {
             setName(toCopy.name);
             setPhone(toCopy.phone);
-            setEmail(toCopy.email);
+            setMatID(toCopy.matid);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
@@ -148,7 +144,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, matid, address, tags);
         }
 
         public void setName(Name name) {
@@ -167,12 +163,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(phone);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setMatID(MatID matid) {
+            this.matid = matid;
         }
 
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<MatID> getMatID() {
+            return Optional.ofNullable(matid);
         }
 
         public void setAddress(Address address) {
@@ -217,7 +213,7 @@ public class EditCommand extends Command {
 
             return getName().equals(e.getName())
                     && getPhone().equals(e.getPhone())
-                    && getEmail().equals(e.getEmail())
+                    && getMatID().equals(e.getMatID())
                     && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());
         }

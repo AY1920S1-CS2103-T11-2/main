@@ -9,10 +9,7 @@ import java.util.Set;
 import mams.commons.core.index.Index;
 import mams.commons.util.StringUtil;
 import mams.logic.parser.exceptions.ParseException;
-import mams.model.student.Address;
-import mams.model.student.Email;
-import mams.model.student.Name;
-import mams.model.student.Phone;
+import mams.model.student.*;
 import mams.model.tag.Tag;
 
 /**
@@ -81,18 +78,17 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String email} into an {@code Email}.
+     * Parses a {@code String matID} into an {@code MatID}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code email} is invalid.
+     * @throws ParseException if the given {@code matid} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+    public static MatID parseMatID(String matID) throws ParseException {
+        requireNonNull(matID);
+        if (!MatID.isValidMatID(matID)) {
+            throw new ParseException(MatID.MESSAGE_CONSTRAINTS);
         }
-        return new Email(trimmedEmail);
+        return new MatID(matID);
     }
 
     /**

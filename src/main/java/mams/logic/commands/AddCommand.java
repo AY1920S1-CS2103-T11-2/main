@@ -2,7 +2,7 @@ package mams.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static mams.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static mams.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static mams.logic.parser.CliSyntax.PREFIX_MATID;
 import static mams.logic.parser.CliSyntax.PREFIX_NAME;
 import static mams.logic.parser.CliSyntax.PREFIX_PHONE;
 import static mams.logic.parser.CliSyntax.PREFIX_TAG;
@@ -22,13 +22,13 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
-            + PREFIX_EMAIL + "EMAIL "
+            + PREFIX_MATID + "MATID "
             + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
+            + PREFIX_MATID + "A0192200R "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
