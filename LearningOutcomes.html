@@ -221,7 +221,7 @@ optimal, will give you chance to implement a polymorphic behavior.</p>
 </div>
 </li>
 <li>
-<p><code>Override</code> the <code>getPrintableString</code> in classes <code>Name</code>, <code>Phone</code>, <code>Email</code>, and <code>Address</code> so that each produces a printable string representation of the object. e.g. <code>Name: John Smith</code>, <code>Phone: 12349862</code></p>
+<p><code>Override</code> the <code>getPrintableString</code> in classes <code>Name</code>, <code>Credits</code>, <code>Email</code>, and <code>Address</code> so that each produces a printable string representation of the object. e.g. <code>Name: John Smith</code>, <code>Credits: 12349862</code></p>
 </li>
 <li>
 <p>Add the following method in a suitable place of some other class. Note how the method depends on the Interface.</p>
@@ -240,7 +240,7 @@ For example, you should be able to call that method like this:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// p is a Person object</span>
-<span class="keyword">return</span> getPrintableString(p.getPhone(), p.getEmail(), p.getAddress());</code></pre>
+<span class="keyword">return</span> getPrintableString(p.getCredits(), p.getEmail(), p.getAddress());</code></pre>
 </div>
 </div>
 </li>
@@ -474,4 +474,4 @@ of storages, but different number of storages (e.g. save to both a text file and
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-09 14:46:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-10 15:22:31 UTC</div></div></div></body></html>
