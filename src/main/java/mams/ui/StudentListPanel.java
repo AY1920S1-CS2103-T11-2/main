@@ -14,16 +14,16 @@ import mams.model.student.Student;
  * Panel containing the list of students.
  */
 public class StudentListPanel extends UiPart<Region> {
-    private static final String FXML = "ItemListPanel.fxml";
+    private static final String FXML = "StudentListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(StudentListPanel.class);
 
     @FXML
-    private ListView<Student> itemListView;
+    private ListView<Student> studentListView;
 
     public StudentListPanel(ObservableList<Student> studentList) {
         super(FXML);
-        itemListView.setItems(studentList);
-        itemListView.setCellFactory(listView -> new StudentListViewCell());
+        studentListView.setItems(studentList);
+        studentListView.setCellFactory(listView -> new StudentListViewCell());
     }
 
     /**
