@@ -57,9 +57,6 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane studentListPanelPlaceholder;
 
     @FXML
-    private StackPane moduleListPanelPlaceholder;
-
-    @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
@@ -123,7 +120,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        moduleListPanel = new StudentListPanel(logic.getFilteredModuleList());
+        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
         moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
 
         studentListPanel = new StudentListPanel(logic.getFilteredStudentList());

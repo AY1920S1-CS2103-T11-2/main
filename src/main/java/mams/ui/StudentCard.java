@@ -17,7 +17,7 @@ public class StudentCard extends UiPart<Region> {
     private static final String FXML = "StudentListCard.fxml";
     private static final String CREDITS_LABEL_PREFIX = "Credit(s) Workload: ";
     private static final String MATRIC_LABEL_PREFIX = "Matric No.: ";
-    private static final String EMAIL_LABEL_PREFIX = "Email: ";
+    private static final String EMAIL_LABEL_PREFIX = "PrevMods: ";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.

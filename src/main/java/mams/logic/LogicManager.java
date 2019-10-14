@@ -63,10 +63,6 @@ public class LogicManager implements Logic {
         return model.getFilteredStudentList();
     }
 
-    public ObservableList<Student> getFilteredModuleList() {
-        return model.getMams().getStudentList();
-    }
-
     @Override
     public ObservableList<Module> getFilteredModuleList() {
         return model.getFilteredModuleList();
