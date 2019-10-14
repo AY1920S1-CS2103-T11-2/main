@@ -25,12 +25,12 @@
                         <Region fx:constant="USE_PREF_SIZE" />
                     </minWidth>
                 </Label>
-                <Label fx:id="moduleCode" text="\$first" styleClass="cell_big_label" />
+                <Label fx:id="appealId" text="\$appealId" styleClass="cell_big_label" />
             </HBox>
             <FlowPane fx:id="tags" />
-            <Label fx:id="timeSlot" styleClass="cell_small_label" text="\$timeSlot" />
-            <Label fx:id="quota" styleClass="cell_small_label" text="\$quota" />
-            <Label fx:id="prerequisites" styleClass="cell_small_label" text="\$prerequisite" />
+            <Label fx:id="appealType" styleClass="cell_small_label" text="\$appealType" />
+            <Label fx:id="studentId" styleClass="cell_small_label" text="\$studentId" />
+            <Label fx:id="academicYear" styleClass="cell_small_label" text="\$academicYear" />
         </VBox>
     </GridPane>
 </HBox>

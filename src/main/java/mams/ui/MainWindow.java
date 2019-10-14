@@ -36,7 +36,8 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private StudentListPanel studentListPanel;
-    private StudentListPanel moduleListPanel;
+    private ModuleListPanel moduleListPanel;
+    private AppealListPanel appealListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -45,6 +46,12 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private StackPane appealListPanelPlaceholder;
+
+    @FXML
+    private StackPane moduleListPanelPlaceholder;
 
     @FXML
     private StackPane studentListPanelPlaceholder;
@@ -121,6 +128,12 @@ public class MainWindow extends UiPart<Stage> {
 
         studentListPanel = new StudentListPanel(logic.getFilteredStudentList());
         studentListPanelPlaceholder.getChildren().add(studentListPanel.getRoot());
+
+        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
+        moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
+
+        appealListPanel = new AppealListPanel(logic.getFilteredAppealList());
+        appealListPanelPlaceholder.getChildren().add(appealListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

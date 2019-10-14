@@ -14,6 +14,8 @@ import mams.logic.parser.MamsParser;
 import mams.logic.parser.exceptions.ParseException;
 import mams.model.Model;
 import mams.model.ReadOnlyMams;
+import mams.model.appeal.Appeal;
+import mams.model.module.Module;
 import mams.model.student.Student;
 import mams.storage.Storage;
 
@@ -63,6 +65,16 @@ public class LogicManager implements Logic {
 
     public ObservableList<Student> getFilteredModuleList() {
         return model.getMams().getStudentList();
+    }
+
+    @Override
+    public ObservableList<Module> getFilteredModuleList() {
+        return model.getFilteredModuleList();
+    }
+
+    @Override
+    public ObservableList<Appeal> getFilteredAppealList() {
+        return model.getFilteredAppealList();
     }
 
     @Override

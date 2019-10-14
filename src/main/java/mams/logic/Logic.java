@@ -9,6 +9,8 @@ import mams.logic.commands.exceptions.CommandException;
 import mams.logic.parser.exceptions.ParseException;
 import mams.model.Model;
 import mams.model.ReadOnlyMams;
+import mams.model.appeal.Appeal;
+import mams.model.module.Module;
 import mams.model.student.Student;
 
 /**
@@ -34,7 +36,11 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of students */
     ObservableList<Student> getFilteredStudentList();
 
-    ObservableList<Student> getFilteredModuleList();
+    /** Returns an unmodifiable view of the filtered list of modules */
+    ObservableList<Module> getFilteredModuleList();
+
+    /** Returns an unmodifiable view of the filtered list of appeals */
+    ObservableList<Appeal> getFilteredAppealList();
 
     /**
      * Returns the user prefs' address book file path.

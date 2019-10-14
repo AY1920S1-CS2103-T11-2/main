@@ -1,44 +1,40 @@
 package mams.ui;
 
-import java.util.Comparator;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import mams.model.student.Student;
+import mams.model.module.Module;
 
 /**
- * An UI component that displays information of a {@code Student}.
+ * An UI component that displays information of a {@code Module}.
  */
 public class ModuleCard extends UiPart<Region> {
 
-    private static final String FXML = "StudentListCard.fxml";
-
-    /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
-     * As a consequence, UI elements' variable names cannot be set to such keywords
-     * or an exception will be thrown by JavaFX during runtime.
-     *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     */
-
-    public final Student student;
+    private static final String FXML = "ModuleListCard.fxml";
+    public final Module module;
 
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label moduleCode;
     @FXML
     private Label id;
+    @FXML
+    private Label timeSlot;
 
+    // TODO add more fields for module display card
 
-    public ModuleCard(Student student, int displayedIndex) {
+    @FXML
+    private FlowPane tags;
+
+    public ModuleCard(Module module, int displayedIndex) {
         super(FXML);
-        this.student = student;
+        this.module = module;
         id.setText(displayedIndex + ". ");
-        name.setText(student.getName().fullName);
+        moduleCode.setText(module.getModuleCode());
+        timeSlot.setText(module.timeSlotsToString());
     }
 
     @Override
@@ -49,13 +45,13 @@ public class ModuleCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof StudentCard)) {
+        if (!(other instanceof ModuleCard)) {
             return false;
         }
 
         // state check
-        StudentCard card = (StudentCard) other;
-        return id.getText().equals(id.getText())
-                && student.equals(card.student);
+        ModuleCard card = (ModuleCard) other;
+        return id.getText().equals(card.id.getText())
+                && module.equals(card.module);
     }
 }

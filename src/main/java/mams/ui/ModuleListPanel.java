@@ -8,39 +8,38 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import mams.commons.core.LogsCenter;
-import mams.model.student.Student;
+import mams.model.module.Module;
 
 /**
- * Panel containing the list of students.
+ * Panel containing the list of modules.
  */
 public class ModuleListPanel extends UiPart<Region> {
-    private static final String FXML = "StudentListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(StudentListPanel.class);
+    private static final String FXML = "ItemListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(ModuleListPanel.class);
 
     @FXML
-    private ListView<Student> moduleListView;
+    private ListView<Module> itemListView;
 
-    public ModuleListPanel(ObservableList<Student> studentList) {
+    public ModuleListPanel(ObservableList<Module> moduleList) {
         super(FXML);
-        moduleListView.setItems(studentList);
-        moduleListView.setCellFactory(listView -> new ModuleListViewCell());
+        itemListView.setItems(moduleList);
+        itemListView.setCellFactory(listView -> new ModuleListViewCell());
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Student} using a {@code StudentCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Module} using a {@code ModuleCard}.
      */
-    class ModuleListViewCell extends ListCell<Student> {
+    class ModuleListViewCell extends ListCell<Module> {
         @Override
-        protected void updateItem(Student student, boolean empty) {
-            super.updateItem(student, empty);
+        protected void updateItem(Module module, boolean empty) {
+            super.updateItem(module, empty);
 
-            if (empty || student == null) {
+            if (empty || module == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new StudentCard(student, getIndex() + 1).getRoot());
+                setGraphic(new ModuleCard(module, getIndex() + 1).getRoot());
             }
         }
     }
-
 }
