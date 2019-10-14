@@ -12,7 +12,7 @@ import mams.model.student.Student;
 /**
  * An UI component that displays information of a {@code Student}.
  */
-public class StudentCard extends UiPart<Region> {
+public class ModuleCard extends UiPart<Region> {
 
     private static final String FXML = "StudentListCard.fxml";
 
@@ -32,26 +32,13 @@ public class StudentCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
-    @FXML
-    private Label credits;
-    @FXML
-    private Label matricId;
-    @FXML
-    private Label prevMods;
-    @FXML
-    private FlowPane tags;
 
-    public StudentCard(Student student, int displayedIndex) {
+
+    public ModuleCard(Student student, int displayedIndex) {
         super(FXML);
         this.student = student;
         id.setText(displayedIndex + ". ");
         name.setText(student.getName().fullName);
-        credits.setText(student.getCredits().value);
-        matricId.setText(student.getMatricId().value);
-        prevMods.setText(student.getPrevMods().value);
-        student.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     @Override
@@ -68,7 +55,7 @@ public class StudentCard extends UiPart<Region> {
 
         // state check
         StudentCard card = (StudentCard) other;
-        return id.getText().equals(card.id.getText())
+        return id.getText().equals(id.getText())
                 && student.equals(card.student);
     }
 }

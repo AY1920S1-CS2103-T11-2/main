@@ -2,7 +2,7 @@
   "students": [ {
     "name": "Person with invalid name field: Ha!ns Mu@ster",
     "credits": "32",
-    "email": "hans@example.com",
+    "prevMods": "CS2030, CS4040",
     "matricId": "A12313412T"
   } ]
 }
