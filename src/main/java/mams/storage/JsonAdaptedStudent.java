@@ -104,6 +104,14 @@ class JsonAdaptedStudent {
         }
         final MatricId modelMatricId = new MatricId(matricId);
 
+        if (phone == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        }
+        if (!Phone.isValidPhone(phone)) {
+            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        }
+        final Phone modelPhone = new Phone(address);
+
         final Set<Tag> modelTags = new HashSet<>(studentTags);
         return new Student(modelName, modelCredits, modelPrevMods, modelMatricId, modelTags);
     }

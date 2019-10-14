@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import mams.model.student.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -63,7 +64,7 @@ public class JsonAdaptedStudentTest {
     }
 
     @Test
-    public void toModelType_invalidEmail_throwsIllegalValueException() {
+    public void toModelType_invalidMatID_throwsIllegalValueException() {
         JsonAdaptedStudent student =
                 new JsonAdaptedStudent(VALID_NAME, VALID_CREDITS, INVALID_PREVMODS, VALID_MATRICID, VALID_TAGS);
         String expectedMessage = PrevMods.MESSAGE_CONSTRAINTS;
