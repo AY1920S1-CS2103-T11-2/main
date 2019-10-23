@@ -25,10 +25,12 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#clash-feature">3.1. Clash feature</a></li>
+<li><a href="#find-feature">3.2. Find feature</a></li>
+<li><a href="#proposed-undo-redo-feature">3.3. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -339,9 +341,222 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="clash-feature"><a class="link" href="#clash-feature">3.1. Clash feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The clash feature is facilitated by an abstract <code>ClashCommand</code> class which extends abstract <code>Command</code> class and
+three sub-classes which extends <code>ClashCommand</code> to handle different types of checking.</p>
+</div>
+<div class="paragraph">
+<p>The three sub-classes are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ClashModCommand</code>&#8201;&#8212;&#8201;check time slots clashes within two modules and return messages accordingly.</p>
+</li>
+<li>
+<p><code>ClashStudentCommand</code>&#8201;&#8212;&#8201;check time slots clashes within a particular student&#8217;s timetable and return messages accordingly.</p>
+</li>
+<li>
+<p><code>ClashAppealCommand</code>&#8201;&#8212;&#8201;check time slots clashes between the requested module and the student&#8217;s existing timetable for a "Add Module" appeal .</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ClashCommandClassDiagram.png" alt="ClashCommandClassDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Each sub-class has a <code>execute()</code> method that takes in a <code>Model</code> object. Clash commands only retrieve information from model but do not alter anything in the existing lists.</p>
+</div>
+<div class="paragraph">
+<p>Below shows how the Clash Command mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>clash &#8230;&#8203;</code> to check whether there is clash in the timetable.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>ClashCommandParser</code> will be called first to check which of the three types of checking is evoked by checking the prefixes.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Relevant <code>ClashModCommand</code>, <code>ClashStudentCommand</code>, or <code>ClashAppealCommand</code> object will be created accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>ClashCommand.execute()</code> is called.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the command is a <code>ClashModCommand</code>, it will get the relevant <code>Module</code> objects from the list <code>model.getFilteredModuleList()</code>.</p>
+</li>
+<li>
+<p>If the command is a <code>ClashStudentCommand</code>, it will get the relevant <code>Student</code> object from the list <code>model.getFilteredStudentList()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The student current modules are stored as String of module code to reduce coupling. Hence, modules taken by the student are retrieved from <code>model.getFilteredModuleList()</code> by matching module codes.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the command is a <code>ClashAppealCommand</code>, it will get the relevant <code>Appeal</code> object from the list <code>model.getFilteredAppealList()</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Student</code> who submits the appeal and requested <code>Module</code> are stored as String of Matric ID and module code respectively in an <code>Appeal</code> object to reduce coupling.
+Hence, <code>Student</code> who submits the appeal is retrieved from <code>model.getFilteredStudentList()</code> by matching Matric ID,
+and <code>Module</code> requested is retrieved from <code>model.getFilteredModuleList()</code> by matching module codes.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 5. Each <code>ClashCommand</code> returns a <code>CommandResult</code> object which contains the message of the clashing time slots if there are clashes and 'No clashes detected' if there is no clash.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the undo operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ClashSequenceDiagram.png" alt="ClashSequenceDiagram">
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-to-deal-with-different-user-inputs-for-different-checking"><a class="link" href="#aspect-how-to-deal-with-different-user-inputs-for-different-checking">Aspect: How to deal with different user inputs for different checking</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create three different sub-classes extending <code>ClashCommand</code> class. <code>ClashCommand</code> will deal with differentiating cases for checking and create Command object accordingly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: some of the code are different to be abstracted. (repeted codes in part of the two sub-classes to keep low coupling) May need to find a way to improve it in the future.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Only 1 <code>ClashCommand</code> class. The cases of checking are determined inside <code>ClashCommand</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+</li>
+<li>
+<p>Cons: Violates Single Responsibility Principle. <code>ClashCommand</code> is doing part of the parsing work.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-string-representation-of-clashig-time-slots"><a class="link" href="#aspect-string-representation-of-clashig-time-slots">Aspect: String representation of clashig time slots</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store time slot index and use them to create a temporary <code>Module</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can reuse <code>getTimeSlotToString()</code> to obtain the string representation</p>
+</li>
+<li>
+<p>Cons: Redundant objects are created. More memory space used.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-feature"><a class="link" href="#find-feature">3.2. Find feature</a></h3>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The find feature is facilitated by <code>FindCommand</code> class. The <code>FindCommand</code> constructor takes a <code>List</code> of <code>Predicates</code>, which can be <code>NameContainsKeywordsPredicate</code>, <code>ModuleContainsKeywordsPredicate</code>, or <code>AppealContainsKeywordsPredicate</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PredicateClassDiagram.png" alt="PredicateClassDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Find commands only retrieve information from model but do not alter anything in the existing lists.</p>
+</div>
+<div class="paragraph">
+<p>Below shows how the Find Command mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>find prefix/[KEYWORDS]&#8230;&#8203;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>FindCommandParser</code> will be called first to check which of the three lists to search by checking the prefixes.
+<code>NameContainsKeywordsPredicate</code>, <code>ModuleContainsKeywordsPredicate</code>, and <code>AppealContainsKeywordsPredicate</code> will be created accordingly which stores all the keywords for the same list.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. A new <code>FindCommand</code> is created.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Even there is no keyword for a particular <code>Predicate</code>, a new <code>Predicate</code> object with an empty <code>List</code> of keywords will be passed in to create a new <code>FindCommand</code>.
+Eg. input: <code>find s/bob</code>. A new <code>FindCommand</code> is created with a <code>NameContainsKeywordsPredicate</code> with a <code>List</code> of keywords containing <code>bob</code>, and <code>ModuleContainsKeywordsPredicate</code>, and <code>AppealContainsKeywordsPredicate</code> with empty <code>List</code> of keywords.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>FindCommand.execute()</code> is called. Each <code>Predicate</code> object is examined and calls <code>Predicate.test()</code>. <code>Model#updateStudentList()</code>, <code>Model#updateModuleList()</code>, or <code>Module#updateAppealList()</code> is called accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. A <code>CommandResult</code> object is returned, which contains message about the number of items found in the target list. The target list only shows the item contains keyword.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the undo operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.3. [Proposed] Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.3.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -483,7 +698,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -553,20 +768,20 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -597,7 +812,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1437,4 +1652,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 11:49:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 14:54:52 UTC</div></div></div></body></html>
