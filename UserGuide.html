@@ -15,14 +15,15 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-single-objects-code-view-code">3.1. Viewing single objects: <code>view</code></a></li>
 <li><a href="#listing-objects-by-specified-lists-code-list-code">3.2. Listing objects by specified lists: <code>list</code></a></li>
-<li><a href="#show-clashes-code-clash-code">3.3. Show clashes: <code>clash</code></a></li>
-<li><a href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.4. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></li>
-<li><a href="#switching-modules-for-students-code-switchmod-code">3.5. Switching modules for students: <code>switchmod</code></a></li>
-<li><a href="#update-maximum-workload-for-a-student-code-set-code">3.6. Update maximum workload for a student: <code>set</code></a></li>
-<li><a href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.7. Add special remarks to a student’s particulars page: <code>remark</code></a></li>
-<li><a href="#approve-an-appeal-code-approve-code">3.8. Approve an appeal: <code>approve</code></a></li>
-<li><a href="#reject-an-appeal-code-reject-code">3.9. Reject an appeal: <code>reject</code></a></li>
-<li><a href="#saving-the-data">3.10. Saving the data</a></li>
+<li><a href="#command-history">3.3. Command History</a></li>
+<li><a href="#show-clashes-code-clash-code">3.4. Show clashes: <code>clash</code></a></li>
+<li><a href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.5. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></li>
+<li><a href="#switching-modules-for-students-code-switchmod-code">3.6. Switching modules for students: <code>switchmod</code></a></li>
+<li><a href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></li>
+<li><a href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.8. Add special remarks to a student’s particulars page: <code>remark</code></a></li>
+<li><a href="#approve-an-appeal-code-approve-code">3.9. Approve an appeal: <code>approve</code></a></li>
+<li><a href="#reject-an-appeal-code-reject-code">3.10. Reject an appeal: <code>reject</code></a></li>
+<li><a href="#saving-the-data">3.11. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#command-summary">4. Command Summary</a></li>
@@ -102,7 +103,7 @@ eg. Students may be organized by matriculation year, course of study etc.</p>
 <p>Items enclosed by square brackets are optional parameters that can be passed in eg. <code>view OBJECT_ID [l/]</code> can be used as <code>view A0122432Z l/</code> or <code>view 230293</code>.</p>
 </li>
 <li>
-<p>Any item that is followed by an ellipsis (<code>&#8230;&#8203;</code>) can be used multiple times including zero eg. <code>[f/FILTER]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>f/CS</code> , <code>f/CS f/YEAR4</code> etc.</p>
+<p>Any item that is followed by an ellipsis (<code>&#8230;&#8203;</code>) can be used multiple times including zero eg. <code>[m/PARAMETER]&#8230;&#8203;</code> can be used as, <code>m/CS2103</code> , <code>m/210</code> etc.</p>
 </li>
 <li>
 <p>Parameters within square brackets can be supplied in any order.</p>
@@ -114,97 +115,199 @@ eg. Students may be organized by matriculation year, course of study etc.</p>
 <div class="sect2">
 <h3 id="viewing-single-objects-code-view-code"><a class="link" href="#viewing-single-objects-code-view-code">3.1. Viewing single objects: <code>view</code></a></h3>
 <div class="paragraph">
-<p>This command brings up an object with fully expanded details on a single pane. If no pane is specified within the tags, the object defaults to showing up on the right pane.</p>
+<p>This command brings up an item with fully expanded details on a single pane. Multiple MAMS items can be displayed
+in one single command, as long as they are from different types.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>view OBJECT_ID [l/] [r/]</code></p>
+<p>Format: <code>view [a/INDEX] [m/INDEX] [s/INDEX]</code></p>
 </div>
 <div class="paragraph">
-<p>Tags:
-<code>[l/]</code> displays the object on the left pane
-<code>[r/]</code> displays the object on the right pane</p>
+<p>Note: Even though all the parameter tags are marked as optional, at least one must be present for the command to
+execute. In the case where a parameter tag is used more than once, the last tag of that type will be accepted.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Tags:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>view A0122432Z l/</code></p>
+<p><code>a/INDEX</code>: displays the expanded details of the appeal at <code>INDEX</code> on the displayed appeal list</p>
+</li>
+<li>
+<p><code>m/INDEX</code>: displays the expanded details of the module at <code>INDEX</code> on the displayed module list</p>
+</li>
+<li>
+<p><code>s/INDEX</code>: displays the expanded details of the student at <code>INDEX</code> on the displayed student list</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Sample output: Fully expanded administrative details of the student with matriculation ID A0122432Z on the left pane.</p>
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>view 230293</code></p>
+<p><code>view m/7</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Sample output: Fully expanded administrative details of the appeal with case ID 230293 on the right pane.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewCommandDemoBefore.png" alt="ViewCommandDemoBefore" width="790">
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>view CS2103 r/</code></p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<p>Sample output: Fully expanded administrative details of the CS2103 module on the right pane.</p>
+<p>Sample Output: Fully expanded administrative details of the module at index 7.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewCommandDemoAfter.png" alt="ViewCommandDemoAfter" width="790">
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="listing-objects-by-specified-lists-code-list-code"><a class="link" href="#listing-objects-by-specified-lists-code-list-code">3.2. Listing objects by specified lists: <code>list</code></a></h3>
 <div class="paragraph">
-<p>Format: list OBJECT_TYPE <code>[f/FILTER]&#8230;&#8203; [r/] [l/]</code></p>
+<p>Format: <code>list [-a] [-m] [-s]</code></p>
 </div>
 <div class="paragraph">
-<p>Tags:
-<code>[f/FILTER]</code> specifies the filters that are applied on the results of the list command. Each FILTER is delimited by commas following the <code>f/</code> tag, with no spaces. When this tag is not present, the program defaults to displaying the full list. As with the <code>view</code> command, if both <code>/r</code> and <code>/l</code> tags are not present, the program defaults to displaying the lists on the right pane.</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+<p>Tags:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code></p>
+<p><code>-a</code>: lists out all appeals in MAMS</p>
+</li>
+<li>
+<p><code>-m</code>: lists out all modules in MAMS</p>
+</li>
+<li>
+<p><code>-s</code>: lists out all students in MAMS</p>
+</li>
+<li>
+<p>if no tags are specified, <code>list</code> command will behave as though all three tags have be applied. ie. it will
+list out all appeals, modules, and students.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Sample Output: Shows a list of all appeals by default on the right pane</p>
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list module f/CS</code></p>
+<p><code>list -a -s</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Sample Output: Shows a list of modules filtered by the CS (Computer Science) tag, on the right pane</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ListCommandDemoBefore.png" alt="ListCommandDemoBefore" width="790">
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list students f/YEAR4,CS l/</code></p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<p>Sample Output: Shows a list of students filtered by the Year4 and CS tags, displayed on the left pane.</p>
+<p>Sample Output: Lists all appeals and students in MAMS</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ListCommandDemoAfter.png" alt="ListCommandDemoAfter" width="790">
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="show-clashes-code-clash-code"><a class="link" href="#show-clashes-code-clash-code">3.3. Show clashes: <code>clash</code></a></h3>
+<h3 id="command-history"><a class="link" href="#command-history">3.3. Command History</a></h3>
 <div class="sect3">
-<h4 id="show-clashes-between-2-modules"><a class="link" href="#show-clashes-between-2-modules">3.3.1. Show clashes between 2 modules</a></h4>
+<h4 id="cycle-through-command-history"><a class="link" href="#cycle-through-command-history">3.3.1. Cycle through command history</a></h4>
+<div class="paragraph">
+<p>In the command box (the area where you type in commands), you can cycle through your previous inputs by using the
+<kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrow keys. They will autofill the command box with the previous and next input stored
+in the command history respectively.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HistoryCommandArrowDemoBefore.png" alt="HistoryCommandArrowDemoBefore" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>After pressing <kbd>&uarr;</kbd></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HistoryCommandArrowDemoAfter.png" alt="HistoryCommandArrowDemoAfter" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-command-history-code-history-code"><a class="link" href="#show-command-history-code-history-code">3.3.2. Show command history: <code>history</code></a></h4>
+<div class="paragraph">
+<p>Opens a separate window displaying the command history in MAMS. The display of the command feedback can be turned
+off.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>history [-h]</code></p>
+</div>
+<div class="paragraph">
+<p>Tags:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-h</code>: hide the command feedback in the history window</p>
+</li>
+<li>
+<p>if no tags are supplied, the <code>history</code> command will show both command input and command feedback history in the
+history window.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>history</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HistoryCommandDemo.png" alt="HistoryCommandDemo" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output: Opens a window displaying command history</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HistoryWindowDemo.png" alt="HistoryWindowDemo" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sync-command-history-to-disk"><a class="link" href="#sync-command-history-to-disk">3.3.3. Sync Command History to disk</a></h4>
+<div class="paragraph">
+<p>Command history is automatically saved to disk whenever it is updated with new inputs.
+Upon the next MAMS startup, previous command history will be loaded from disk as well.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="show-clashes-code-clash-code"><a class="link" href="#show-clashes-code-clash-code">3.4. Show clashes: <code>clash</code></a></h3>
+<div class="sect3">
+<h4 id="show-clashes-between-2-modules"><a class="link" href="#show-clashes-between-2-modules">3.4.1. Show clashes between 2 modules</a></h4>
 <div class="paragraph">
 <p>This command checks to see if the lecture slots of 2 modules clashes, and displays the result to the user</p>
 </div>
@@ -242,7 +345,7 @@ Event for CS1020: Lecture 1400-1600</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="show-clashes-in-student-timetable"><a class="link" href="#show-clashes-in-student-timetable">3.3.2. Show clashes in student timetable</a></h4>
+<h4 id="show-clashes-in-student-timetable"><a class="link" href="#show-clashes-in-student-timetable">3.4.2. Show clashes in student timetable</a></h4>
 <div class="paragraph">
 <p>Shows if there are clashes in a student’s (preallocated) timetable.</p>
 </div>
@@ -287,7 +390,7 @@ No clash detected.</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="show-clashes-in-an-appeal"><a class="link" href="#show-clashes-in-an-appeal">3.3.3. Show clashes in an appeal</a></h4>
+<h4 id="show-clashes-in-an-appeal"><a class="link" href="#show-clashes-in-an-appeal">3.4.3. Show clashes in an appeal</a></h4>
 <div class="paragraph">
 <p>Shows if the module a student is requesting for clashes with his/her current existing modules.</p>
 </div>
@@ -335,9 +438,9 @@ No clash detected</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-or-remove-modules-code-addmod-code-code-removemod-code"><a class="link" href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.4. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></h3>
+<h3 id="add-or-remove-modules-code-addmod-code-code-removemod-code"><a class="link" href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.5. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></h3>
 <div class="sect3">
-<h4 id="add-a-module-to-a-student"><a class="link" href="#add-a-module-to-a-student">3.4.1. Add a module to a student</a></h4>
+<h4 id="add-a-module-to-a-student"><a class="link" href="#add-a-module-to-a-student">3.5.1. Add a module to a student</a></h4>
 <div class="paragraph">
 <p>This command adds a module to specific student. If there is a clash detected
 between existing modules and the module being added, additional confirmation will be required.</p>
@@ -397,7 +500,7 @@ between existing modules and the module being added, additional confirmation wil
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-a-module-from-student-s-timetable"><a class="link" href="#removing-a-module-from-student-s-timetable">3.4.2. Removing a module from student&#8217;s timetable</a></h4>
+<h4 id="removing-a-module-from-student-s-timetable"><a class="link" href="#removing-a-module-from-student-s-timetable">3.5.2. Removing a module from student&#8217;s timetable</a></h4>
 <div class="paragraph">
 <p>This command removes a existing module from a student.</p>
 </div>
@@ -437,7 +540,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="switching-modules-for-students-code-switchmod-code"><a class="link" href="#switching-modules-for-students-code-switchmod-code">3.5. Switching modules for students: <code>switchmod</code></a></h3>
+<h3 id="switching-modules-for-students-code-switchmod-code"><a class="link" href="#switching-modules-for-students-code-switchmod-code">3.6. Switching modules for students: <code>switchmod</code></a></h3>
 <div class="paragraph">
 <p>Switch out one module for another for a specific student</p>
 </div>
@@ -462,7 +565,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="update-maximum-workload-for-a-student-code-set-code"><a class="link" href="#update-maximum-workload-for-a-student-code-set-code">3.6. Update maximum workload for a student: <code>set</code></a></h3>
+<h3 id="update-maximum-workload-for-a-student-code-set-code"><a class="link" href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></h3>
 <div class="paragraph">
 <p>Sets an existing student’s maximum modular credit for this semester to a new value.</p>
 </div>
@@ -487,7 +590,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-special-remarks-to-a-student-s-particulars-page-code-remark-code"><a class="link" href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.7. Add special remarks to a student’s particulars page: <code>remark</code></a></h3>
+<h3 id="add-special-remarks-to-a-student-s-particulars-page-code-remark-code"><a class="link" href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.8. Add special remarks to a student’s particulars page: <code>remark</code></a></h3>
 <div class="paragraph">
 <p>This command allows the administrator to add special remarks to a student’s particulars page. It can be used as a reminder or note eg. a special remark to indicate that student is exempted from a prerequisite. A timestamp will be prefixed to the remark automatically.</p>
 </div>
@@ -512,7 +615,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="approve-an-appeal-code-approve-code"><a class="link" href="#approve-an-appeal-code-approve-code">3.8. Approve an appeal: <code>approve</code></a></h3>
+<h3 id="approve-an-appeal-code-approve-code"><a class="link" href="#approve-an-appeal-code-approve-code">3.9. Approve an appeal: <code>approve</code></a></h3>
 <div class="paragraph">
 <p>Marks an existing appeal as approved, with an optional message that can be supplied in the remarks section of the appeal results.</p>
 </div>
@@ -537,7 +640,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="reject-an-appeal-code-reject-code"><a class="link" href="#reject-an-appeal-code-reject-code">3.9. Reject an appeal: <code>reject</code></a></h3>
+<h3 id="reject-an-appeal-code-reject-code"><a class="link" href="#reject-an-appeal-code-reject-code">3.10. Reject an appeal: <code>reject</code></a></h3>
 <div class="paragraph">
 <p>Marks an existing appeal as rejected. with an optional message that can be supplied in the remarks section of the appeal results.</p>
 </div>
@@ -550,7 +653,7 @@ Marks the 1st appeal in the filtered list as rejected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.11. Saving the data</a></h3>
 <div class="paragraph">
 <p>MAMS are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -564,32 +667,37 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>list</strong> <code>list [type] [/filter/]</code></p>
+<p><strong>list</strong>:  <code>list [-a] [-m] [-s]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>list modules CS</code></p>
+<p>e.g. <code>list -a -s</code> to list out all appeals and students in MAMS.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>view</strong> <code>view [type of object] [side to show info]</code></p>
+<p><strong>view</strong>: <code>view [a/INDEX] [m/INDEX] [s/INDEX]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>view A0180000A right/</code>
-to view details of student A0180000A on the right screen</p>
-</li>
-<li>
-<p>e.g. <code>view 301934 left/</code>
-This brings up the full, untruncated, details of appeal #301934 on the left pane.</p>
+<p>e.g. <code>view a/1 m/7</code> to view expanded details of appeal and module at indexes 1 and 7 respectively</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>clash</strong> `clash [MODULE_CODE] [MODULE_CODE] `</p>
+<p><strong>history</strong>: <code>history [-h]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>eg. <code>history</code> to open the history window</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>clash</strong>: `clash [MODULE_CODE] [MODULE_CODE] `</p>
 <div class="ulist">
 <ul>
 <li>
@@ -600,7 +708,7 @@ Shows clash details between the 2 specified modules</p>
 </div>
 </li>
 <li>
-<p><strong>clash</strong> <code>clash [STUDENT_ID]</code></p>
+<p><strong>clash</strong>: <code>clash [STUDENT_ID]</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -611,7 +719,7 @@ Shows if there are clashes in a student’s (preallocated) timetable.</p>
 </div>
 </li>
 <li>
-<p><strong>clash</strong> <code>clash [APPEAL_NUMBER]</code></p>
+<p><strong>clash</strong>: <code>clash [APPEAL_NUMBER]</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -622,7 +730,7 @@ Shows if the module a student is requesting for clashes with his/her current exi
 </div>
 </li>
 <li>
-<p><strong>addmod</strong> <code>addmod STUDENT_ID MODULE_CODE</code></p>
+<p><strong>addmod</strong>: <code>addmod STUDENT_ID MODULE_CODE</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -633,7 +741,7 @@ To add module CS2103 to student A0180000A</p>
 </div>
 </li>
 <li>
-<p><strong>removemod</strong> <code>removemod STUDENT_ID MODULE_CODE</code></p>
+<p><strong>removemod</strong>: <code>removemod STUDENT_ID MODULE_CODE</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -644,7 +752,7 @@ To remove module CS2103 from student A0180000A</p>
 </div>
 </li>
 <li>
-<p><strong>switchmod</strong> <code>switchmod STUDENT_ID MODULE_CODE1 MODULE_CODE2</code></p>
+<p><strong>switchmod</strong>: <code>switchmod STUDENT_ID MODULE_CODE1 MODULE_CODE2</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -655,7 +763,7 @@ To remove module CS2103 and add module 2103T to student A0180000A</p>
 </div>
 </li>
 <li>
-<p><strong>set</strong> <code>set STUDENT_ID NEW_MC</code></p>
+<p><strong>set</strong>: <code>set STUDENT_ID NEW_MC</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -666,7 +774,7 @@ To set the student’s maximum modular credit for this semester to a new value.<
 </div>
 </li>
 <li>
-<p><strong>remark</strong> <code>remark STUDENT_ID REMARKS</code></p>
+<p><strong>remark</strong>: <code>remark STUDENT_ID REMARKS</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -677,7 +785,7 @@ To add remarks to a student’s particulars page</p>
 </div>
 </li>
 <li>
-<p><strong>approve</strong> <code>approve INDEX</code></p>
+<p><strong>approve</strong>: <code>approve INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -688,7 +796,7 @@ Marks the 2nd appeal in the appeal list as approved.</p>
 </div>
 </li>
 <li>
-<p><strong>reject</strong> <code>reject INDEX</code></p>
+<p><strong>reject</strong>: <code>reject INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -701,4 +809,4 @@ Marks the 3rd appeal in the filtered list as rejected.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 09:01:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 16:49:02 UTC</div></div></div></body></html>
