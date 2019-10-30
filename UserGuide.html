@@ -48,14 +48,10 @@
 <p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>MAMS.jar</code> and <code>data.zip</code> <a href="https://ay1920s1-cs2103-t11-2.github.io/main//releases">here</a>.</p>
+<p>Download the latest <code>MAMS.jar</code> <a href="https://ay1920s1-cs2103-t11-2.github.io/main//releases">here</a>.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for The Module Appeal Management System (MAMS).</p>
-</li>
-<li>
-<p>(IMPORTANT) Unzip the data file and copy the data folder to the same folder as <code>mams.jar</code>. Due to
-the nature of the application, users are specifically restricted from creating/deleting existing data entries.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -272,18 +268,6 @@ in the command history respectively.</p>
 <div class="paragraph">
 <p>Opens a separate window displaying the command history in MAMS. The display of the command feedback can be turned
 off.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Press the <kbd>esc</kbd> key to quickly exit the history window.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Format: <code>history [-h]</code></p>
@@ -710,24 +694,69 @@ A0180001A&#8217;s timetable</code></p>
 <div class="paragraph">
 <p>Marks an existing appeal as approved, with an optional message that can be supplied in the remarks section of the appeal results.</p>
 </div>
+<div class="sect3">
+<h4 id="approve-appeals-individually"><a class="link" href="#approve-appeals-individually">3.10.1. Approve appeals individually</a></h4>
 <div class="paragraph">
-<p>Format: <code>approve appealId [APPEAL_MESSAGE]</code></p>
+<p>Format: <code>approve appealId [APPEAL_REMARK]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>approve 193848 Request for MC limit increase approved. Reminder to balance your workload carefully.</code></p>
+<p><code>approve 4 rr/watch your workload</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/beforeapprove.png" alt="beforeapprove" width="790">
+</div>
 </div>
 <div class="paragraph">
 <p>Sample Output:</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/afterapprove.png" alt="afterapprove" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="approve-appeals-in-bulk"><a class="link" href="#approve-appeals-in-bulk">3.10.2. Approve appeals in bulk</a></h4>
 <div class="paragraph">
-<p><code>Approve the appeal with ID 193848, with the following student-viewable message: “Request for MC limit increase approved. Reminder to balance your workload carefully.”</code></p>
+<p>Format: <code>approve mass/ [APPEAL_ID]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approve mass/ C0000005  C000006 C000002  C000212 Cdfdsf</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/beforemassapprove.png" alt="beforemassapprove" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/aftermassapprove.png" alt="aftermassapprove" width="790">
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -735,12 +764,69 @@ A0180001A&#8217;s timetable</code></p>
 <div class="paragraph">
 <p>Marks an existing appeal as rejected. with an optional message that can be supplied in the remarks section of the appeal results.</p>
 </div>
+<div class="sect3">
+<h4 id="reject-appeals-individually"><a class="link" href="#reject-appeals-individually">3.11.1. Reject appeals individually</a></h4>
 <div class="paragraph">
-<p>Format: <code>reject appealId [APPEAL_MESSAGE]</code></p>
+<p>Format: <code>reject appealId [APPEAL_REMARK]</code></p>
 </div>
 <div class="paragraph">
-<p>Examples: <code>reject 1</code>
-Marks the 1st appeal in the filtered list as rejected.</p>
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reject 1 rr/student not suitable for high work load</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/beforereject.png" alt="beforereject" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/afterreject.png" alt="afterreject" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reject-appreals-in-bulk"><a class="link" href="#reject-appreals-in-bulk">3.11.2. Reject appreals in bulk</a></h4>
+<div class="paragraph">
+<p>Format: <code>reject mass/ [APPEAL_ID]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reject mass/ C000000  C000007</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/beforemassreject.png" alt="beforemassreject" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/aftermassreject.png" alt="aftermassreject" width="790">
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -891,28 +977,61 @@ To add remarks to a student’s particulars page</p>
 </div>
 </li>
 <li>
-<p><strong>approve</strong>: <code>approve INDEX</code></p>
+<p><strong>approve</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>approve 2</code>
-Marks the 2nd appeal in the appeal list as approved.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>reject</strong>: <code>reject INDEX</code></p>
+<p><code>approve [INDEX] [REMARK]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>reject 3</code>
-Marks the 3rd appeal in the filtered list as rejected.</p>
+<p>e.g <code>approve 2 rr/meets requisites</code> Marks the 2nd appeal in the appeal list as approved.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>approve mass/ [APPEAL_ID]&#8230;&#8203;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g <code>approve mass/C0000023 C000034</code>  Marks the shown appeal IDS as approved</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><strong>reject</strong>:
+-</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reject [INDEX] [REMARK]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g <code>reject 2 rr/meets requisites</code> Marks the 2nd appeal in the appeal list as rejected.</p>
+</li>
+</ul>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 15:22:36 UTC</div></div></div></body></html>
+</li>
+<li>
+<p><code>reject mass/ [APPEAL_ID]&#8230;&#8203;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g <code>reject mass/C0000023 C000034</code>  Marks the shown appeal IDS as rejected</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 16:14:13 UTC</div></div></div></body></html>
