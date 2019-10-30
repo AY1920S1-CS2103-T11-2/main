@@ -16,14 +16,15 @@
 <li><a href="#viewing-single-objects-code-view-code">3.1. Viewing single objects: <code>view</code></a></li>
 <li><a href="#listing-objects-by-specified-lists-code-list-code">3.2. Listing objects by specified lists: <code>list</code></a></li>
 <li><a href="#command-history">3.3. Command History</a></li>
-<li><a href="#show-clashes-code-clash-code">3.4. Show clashes: <code>clash</code></a></li>
-<li><a href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.5. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></li>
-<li><a href="#switching-modules-for-students-code-switchmod-code">3.6. Switching modules for students: <code>switchmod</code></a></li>
-<li><a href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></li>
-<li><a href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.8. Add special remarks to a student’s particulars page: <code>remark</code></a></li>
-<li><a href="#approve-an-appeal-code-approve-code">3.9. Approve an appeal: <code>approve</code></a></li>
-<li><a href="#reject-an-appeal-code-reject-code">3.10. Reject an appeal: <code>reject</code></a></li>
-<li><a href="#saving-the-data">3.11. Saving the data</a></li>
+<li><a href="#find-keywords-code-find-code">3.4. Find keywords: <code>find</code></a></li>
+<li><a href="#show-clashes-code-clash-code">3.5. Show clashes: <code>clash</code></a></li>
+<li><a href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.6. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></li>
+<li><a href="#switching-modules-for-students-code-switchmod-code">3.7. Switching modules for students: <code>switchmod</code></a></li>
+<li><a href="#update-maximum-workload-for-a-student-code-set-code">3.8. Update maximum workload for a student: <code>set</code></a></li>
+<li><a href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.9. Add special remarks to a student’s particulars page: <code>remark</code></a></li>
+<li><a href="#approve-an-appeal-code-approve-code">3.10. Approve an appeal: <code>approve</code></a></li>
+<li><a href="#reject-an-appeal-code-reject-code">3.11. Reject an appeal: <code>reject</code></a></li>
+<li><a href="#saving-the-data">3.12. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#command-summary">4. Command Summary</a></li>
@@ -107,6 +108,22 @@ eg. Students may be organized by matriculation year, course of study etc.</p>
 </li>
 <li>
 <p>Parameters within square brackets can be supplied in any order.</p>
+</li>
+<li>
+<p>Tags will often be used in the command to specify the targeted list for the command. Certain commands allow operations on multiple lists.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>a/</code> : prefix for the <code>Appeal List</code></p>
+</li>
+<li>
+<p><code>m/</code> : prefix for the <code>Module List</code></p>
+</li>
+<li>
+<p><code>s/</code> : prefix for the <code>Student List</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -305,14 +322,58 @@ Upon the next MAMS startup, previous command history will be loaded from disk as
 </div>
 </div>
 <div class="sect2">
-<h3 id="show-clashes-code-clash-code"><a class="link" href="#show-clashes-code-clash-code">3.4. Show clashes: <code>clash</code></a></h3>
-<div class="sect3">
-<h4 id="show-clashes-between-2-modules"><a class="link" href="#show-clashes-between-2-modules">3.4.1. Show clashes between 2 modules</a></h4>
+<h3 id="find-keywords-code-find-code"><a class="link" href="#find-keywords-code-find-code">3.4. Find keywords: <code>find</code></a></h3>
 <div class="paragraph">
-<p>This command checks to see if the lecture slots of 2 modules clashes, and displays the result to the user</p>
+<p>Displays item(s) that contain(s) any of the keyword(s) in the specified list(s).</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>clash MODULE_CODE MODULE_CODE</code></p>
+<p>Format: <code>find [a/KEYWORD&#8230;&#8203;] [m/KEYWORD&#8230;&#8203;] [s/KEYWORD&#8230;&#8203;]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tags can be in any sequence. User may enter multiple keywords after a tag.
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Searching Criteria</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Appeal list, items that contains any of the keywords in Appeal Type, Appeal ID, Status(resolved/unresolved),
+or Modules Requested will be displayed.</p>
+</li>
+<li>
+<p>In Module list, items that contains any of the keywords in Module Code, Module Name, or Module Description wil be displayed.</p>
+</li>
+<li>
+<p>In Student list, items that contains any of the keywords in Student Name will be displayed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Searching criteria listed above are evaluated to be the most useful ones in order to filter the lists quickly and obtain
+necessary information. Wider range of searching will be implemented in v2.0.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -320,127 +381,141 @@ Upon the next MAMS startup, previous command history will be loaded from disk as
 <div class="ulist">
 <ul>
 <li>
-<p><code>clash cs1010 cs1020</code></p>
+<p><code>find s/larry m/programming</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Sample output:</p>
+<p>Sample Output:</p>
 </div>
-<div class="paragraph">
-<p><code>Clash detected between CS1010 and CS1020:<br>
-Time slot: 1400-1500<br>
-Event for CS1010: Lecture 1300-1500<br>
-Event for CS1020: Lecture 1400-1600</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>clash ge1001 ge1002</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Sample output: <code>No clash detected for ge1001 and ge1002</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="show-clashes-in-student-timetable"><a class="link" href="#show-clashes-in-student-timetable">3.4.2. Show clashes in student timetable</a></h4>
-<div class="paragraph">
-<p>Shows if there are clashes in a student’s (preallocated) timetable.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>clash STUDENT_ID</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>clash A01234567H</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Sample output:</p>
-</div>
-<div class="paragraph">
-<p><code>Modules taken by student A01234567H:<br>
-cs1010, cs1020, cs1040, cs1050,cs1060<br>
-Clash detected between CS1010 and CS1020:<br>
-Time slot: 1400-1500<br>
-Event for CS1010: Lecture 1300-1500<br>
-Event for CS1020: Lecture 1400-1600</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>clash A01234567B</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Sample output:</p>
-</div>
-<div class="paragraph">
-<p><code>Modules student A01234567H are taking:<br>
-Ge1020,ge1111,ge1030,ge1303<br>
-No clash detected.</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="show-clashes-in-an-appeal"><a class="link" href="#show-clashes-in-an-appeal">3.4.3. Show clashes in an appeal</a></h4>
-<div class="paragraph">
-<p>Shows if the module a student is requesting for clashes with his/her current existing modules.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>clash APPEAL_NUMBER</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>clash #301935</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Sample output:</p>
-</div>
-<div class="paragraph">
-<p><code>Modules taken by student A01234567H:<br>
-cs1010, cs1040, cs1050,cs1060<br>
-Requested module: cs1020<br>
-Clash detected between CS1010 and CS1020:<br>
-Time slot: 1400-1500<br>
-Event for CS1010: Lecture 1300-1500<br>
-Event for CS1020: Lecture 1400-1600</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>clash #301979</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Sample output:</p>
-</div>
-<div class="paragraph">
-<p><code>Modules taken by student A01234567H:<br>
-GE1020,GE1111,GE1030,GE1303<br>
-Requested module: cs1020<br>
-No clash detected</code></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindDemoSingleKeyword.png" alt="FindDemoSingleKeyword" width="790">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-or-remove-modules-code-addmod-code-code-removemod-code"><a class="link" href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.5. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></h3>
+<h3 id="show-clashes-code-clash-code"><a class="link" href="#show-clashes-code-clash-code">3.5. Show clashes: <code>clash</code></a></h3>
 <div class="sect3">
-<h4 id="add-a-module-to-a-student"><a class="link" href="#add-a-module-to-a-student">3.5.1. Add a module to a student</a></h4>
+<h4 id="show-clashes-in-an-appeal"><a class="link" href="#show-clashes-in-an-appeal">3.5.1. Show clashes in an appeal</a></h4>
+<div class="paragraph">
+<p>Checks if the module a student is requesting for clashes with his/her current existing modules.
+Only appeals requesting to add or drop module will need for clash checks. If the target appeal is not of any of the two
+types, a reminder message will be shown.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clash [a/INDEX]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash a/1</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ClashCommandInvalidAppealType.png" alt="ClashCommandInvalidAppealType" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash a/3</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AppealClashDetected.png" alt="AppealClashDetected" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-clashes-in-student-timetable"><a class="link" href="#show-clashes-in-student-timetable">3.5.2. Show clashes in student timetable</a></h4>
+<div class="paragraph">
+<p>Checks if there are clashes in a student’s (pre-allocated) timetable. This command is typically used to verify whether
+there is really a timetable clash in the student&#8217;s pre-allocated timetable if the student submits an appeal to drop a
+pre-allocated module due to timetable clash.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clash [s/INDEX]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash s/1</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/NoClashDetectedResponse.png" alt="NoClashDetectedResponse" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-clashes-between-2-modules"><a class="link" href="#show-clashes-between-2-modules">3.5.3. Show clashes between 2 modules</a></h4>
+<div class="paragraph">
+<p>This command checks to see if the lecture slots of 2 modules clashes, and displays the result to the user.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clash [m/MODULE_CODE] [m/MODULE_CODE]</code> or <code>clash [m/INDEX] [m/INDEX]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash m/cs1010 m/cs1020</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/NoClashDetectedResponse.png" alt="NoClashDetectedResponse" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash m/2 m/4</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AppealClashDetected.png" alt="AppealClashDetected" width="790">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-or-remove-modules-code-addmod-code-code-removemod-code"><a class="link" href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.6. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></h3>
+<div class="sect3">
+<h4 id="add-a-module-to-a-student"><a class="link" href="#add-a-module-to-a-student">3.6.1. Add a module to a student</a></h4>
 <div class="paragraph">
 <p>This command adds a module to specific student. If there is a clash detected
 between existing modules and the module being added, additional confirmation will be required.</p>
@@ -500,7 +575,7 @@ between existing modules and the module being added, additional confirmation wil
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-a-module-from-student-s-timetable"><a class="link" href="#removing-a-module-from-student-s-timetable">3.5.2. Removing a module from student&#8217;s timetable</a></h4>
+<h4 id="removing-a-module-from-student-s-timetable"><a class="link" href="#removing-a-module-from-student-s-timetable">3.6.2. Removing a module from student&#8217;s timetable</a></h4>
 <div class="paragraph">
 <p>This command removes a existing module from a student.</p>
 </div>
@@ -540,7 +615,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="switching-modules-for-students-code-switchmod-code"><a class="link" href="#switching-modules-for-students-code-switchmod-code">3.6. Switching modules for students: <code>switchmod</code></a></h3>
+<h3 id="switching-modules-for-students-code-switchmod-code"><a class="link" href="#switching-modules-for-students-code-switchmod-code">3.7. Switching modules for students: <code>switchmod</code></a></h3>
 <div class="paragraph">
 <p>Switch out one module for another for a specific student</p>
 </div>
@@ -565,7 +640,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="update-maximum-workload-for-a-student-code-set-code"><a class="link" href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></h3>
+<h3 id="update-maximum-workload-for-a-student-code-set-code"><a class="link" href="#update-maximum-workload-for-a-student-code-set-code">3.8. Update maximum workload for a student: <code>set</code></a></h3>
 <div class="paragraph">
 <p>Sets an existing student’s maximum modular credit for this semester to a new value.</p>
 </div>
@@ -590,7 +665,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-special-remarks-to-a-student-s-particulars-page-code-remark-code"><a class="link" href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.8. Add special remarks to a student’s particulars page: <code>remark</code></a></h3>
+<h3 id="add-special-remarks-to-a-student-s-particulars-page-code-remark-code"><a class="link" href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.9. Add special remarks to a student’s particulars page: <code>remark</code></a></h3>
 <div class="paragraph">
 <p>This command allows the administrator to add special remarks to a student’s particulars page. It can be used as a reminder or note eg. a special remark to indicate that student is exempted from a prerequisite. A timestamp will be prefixed to the remark automatically.</p>
 </div>
@@ -615,7 +690,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="approve-an-appeal-code-approve-code"><a class="link" href="#approve-an-appeal-code-approve-code">3.9. Approve an appeal: <code>approve</code></a></h3>
+<h3 id="approve-an-appeal-code-approve-code"><a class="link" href="#approve-an-appeal-code-approve-code">3.10. Approve an appeal: <code>approve</code></a></h3>
 <div class="paragraph">
 <p>Marks an existing appeal as approved, with an optional message that can be supplied in the remarks section of the appeal results.</p>
 </div>
@@ -640,7 +715,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="reject-an-appeal-code-reject-code"><a class="link" href="#reject-an-appeal-code-reject-code">3.10. Reject an appeal: <code>reject</code></a></h3>
+<h3 id="reject-an-appeal-code-reject-code"><a class="link" href="#reject-an-appeal-code-reject-code">3.11. Reject an appeal: <code>reject</code></a></h3>
 <div class="paragraph">
 <p>Marks an existing appeal as rejected. with an optional message that can be supplied in the remarks section of the appeal results.</p>
 </div>
@@ -653,7 +728,7 @@ Marks the 1st appeal in the filtered list as rejected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.11. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.12. Saving the data</a></h3>
 <div class="paragraph">
 <p>MAMS are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -697,34 +772,49 @@ There is no need to save manually.</p>
 </div>
 </li>
 <li>
-<p><strong>clash</strong>: `clash [MODULE_CODE] [MODULE_CODE] `</p>
+<p><strong>find</strong>: <code>find [a/KEYWORD&#8230;&#8203;] [m/KEYWORD&#8230;&#8203;] [s/KEYWORD&#8230;&#8203;]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>clash cs1010 cs1020</code>
-Shows clash details between the 2 specified modules</p>
+<p>e.g. <code>view a/cs1010 m/data algorithm</code></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>clash</strong>: <code>clash [STUDENT_ID]</code></p>
+<p><strong>clash</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>clash A01234567H</code>
-Shows if there are clashes in a student’s (preallocated) timetable.</p>
+<p><code>clash [m/MODULE_CODE] [m/MODULE_CODE]</code> or <code>clash [m/INDEX] [M/INDEX]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>clash m/cs1010 m/cs1020</code> shows clash details between CS1010 and CS1020;
+Or <code>clash m/2 m/4</code> to shows clash details between the modules at indices 2 and 4 respectively.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>clash</strong>: <code>clash [APPEAL_NUMBER]</code></p>
+<p><code>clash [s/INDEX]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>clash #301935</code>
-Shows if the module a student is requesting for clashes with his/her current existing modules.</p>
+<p>e.g. <code>clash s/2</code> to shows clash details in a student’s (prea-llocated) timetable.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>clash [a/INDEX]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>clash a/INDEX</code> to show if the module a student is requesting for clashes with his/her current existing modules.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -809,4 +899,4 @@ Marks the 3rd appeal in the filtered list as rejected.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 14:38:32 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 14:47:18 UTC</div></div></div></body></html>
