@@ -19,12 +19,11 @@
 <li><a href="#find-keywords-code-find-code">3.4. Find keywords: <code>find</code></a></li>
 <li><a href="#show-clashes-code-clash-code">3.5. Show clashes: <code>clash</code></a></li>
 <li><a href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.6. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></li>
-<li><a href="#switching-modules-for-students-code-switchmod-code">3.7. Switching modules for students: <code>switchmod</code></a></li>
-<li><a href="#update-maximum-workload-for-a-student-code-set-code">3.8. Update maximum workload for a student: <code>set</code></a></li>
-<li><a href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.9. Add special remarks to a student’s particulars page: <code>remark</code></a></li>
-<li><a href="#approve-an-appeal-code-approve-code">3.10. Approve an appeal: <code>approve</code></a></li>
-<li><a href="#reject-an-appeal-code-reject-code">3.11. Reject an appeal: <code>reject</code></a></li>
-<li><a href="#saving-the-data">3.12. Saving the data</a></li>
+<li><a href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></li>
+<li><a href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.8. Add special remarks to a student’s particulars page: <code>remark</code></a></li>
+<li><a href="#approve-an-appeal-code-approve-code">3.9. Approve an appeal: <code>approve</code></a></li>
+<li><a href="#reject-an-appeal-code-reject-code">3.10. Reject an appeal: <code>reject</code></a></li>
+<li><a href="#saving-the-data">3.11. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#command-summary">4. Command Summary</a></li>
@@ -79,13 +78,13 @@
 eg. Students may be organized by matriculation year, course of study etc.</p>
 </div>
 <div class="paragraph">
-<p>A student is uniquely identified by his/her 9-character Matriculation Number starting and ending with a letter, eg. <code>A0132243W</code></p>
+<p>A student is uniquely identified by his/her 8-character Matriculation Number starting and ending with a letter, eg. <code>A0132243</code></p>
 </div>
 <div class="paragraph">
 <p>An appeal request is uniquely identified by a prefix <code>C</code>, followed by a 6-digit Case ID, eg. <code>C123456</code></p>
 </div>
 <div class="paragraph">
-<p>A module is uniquely identified by a COURSE_PREFIX (eg. <code>CS</code> for Computer Science) and a 4 to 6 character sequence. eg. <code>CS2103</code> and <code>CS2103T</code>.</p>
+<p>A module is uniquely identified by a COURSE_PREFIX (eg. <code>CS</code> for Computer Science) and a 4 character sequence. eg. <code>CS2103</code>.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -517,34 +516,56 @@ pre-allocated module due to timetable clash.</p>
 <div class="sect3">
 <h4 id="add-a-module-to-a-student"><a class="link" href="#add-a-module-to-a-student">3.6.1. Add a module to a student</a></h4>
 <div class="paragraph">
-<p>This command adds a module to specific student. If there is a clash detected
-between existing modules and the module being added, additional confirmation will be required.</p>
+<p>This command adds a module to specific student. Either Index or matric id
+can be used. If both are given, index takes priority.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addmod STUDENT_ID MODULE_CODE SESSION_ID</code></p>
+<p>Format: <code>addmod s/STUDENT_ID m/MODULE_CODE</code> or
+<code>addmod i/INDEX m/MODULE_CODE</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
+<div class="paragraph">
+<p>Sample input 1:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addmod A0180000A CS1010S 2</code></p>
+<p><code>addmod s/A0180000 m/CS1010</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddModCommandDemoBefore1.png" alt="AddModCommandDemoBefore1" width="790">
+</div>
 </div>
 <div class="paragraph">
 <p>Sample output:</p>
 </div>
 <div class="paragraph">
-<p><code>CS1010S added to student A0180000A</code></p>
+<p><code>Added module to : Celina Conyers</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddModCommandDemoAfter1.png" alt="AddModCommandDemoAfter1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample input 2:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addmod A0180001A CS1010S 2</code></p>
+<p><code>addmod i/1 m/CS1010</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddModCommandDemoBefore2.png" alt="AddModCommandDemoBefore2" width="790">
+</div>
 </div>
 <div class="paragraph">
 <p>Sample output:</p>
@@ -552,95 +573,93 @@ between existing modules and the module being added, additional confirmation wil
 <div class="ulist">
 <ul>
 <li>
-<p><code>Clash detected:</code></p>
+<p><code>Student is already registered for this module.</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><code>Existing module: CS1020S: Monday 1400-1600</code></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddModCommandDemoAfter2.png" alt="AddModCommandDemoAfter2" width="790">
 </div>
-<div class="paragraph">
-<p><code>Module to be added: CS1010S: Monday 1500-1700</code></p>
-</div>
-<div class="paragraph">
-<p><code>Confirm addition? (y/n)</code></p>
-</div>
-<div class="paragraph">
-<p>If (y):
-<code>CS1010S added to student A0180000A</code></p>
-</div>
-<div class="paragraph">
-<p>If (n):
-<code>Addition of module cancelled</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="removing-a-module-from-student-s-timetable"><a class="link" href="#removing-a-module-from-student-s-timetable">3.6.2. Removing a module from student&#8217;s timetable</a></h4>
 <div class="paragraph">
-<p>This command removes a existing module from a student.</p>
+<p>This command removes a existing module from a student. Either Index or matric id
+can be used. If both are given, index takes priority.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>removemod STUDENT_ID MODULE_CODE SESSION_ID</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>removemod A0180000A CS1010S 2</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Sample output:</p>
-</div>
-<div class="paragraph">
-<p><code>CS1010S removed from student A0180000A</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>removemod A0180001A CS1020S 2</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Sample output:</p>
-</div>
-<div class="paragraph">
-<p><code>Invalid operation. Module CS1010S does not exist in student
-A0180001A&#8217;s timetable</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="switching-modules-for-students-code-switchmod-code"><a class="link" href="#switching-modules-for-students-code-switchmod-code">3.7. Switching modules for students: <code>switchmod</code></a></h3>
-<div class="paragraph">
-<p>Switch out one module for another for a specific student</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>switchmod STUDENT_ID MODULE_CODE1 MODULE_CODE2</code></p>
+<p>Format: <code>removemod s/STUDENT_ID m/MODULE_CODE</code> or
+<code>removemod i/INDEX m/MODULE_CODE</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
+<div class="paragraph">
+<p>Sample input 1:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>switchmod A0180000A CS1010S CS1010J</code></p>
+<p><code>removemod s/A0180000 m/CS1010</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemoveModCommandDemoBefore1.png" alt="RemoveModCommandDemoBefore1" width="790">
+</div>
 </div>
 <div class="paragraph">
 <p>Sample output:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Removed module from : Celina Conyers</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemoveModCommandDemoAfter1.png" alt="RemoveModCommandDemoAfter1" width="790">
+</div>
+</div>
 <div class="paragraph">
-<p><code>Switched CS1010S for CS1010J for student A0180000A</code></p>
+<p>Sample input 2:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removemod i/1 m/CS1010</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemoveModCommandDemoBefore2.png" alt="RemoveModCommandDemoBefore2" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Student is not registered for this module.</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemoveModCommandDemoAfter2.png" alt="RemoveModCommandDemoAfter2" width="790">
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="update-maximum-workload-for-a-student-code-set-code"><a class="link" href="#update-maximum-workload-for-a-student-code-set-code">3.8. Update maximum workload for a student: <code>set</code></a></h3>
+<h3 id="update-maximum-workload-for-a-student-code-set-code"><a class="link" href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></h3>
 <div class="paragraph">
 <p>Sets an existing student’s maximum modular credit for this semester to a new value.</p>
 </div>
@@ -665,7 +684,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-special-remarks-to-a-student-s-particulars-page-code-remark-code"><a class="link" href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.9. Add special remarks to a student’s particulars page: <code>remark</code></a></h3>
+<h3 id="add-special-remarks-to-a-student-s-particulars-page-code-remark-code"><a class="link" href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.8. Add special remarks to a student’s particulars page: <code>remark</code></a></h3>
 <div class="paragraph">
 <p>This command allows the administrator to add special remarks to a student’s particulars page. It can be used as a reminder or note eg. a special remark to indicate that student is exempted from a prerequisite. A timestamp will be prefixed to the remark automatically.</p>
 </div>
@@ -690,12 +709,12 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="approve-an-appeal-code-approve-code"><a class="link" href="#approve-an-appeal-code-approve-code">3.10. Approve an appeal: <code>approve</code></a></h3>
+<h3 id="approve-an-appeal-code-approve-code"><a class="link" href="#approve-an-appeal-code-approve-code">3.9. Approve an appeal: <code>approve</code></a></h3>
 <div class="paragraph">
 <p>Marks an existing appeal as approved, with an optional message that can be supplied in the remarks section of the appeal results.</p>
 </div>
 <div class="sect3">
-<h4 id="approve-appeals-individually"><a class="link" href="#approve-appeals-individually">3.10.1. Approve appeals individually</a></h4>
+<h4 id="approve-appeals-individually"><a class="link" href="#approve-appeals-individually">3.9.1. Approve appeals individually</a></h4>
 <div class="paragraph">
 <p>Format: <code>approve appealId [APPEAL_REMARK]</code></p>
 </div>
@@ -727,7 +746,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="approve-appeals-in-bulk"><a class="link" href="#approve-appeals-in-bulk">3.10.2. Approve appeals in bulk</a></h4>
+<h4 id="approve-appeals-in-bulk"><a class="link" href="#approve-appeals-in-bulk">3.9.2. Approve appeals in bulk</a></h4>
 <div class="paragraph">
 <p>Format: <code>approve mass/ [APPEAL_ID]&#8230;&#8203;</code></p>
 </div>
@@ -760,12 +779,12 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="reject-an-appeal-code-reject-code"><a class="link" href="#reject-an-appeal-code-reject-code">3.11. Reject an appeal: <code>reject</code></a></h3>
+<h3 id="reject-an-appeal-code-reject-code"><a class="link" href="#reject-an-appeal-code-reject-code">3.10. Reject an appeal: <code>reject</code></a></h3>
 <div class="paragraph">
 <p>Marks an existing appeal as rejected. with an optional message that can be supplied in the remarks section of the appeal results.</p>
 </div>
 <div class="sect3">
-<h4 id="reject-appeals-individually"><a class="link" href="#reject-appeals-individually">3.11.1. Reject appeals individually</a></h4>
+<h4 id="reject-appeals-individually"><a class="link" href="#reject-appeals-individually">3.10.1. Reject appeals individually</a></h4>
 <div class="paragraph">
 <p>Format: <code>reject appealId [APPEAL_REMARK]</code></p>
 </div>
@@ -797,7 +816,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="reject-appreals-in-bulk"><a class="link" href="#reject-appreals-in-bulk">3.11.2. Reject appreals in bulk</a></h4>
+<h4 id="reject-appreals-in-bulk"><a class="link" href="#reject-appreals-in-bulk">3.10.2. Reject appreals in bulk</a></h4>
 <div class="paragraph">
 <p>Format: <code>reject mass/ [APPEAL_ID]&#8230;&#8203;</code></p>
 </div>
@@ -830,7 +849,7 @@ A0180001A&#8217;s timetable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.12. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.11. Saving the data</a></h3>
 <div class="paragraph">
 <p>MAMS are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -922,34 +941,23 @@ Or <code>clash m/2 m/4</code> to shows clash details between the modules at indi
 </div>
 </li>
 <li>
-<p><strong>addmod</strong>: <code>addmod STUDENT_ID MODULE_CODE</code></p>
+<p><strong>addmod</strong>: <code>addmod s/STUDENT_ID m/MODULE_CODE</code> or <code>addmod i/INDEX m/MODULE_CODE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g <code>addmod A0180000A CS2103</code>
-To add module CS2103 to student A0180000A</p>
+<p>e.g <code>addmod s/A0180000 m/CS2103</code> <code>addmod i/10 m/CS2103</code>
+To add module CS2103 to student A0180000</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>removemod</strong>: <code>removemod STUDENT_ID MODULE_CODE</code></p>
+<p><strong>removemod</strong>: <code>removemod s/STUDENT_ID m/MODULE_CODE</code> or <code>removemod i/INDEX m/MODULE_CODE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g <code>removemod A0180000A CS2103</code>
-To remove module CS2103 from student A0180000A</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>switchmod</strong>: <code>switchmod STUDENT_ID MODULE_CODE1 MODULE_CODE2</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g <code>switchmod A0180000A CS2103 CS2103T</code>
-To remove module CS2103 and add module 2103T to student A0180000A</p>
+<p>e.g <code>removemod s/A0180000 m/CS1020</code> <code>removemod i/4 m/CS1020</code>
+To remove module CS2103 from student A0180000</p>
 </li>
 </ul>
 </div>
@@ -959,18 +967,18 @@ To remove module CS2103 and add module 2103T to student A0180000A</p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>set A0180000A 28</code>
+<p>e.g. <code>set A0180000 28</code>
 To set the student’s maximum modular credit for this semester to a new value.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>remark</strong>: <code>remark STUDENT_ID REMARKS</code></p>
+<p><strong>remark</strong>: <code>remark s/STUDENT_ID rr/REMARKS</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>remark A0180000A timetable clash waivered</code>
+<p>e.g. <code>remark A0180000 timetable clash waivered</code>
 To add remarks to a student’s particulars page</p>
 </li>
 </ul>
@@ -981,7 +989,7 @@ To add remarks to a student’s particulars page</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>approve [INDEX] [REMARK]</code></p>
+<p><code>approve [INDEX] [rr/REMARK]</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1009,7 +1017,7 @@ To add remarks to a student’s particulars page</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>reject [INDEX] [REMARK]</code></p>
+<p><code>reject [INDEX] [rr/REMARK]</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1034,4 +1042,4 @@ To add remarks to a student’s particulars page</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 16:14:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 03:59:27 UTC</div></div></div></body></html>
