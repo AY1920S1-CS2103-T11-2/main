@@ -20,7 +20,7 @@
 <li><a href="#show-clashes-code-clash-code">3.5. Show clashes: <code>clash</code></a></li>
 <li><a href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.6. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></li>
 <li><a href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></li>
-<li><a href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.8. Add special remarks to a student’s particulars page: <code>remark</code></a></li>
+<li><a href="#undo-and-redo-code-undo-redo-code">3.8. Undo and Redo: <code>undo/redo</code></a></li>
 <li><a href="#approve-an-appeal-code-approve-code">3.9. Approve an appeal: <code>approve</code></a></li>
 <li><a href="#reject-an-appeal-code-reject-code">3.10. Reject an appeal: <code>reject</code></a></li>
 <li><a href="#saving-the-data">3.11. Saving the data</a></li>
@@ -712,28 +712,21 @@ can be used. If both are given, index takes priority.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-special-remarks-to-a-student-s-particulars-page-code-remark-code"><a class="link" href="#add-special-remarks-to-a-student-s-particulars-page-code-remark-code">3.8. Add special remarks to a student’s particulars page: <code>remark</code></a></h3>
+<h3 id="undo-and-redo-code-undo-redo-code"><a class="link" href="#undo-and-redo-code-undo-redo-code">3.8. Undo and Redo: <code>undo/redo</code></a></h3>
 <div class="paragraph">
-<p>This command allows the administrator to add special remarks to a student’s particulars page. It can be used as a reminder or note eg. a special remark to indicate that student is exempted from a prerequisite. A timestamp will be prefixed to the remark automatically.</p>
+<p>This command allows the administrator to undo last command made.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>remark STUDENT_ID REMARKS</code></p>
+<p>Format: <code>undo</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>remark A0134939W Timetable clash waivered</code></p>
-</li>
-</ul>
+<p>Format: <code>redo</code></p>
 </div>
 <div class="paragraph">
 <p>Sample Output:</p>
 </div>
 <div class="paragraph">
-<p><code>Under the remarks sections of the particulars page for A0134939W, the following message “[18/09/2019 18:00] Timetable clash waivered” will be appended.</code></p>
+<p><code>Redo Successful</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -879,8 +872,16 @@ can be used. If both are given, index takes priority.</p>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.11. Saving the data</a></h3>
 <div class="paragraph">
-<p>MAMS are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>Saves a snapshot of the current state under the data folder with the name "mamshistory_[TAG]". If no tag is given, a timestamp is used instead.</p>
+</div>
+<div class="paragraph">
+<p>Format <code>backup [t/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>backup t/Backup_1</code></p>
+</div>
+<div class="paragraph">
+<p>Sample Output: `Backup Successful. Saved under "data/mamshistory_Backup_1"</p>
 </div>
 </div>
 </div>
@@ -1070,4 +1071,4 @@ To add remarks to a student’s particulars page</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 01:16:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 01:54:04 UTC</div></div></div></body></html>
