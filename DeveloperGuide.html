@@ -27,12 +27,13 @@
 <ul class="sectlevel2">
 <li><a href="#clash-feature">3.1. Clash feature</a></li>
 <li><a href="#find-feature">3.2. Find feature</a></li>
-<li><a href="#command-history">3.3. Command History</a></li>
-<li><a href="#ui-ux">3.4. UI/UX</a></li>
-<li><a href="#backup-and-undo-actions-feature">3.5. Backup and undo actions feature</a></li>
-<li><a href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#resolve-feature">3.3. Resolve feature</a></li>
+<li><a href="#command-history">3.4. Command History</a></li>
+<li><a href="#ui-ux">3.5. UI/UX</a></li>
+<li><a href="#backup-and-undo-actions-feature">3.6. Backup and undo actions feature</a></li>
+<li><a href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -542,7 +543,342 @@ Eg. input: <code>find s/bob</code>. A new <code>FindCommand</code> is created wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="command-history"><a class="link" href="#command-history">3.3. Command History</a></h3>
+<h3 id="resolve-feature"><a class="link" href="#resolve-feature">3.3. Resolve feature</a></h3>
+<div class="sect3">
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.3.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The resolve feature is facilitated by an abstract <code>ResolveCommand</code> class which extends abstract <code>Command</code> class and
+2 sub-classes which extends `ResolveCommand' for different types of appeal resolultion.</p>
+</div>
+<div class="paragraph">
+<p>The 2 type of appeal resolution are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Approve</code>&#8201;&#8212;&#8201;approves an appeal.</p>
+</li>
+<li>
+<p><code>Reject</code>&#8201;&#8212;&#8201;rejects an appeal</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each appeal resolution type has an individual and mass resolution command which extends its base type</p>
+</div>
+<div class="paragraph">
+<p>The 2 types of resolution commands for <code>Approve</code> are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ApproveCommand</code>&#8201;&#8212;&#8201;approves an individual appeal by index shown in the in-app UI</p>
+</li>
+<li>
+<p><code>MassApprove</code>&#8201;&#8212;&#8201;approves multiple appeals by the ID of appeals</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Similarly the types of resolution commands for <code>Reject</code> are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>RejectCommand</code>&#8201;&#8212;&#8201;rejects an individual appeal by index shown in the in-app UI</p>
+</li>
+<li>
+<p><code>MassReject</code>&#8201;&#8212;&#8201;rejects multiple appeals by the ID of appeals</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ResolveCommandClassDiagram.png" alt="ResolveCommandClassDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Each appeal resolution command has a <code>execute()</code> method that takes in a <code>Model</code> object. Resolve commands retrieve information of all students and modules from model to get the relevant student and module.
+It then creates a copy of the relevant items and replaces the original ones in the global list of students and modules</p>
+</div>
+<div class="paragraph">
+<p>Below shows how the ResolveCommand mechanism behaves at each step when resolving a single appeal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Reject commands behaves the same way as approve commands, except it will not make any changes to any students or module. For this developer guide, only approve commands sequence will be elaborated
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>approve a/2 r/Student meets requirements</code> to approve an appeal of index specified.  In this example the appeal index is 2.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>ApproveCommandParser</code> will be called to parse the individual approve command .</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When parsing the input, the <code>a/</code> prefix will be detected and <code>ApproveCommandParser</code> will parse a single index and the remark after the optional field <code>r/</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>ApproveCommand</code> object will be created.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>ApproveCommand.execute()</code> is called.</p>
+</div>
+<div class="paragraph">
+<p><code>ApproveCommand.execute()</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1. It will check the type of appeal of the appeal index specified by the user, it will check through <code>model.getFilteredAppealList()</code> and get the index of the appeal that matches that of the given one.</p>
+</li>
+<li>
+<p>Step 2. Checks weather the appeal has already been resolved with <code>Appeal.isResolved()</code></p>
+</li>
+<li>
+<p>Step 3. If is not yet resolved, nature of appeal will be retrieved with <code>Appeal.getAppealType()</code>.  There are 3 types of appeal cases - add module, drop module and increase workload</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check if relevant module and student exists by getting <code>model.getFullModuleList()</code> and <code>model.getFullStudentList()</code></p>
+</li>
+<li>
+<p>Check for clashes between module requested and the modules the student is current taking (refer to 3.1 for implementation for <code>ClashCommand</code>)</p>
+</li>
+<li>
+<p>If no clashes are detected add student to module class list and module to the student&#8217;s list of modules</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Drop module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check if relevant module and student exists by getting <code>model.getFullModuleList()</code> and <code>model.getFullStudentList()</code></p>
+</li>
+<li>
+<p>Check if student is taking the module</p>
+</li>
+<li>
+<p>Removes specified module from student and student from module</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Increase workload</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Increases the specified student&#8217;s workload to the one specified in the appeal</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows how <code>ApproveCommand.execute()</code> works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ApproveCommandActivityDiagram.png" alt="ApproveCommandActivityDiagram">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The student current modules are stored as String of module code to reduce coupling. Hence, modules taken by the student are retrieved from <code>model.getFilteredModuleList()</code> by matching module codes.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Student</code> who submits the appeal and requested <code>Module</code> are stored as String of Matric ID and module code respectively in an <code>Appeal</code> object to reduce coupling.
+Hence, <code>Student</code> who submits the appeal is retrieved from <code>model.getFilteredStudentList()</code> by matching Matric ID,
+and <code>Module</code> requested is retrieved from <code>model.getFilteredModuleList()</code> by matching module codes.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 5.  Upon approval of an appeal, <code>ApproveCommand</code> will return a <code>CommandResult</code> object which contains the message of the action performed.  Each appeal type will give a different feedback message.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add module will inform user if approval is not allowed due to clashes in time table, else it will feedback the specified module has been added to the student by their IDs</p>
+</li>
+<li>
+<p>Drop module will inform user if approval is not allowed due to the student not having the module to be dropped in the first place, else if will feedback the specified module was removed from the student by their IDs</p>
+</li>
+<li>
+<p>Increase workload will inform user of the increase inthe student&#8217;s Modular Credits limit</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The followingg sequence diagram shows how ApproveCommand works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ResolveSequenceDiagram.png" alt="ResolveSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Below shows how the ResolveCommand mechanism behaves at each step when resolving multiple appeals.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>approve mass/C000000 C000001 C000010</code> to approve all the appeals specifed.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>ApproveCommandParser</code> will be called to parse the mass approve command.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When parsing the input, the <code>mass/</code> prefix will be detected and <code>ApproveCommandParser</code> will parse all the appeal IDs specifed.  Valid and invalid IDs will be separated into 2 lists.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>MassApprove</code> object will be created with both the lists of valid and invalid IDs.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>MassApprove.execute()</code> is called.</p>
+</div>
+<div class="paragraph">
+<p><code>MassApprove.execute()</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Mass resolve commands <code>execute()</code> methods works the same as individual Resolve commands except it will loop through the list of valid Appeal IDs to resolve each one.
+Successful resolution of each appeal in the valid appeal list will add the ID to successful list.
+Similarly, appeal IDs from valid Appeal IDs that were not approved/rejected will be added to the unsuccessful list.
+Also, because Mass resolve commands operates on appeal IDs, <code>model.getFullAppealList()</code> will be used instead of <code>model.getFilteredAppealList()</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1. It will check the type of appeal of the appeal index specified by the user, it will check through <code>model.getFullAppealList()</code> and get the index of the appeal that matches that of the given one.</p>
+</li>
+<li>
+<p>Step 2. Checks weather the appeal has already been resolved with <code>Appeal.isResolved()</code></p>
+</li>
+<li>
+<p>Step 3. If is not yet resolved, nature of appeal will be retrieved with <code>Appeal.getAppealType()</code>.  There are 3 types of appeal cases - add module, drop module and increase workload</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check if relevant module and the student exists by getting <code>model.getFullModuleList()</code> and <code>model.getFullStudentList()</code></p>
+</li>
+<li>
+<p>Check for clashes between module requested and the modules the student is current taking (refer to 3.1 for implementation for <code>ClashCommand</code>)</p>
+</li>
+<li>
+<p>If no clashes are detected add the student to module class list and module to the student&#8217;s list of modules</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Drop module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check if relevant module and student exists by getting <code>model.getFullModuleList()</code> and <code>model.getFullStudentList()</code></p>
+</li>
+<li>
+<p>Check if student is taking the module</p>
+</li>
+<li>
+<p>Removes specified module from student and student from module</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Increase workload</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Increases the specified student&#8217;s workload to the one specified in the appeal</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows how <code>MassApprove.execute()</code> works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MassApproveActivityDiagram.png" alt="MassApproveActivityDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 5.  After resolving all the appeal IDs in the valid Appeal list, <code>MassApprove</code> will return a <code>CommandResult</code> object which contains the feedback message.  Feedback message will show a list of successfully approved appeal IDs,
+a list of unresolved modules which include the list of invalid appeal IDs entered by user and appeal IDs
+and a list of appeal IDs with time table clash detected.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MassResolveSequenceDiagram.png" alt="MassResolveSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>To implement design considerations&#8230;&#8203;&#8230;&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-history"><a class="link" href="#command-history">3.4. Command History</a></h3>
 <div class="paragraph">
 <p>The command history feature encapsulates a few different related functions, mainly:</p>
 </div>
@@ -569,7 +905,7 @@ and is loaded upon the next startup</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="cycling-through-previous-inputs"><a class="link" href="#cycling-through-previous-inputs">3.3.1. Cycling Through Previous Inputs</a></h4>
+<h4 id="cycling-through-previous-inputs"><a class="link" href="#cycling-through-previous-inputs">3.4.1. Cycling Through Previous Inputs</a></h4>
 <div class="paragraph">
 <p>The core of the cycle-command-history feature is implemented through three different classes:
  <code>CommandHistory</code>, <code>ListPointer</code>, and <code>InputOutput</code>. In addition, the <code>CommandBox</code> was modified
@@ -650,7 +986,7 @@ alternatives: usage of ListPointer versus Iterator</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-history-window-code-historycommand-code"><a class="link" href="#displaying-history-window-code-historycommand-code">3.3.2. Displaying History Window: <code>HistoryCommand</code></a></h4>
+<h4 id="displaying-history-window-code-historycommand-code"><a class="link" href="#displaying-history-window-code-historycommand-code">3.4.2. Displaying History Window: <code>HistoryCommand</code></a></h4>
 <div class="paragraph">
 <p>The <code>HistoryCommand</code> feature allows users to display a separate window showing the
 MAMS input/output history upon command.</p>
@@ -880,7 +1216,7 @@ more complicated.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-ux"><a class="link" href="#ui-ux">3.4. UI/UX</a></h3>
+<h3 id="ui-ux"><a class="link" href="#ui-ux">3.5. UI/UX</a></h3>
 <div class="paragraph">
 <p>The GUI interface from AddressBook-Level3 was re-designed to incorporate additional
 elements and features for MAMS. These include:</p>
@@ -929,7 +1265,7 @@ to the similar semantics behind them, they share almost no fields or method sign
 Cards and Expanded Cards.</p>
 </div>
 <div class="sect3">
-<h4 id="list-panel-code-appeallistpanel-code-code-modulelistpanel-code-code-studentlistpanel-code"><a class="link" href="#list-panel-code-appeallistpanel-code-code-modulelistpanel-code-code-studentlistpanel-code">3.4.1. List Panel (<code>AppealListPanel</code>, <code>ModuleListPanel</code>, <code>StudentListPanel</code>)</a></h4>
+<h4 id="list-panel-code-appeallistpanel-code-code-modulelistpanel-code-code-studentlistpanel-code"><a class="link" href="#list-panel-code-appeallistpanel-code-code-modulelistpanel-code-code-studentlistpanel-code">3.5.1. List Panel (<code>AppealListPanel</code>, <code>ModuleListPanel</code>, <code>StudentListPanel</code>)</a></h4>
 <div class="paragraph">
 <p>Each type of List Panel is built to contain their respective cards (eg. <code>AppealListPanel</code> can contain a list of
 <code>AppealCard</code> or a <code>ExpandedAppealCard</code>). The fields shown on each card is specific to the type, but are similar in nature.
@@ -993,9 +1329,9 @@ the single module using <code>ExpandedModuleCard</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="backup-and-undo-actions-feature"><a class="link" href="#backup-and-undo-actions-feature">3.5. Backup and undo actions feature</a></h3>
+<h3 id="backup-and-undo-actions-feature"><a class="link" href="#backup-and-undo-actions-feature">3.6. Backup and undo actions feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.6.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The backup feature is facilitated by an abstract <code>StoreCommand</code> class which extends abstract <code>Command</code> class and
 three sub-classes which extends <code>StoreCommand</code> to handle different types of saving and restoring actions.</p>
@@ -1144,20 +1480,20 @@ The save states are stored in the same format as the mams.json data file to redu
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1188,7 +1524,7 @@ The save states are stored in the same format as the mams.json data file to redu
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2090,4 +2426,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 14:32:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 16:06:43 UTC</div></div></div></body></html>
