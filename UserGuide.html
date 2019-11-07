@@ -19,11 +19,12 @@
 <li><a href="#find-keywords-code-find-code">3.4. Find keywords: <code>find</code></a></li>
 <li><a href="#show-clashes-code-clash-code">3.5. Show clashes: <code>clash</code></a></li>
 <li><a href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.6. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></li>
-<li><a href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></li>
+<li><a href="#update-maximum-workload-for-a-student-code-setcredits-code">3.7. Update maximum workload for a student: <code>setcredits</code></a></li>
 <li><a href="#undo-and-redo-code-undo-redo-code">3.8. Undo and Redo: <code>undo/redo</code></a></li>
 <li><a href="#approve-an-appeal-code-approve-code">3.9. Approve an appeal: <code>approve</code></a></li>
 <li><a href="#reject-an-appeal-code-reject-code">3.10. Reject an appeal: <code>reject</code></a></li>
 <li><a href="#saving-the-data">3.11. Saving the data</a></li>
+<li><a href="#restoring-saved-data">3.12. Restoring saved data</a></li>
 </ul>
 </li>
 <li><a href="#command-summary">4. Command Summary</a></li>
@@ -429,14 +430,20 @@ Tags can be in any sequence. User may enter multiple keywords after a tag.
 <div class="ulist">
 <ul>
 <li>
+<p><code>find</code> supports searching in multiple lists for multiple keywords. All items contains the keyword as a word or a part of word (See examples for more details).</p>
+</li>
+<li>
+<p>Searching is case-insensitive.</p>
+</li>
+<li>
 <p>In Appeal list, items that contains any of the keywords in Appeal Type, Appeal ID, Status(resolved/unresolved),
-or Modules Requested will be displayed.</p>
+Module Requested or Module to Drop will be displayed.</p>
 </li>
 <li>
 <p>In Module list, items that contains any of the keywords in Module Code, Module Name, or Module Description wil be displayed.</p>
 </li>
 <li>
-<p>In Student list, items that contains any of the keywords in Student Name will be displayed.</p>
+<p>In Student list, items that contains any of the keywords in Student Name or Matric ID will be displayed.</p>
 </li>
 </ul>
 </div>
@@ -468,6 +475,9 @@ necessary information. Wider range of searching will be implemented in v2.0.
 <div class="paragraph">
 <p>Sample Output:</p>
 </div>
+<div class="paragraph">
+<p>All items containing "larry" in Student list and all items containing "programming" are displayed.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FindDemoSingleKeyword.png" alt="FindDemoSingleKeyword" width="790">
@@ -483,18 +493,64 @@ necessary information. Wider range of searching will be implemented in v2.0.
 <div class="paragraph">
 <p>Sample Output:</p>
 </div>
+<div class="paragraph">
+<p>All items containing "add" or "drop" in Appeal list are displayed.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FindDemoMultipleKeywords.png" alt="FindDemoMultipleKeywords" width="790">
 </div>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find m/cs10</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="paragraph">
+<p>All items containing "cs10" in Module list are displayed. (i.e. CS1010, CS1020, CS2030)</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+CS2030 is also displayed since it contains "cs10" in its module description.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindDemoModuleSearch.png" alt="FindDemoModuleSearch" width="790">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="show-clashes-code-clash-code"><a class="link" href="#show-clashes-code-clash-code">3.5. Show clashes: <code>clash</code></a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you execute <code>clash</code> command by index, the index will refer for the current index in the current showing list. Please
+use <code>list</code> command to go back to the full list if your target appeal/module/student is not shown in the current list.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="show-clashes-in-an-appeal"><a class="link" href="#show-clashes-in-an-appeal">3.5.1. Show clashes in an appeal</a></h4>
 <div class="paragraph">
-<p>Checks if the module a student is requesting for clashes with his/her current existing modules.
+<p>Checks if there is clash between the module which a student is requesting to add or drop and his/her current modules.
 Only appeals requesting to add or drop module will need for clash checks. If the target appeal is not of any of the two
 types, a reminder message will be shown.</p>
 </div>
@@ -755,12 +811,12 @@ can be used. If both are given, index takes priority.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="update-maximum-workload-for-a-student-code-set-code"><a class="link" href="#update-maximum-workload-for-a-student-code-set-code">3.7. Update maximum workload for a student: <code>set</code></a></h3>
+<h3 id="update-maximum-workload-for-a-student-code-setcredits-code"><a class="link" href="#update-maximum-workload-for-a-student-code-setcredits-code">3.7. Update maximum workload for a student: <code>setcredits</code></a></h3>
 <div class="paragraph">
 <p>Sets an existing student’s maximum modular credit for this semester to a new value.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>set STUDENT_ID NEW_MC</code> New MC must be a positive integer</p>
+<p>Format: <code>set INDEX c/NEW_MC</code> New MC must be a positive integer and not less than already credits.</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -768,7 +824,7 @@ can be used. If both are given, index takes priority.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>set A0111111B 28</code></p>
+<p><code>set 2 c/28</code></p>
 </li>
 </ul>
 </div>
@@ -952,6 +1008,21 @@ can be used. If both are given, index takes priority.</p>
 <p>Sample Output: `Backup Successful. Saved under "data/mamshistory_Backup_1"</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="restoring-saved-data"><a class="link" href="#restoring-saved-data">3.12. Restoring saved data</a></h3>
+<div class="paragraph">
+<p>Restores previously saved snapshot with "mamshistory_[TAG]".</p>
+</div>
+<div class="paragraph">
+<p>Format <code>restore [t/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>restore t/Backup_1</code></p>
+</div>
+<div class="paragraph">
+<p>Sample Output: <code>Backup "data/mamshistory_Backup_1" restored!</code></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1060,23 +1131,56 @@ To remove module CS2103 from student A0180000</p>
 </div>
 </li>
 <li>
-<p><strong>set</strong>: <code>set STUDENT_ID NEW_MC</code></p>
+<p><strong>setcredits</strong>: <code>setcredits INDEX NEW_MC</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>set A0180000 28</code>
+<p>e.g. <code>setcredits 2 c/28</code>
 To set the student’s maximum modular credit for this semester to a new value.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>remark</strong>: <code>remark s/STUDENT_ID rr/REMARKS</code></p>
+<p><strong>backup</strong>: <code>backup t/TAG</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>remark A0180000 timetable clash waivered</code>
-To add remarks to a student’s particulars page</p>
+<p>e.g. <code>backup t/first_backup</code>
+To save a snapshot of the current state in the data folder.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>restore</strong>: <code>restore t/TAG</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>restore t/first_backup</code>
+Restore backup from the data folder.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>undo</strong>: <code>undo</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>undo</code>
+Undo last undoable action.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>redo</strong>: <code>redo</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>redo</code>
+Redo do last Undo if availiable.</p>
 </li>
 </ul>
 </div>
@@ -1139,4 +1243,4 @@ To add remarks to a student’s particulars page</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 12:04:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 02:49:28 UTC</div></div></div></body></html>
