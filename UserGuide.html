@@ -681,12 +681,15 @@ pre-allocated module due to timetable clash.</p>
 <div class="sect3">
 <h4 id="add-a-module-to-a-student"><a class="link" href="#add-a-module-to-a-student">3.6.1. Add a module to a student</a></h4>
 <div class="paragraph">
-<p>This command adds a module to specific student. Either Index or matric id
-can be used. If both are given, index takes priority.</p>
+<p>This command adds a module to specific student.
+For student identifier, it can either be the matric id or index in the student list.
+For module identifier, it can either be the module code or index in the module list.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addmod s/STUDENT_ID m/MODULE_CODE</code> or
-<code>addmod i/INDEX m/MODULE_CODE</code></p>
+<p>Format: <code>addmod s/STUDENT_ID m/MODULE_CODE</code> or</p>
+</div>
+<div class="paragraph">
+<p><code>addmod s/STUDENT_INDEX m/MODULE_INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -697,7 +700,7 @@ can be used. If both are given, index takes priority.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addmod s/A0180000 m/CS1010</code></p>
+<p><code>addmod s/1 m/7</code></p>
 </li>
 </ul>
 </div>
@@ -723,7 +726,7 @@ can be used. If both are given, index takes priority.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addmod i/1 m/CS1010</code></p>
+<p><code>addmod s/1 m/1</code></p>
 </li>
 </ul>
 </div>
@@ -738,7 +741,7 @@ can be used. If both are given, index takes priority.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Student is already registered for this module.</code></p>
+<p>`Unable to add module to student as the student already has already completed the module `</p>
 </li>
 </ul>
 </div>
@@ -751,12 +754,15 @@ can be used. If both are given, index takes priority.</p>
 <div class="sect3">
 <h4 id="removing-a-module-from-student-s-timetable"><a class="link" href="#removing-a-module-from-student-s-timetable">3.6.2. Removing a module from student&#8217;s timetable</a></h4>
 <div class="paragraph">
-<p>This command removes a existing module from a student. Either Index or matric id
-can be used. If both are given, index takes priority.</p>
+<p>This command removes a existing module from a student.
+For student identifier, it can either be the matric id or index in the student list.
+For module identifier, it can either be the module code or index in the module list.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>removemod s/STUDENT_ID m/MODULE_CODE</code> or
-<code>removemod i/INDEX m/MODULE_CODE</code></p>
+<p>Format: <code>removemod s/STUDENT_ID m/MODULE_CODE</code></p>
+</div>
+<div class="paragraph">
+<p><code>removemod s/STUDENT_INDEX m/MODULE_INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -767,7 +773,7 @@ can be used. If both are given, index takes priority.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>removemod s/A0180000 m/CS1010</code></p>
+<p><code>removemod s/1 m/CS2101</code></p>
 </li>
 </ul>
 </div>
@@ -797,7 +803,7 @@ can be used. If both are given, index takes priority.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>removemod i/1 m/CS1010</code></p>
+<p><code>removemod s/A0180001 m/CS2105</code></p>
 </li>
 </ul>
 </div>
@@ -1122,23 +1128,23 @@ Or <code>clash m/2 m/4</code> to shows clash details between the modules at indi
 </div>
 </li>
 <li>
-<p><strong>addmod</strong>: <code>addmod s/STUDENT_ID m/MODULE_CODE</code> or <code>addmod i/INDEX m/MODULE_CODE</code></p>
+<p><strong>addmod</strong>: <code>addmod s/STUDENT_ID m/MODULE_CODE</code> or <code>addmod s/STUDENT_INDEX m/MODULE_INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g <code>addmod s/A0180000 m/CS2103</code> <code>addmod i/10 m/CS2103</code>
-To add module CS2103 to student A0180000</p>
+<p>e.g <code>addmod s/A0180009 m/CS1020</code>
+To add module CS1020 to student A0180009</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>removemod</strong>: <code>removemod s/STUDENT_ID m/MODULE_CODE</code> or <code>removemod i/INDEX m/MODULE_CODE</code></p>
+<p><strong>removemod</strong>:`removemod s/STUDENT_ID m/MODULE_CODE` or <code>removemod s/STUDENT_INDEX m/MODULE_INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g <code>removemod s/A0180000 m/CS1020</code> <code>removemod i/4 m/CS1020</code>
-To remove module CS2103 from student A0180000</p>
+<p>e.g <code>removemod s/A0180000 m/CS1020</code>
+To remove module CS1020 from student A0180000</p>
 </li>
 </ul>
 </div>
@@ -1256,4 +1262,4 @@ Redo do last Undo if availiable.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:17:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 15:23:49 UTC</div></div></div></body></html>
