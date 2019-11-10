@@ -56,7 +56,18 @@
 <li>
 <p><strong>Important</strong>: Unzip <code>data.zip</code>. Inside, there should be a folder containing <code>mams.json</code>, ie. <code>data/mams.json</code>.
 Copy the <code>data</code> folder containing <code>mams.json</code> to the same directory as <code>mams.jar</code>. Due to the special nature of
-app, users are specifically restricted from deleting/adding data entries.</p>
+app, users are specifically restricted from deleting/adding data entries. Note that certain un-archiver tools
+may automatically create a new parent <code>data/</code> folder around the zipped <code>data/</code> folder. Should that happen, please only
+move the inner <code>data/</code> folder containing <code>mams.json</code> to the target directory. In any case, the resulting
+folder structure should look a little like the below:</p>
+<div class="literalblock">
+<div class="content">
+<pre>.
+├── mams.jar
+└── data/
+    └── mams.json</pre>
+</div>
+</div>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds..</p>
@@ -116,9 +127,6 @@ you may face unexpected issues.</p>
 </li>
 <li>
 <p>Arguments within square brackets can be supplied in any order.</p>
-</li>
-<li>
-<p>There</p>
 </li>
 <li>
 <p>Tags will often be used in the command to specify the targeted list for the command. Certain commands allow operations on multiple lists.</p>
@@ -1243,4 +1251,4 @@ Redo do last Undo if availiable.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 12:09:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 07:49:06 UTC</div></div></div></body></html>
