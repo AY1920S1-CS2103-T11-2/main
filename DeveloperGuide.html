@@ -25,8 +25,8 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#clash-feature">3.1. Clash feature</a></li>
-<li><a href="#find-feature">3.2. Find feature</a></li>
+<li><a href="#find-feature">3.1. Find feature</a></li>
+<li><a href="#clash-feature">3.2. Clash feature</a></li>
 <li><a href="#add-and-remove-module-feature">3.3. Add and remove module feature</a></li>
 <li><a href="#resolve-feature">3.4. Resolve feature</a></li>
 <li><a href="#command-history">3.5. Command History</a></li>
@@ -84,21 +84,8 @@
 <div class="paragraph">
 <p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/docs/diagrams/">diagrams</a> folder.
-Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/mams/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -154,13 +141,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
-</div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
+<p>For example, the <code>Logic</code> component (see the class diagram in <a href="#fig-LogicClassDiagram">Figure 4, &#8220;Structure of the Logic Component&#8221;</a>) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
@@ -170,7 +151,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 2. Component interactions for <code>delete 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -182,10 +163,10 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
-<div class="title">Figure 4. Structure of the UI Component</div>
+<div class="title">Figure 3. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/mams/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>AppealListPanel</code>, <code>ModuleListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
@@ -213,11 +194,23 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 5. Structure of the Logic Component</div>
+<div class="title">Figure 4. Structure of the Logic Component</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ParserClassDiagram.png" alt="ParserClassDiagram">
+</div>
+<div class="title">Figure 5. Structure of the Parser Component</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CommandClassDiagram.png" alt="CommandClassDiagram">
+</div>
+<div class="title">Figure 6. Structure of the Command Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/mams/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -228,7 +221,7 @@ The following class plays an important role at the architecture level:</p>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a module).</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a module to a student).</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -245,7 +238,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>undo</code> Command</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>undo</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -266,10 +259,10 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/mams/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -297,7 +290,7 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/blob/master/src/main/java/mams/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -331,36 +324,124 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="clash-feature"><a class="link" href="#clash-feature">3.1. Clash feature</a></h3>
+<h3 id="find-feature"><a class="link" href="#find-feature">3.1. Find feature</a></h3>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The clash feature is facilitated by an abstract <code>ClashCommand</code> class which extends abstract <code>Command</code> class and
-three sub-classes which extends <code>ClashCommand</code> to handle different types of checking.</p>
+<p>The find feature is facilitated by <code>FindCommand</code> class. The <code>FindCommand</code> stores a <code>List</code> of <code>Predicates</code>, which can be
+StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>, or <code>AppealContainsKeywordsPredicate</code>. Each <code>Predicate</code> stores a <code>List</code> of String of keywords.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PredicateClassDiagram.png" alt="PredicateClassDiagram">
+</div>
+<div class="title">Figure 10. Predicate Class Diagram</div>
 </div>
 <div class="paragraph">
-<p>The three sub-classes are:</p>
+<p>Each <code>FindCommand</code> has a <code>execute()</code> method that takes in a <code>Model</code> object and a <code>FilterOnlyCommandHistory</code> object.
+<code>FindCommand</code> only retrieves information from model and returns a message to be shown in the message bar but do not alter anything in the existing lists.</p>
+</div>
+<div class="paragraph">
+<p>Below shows how the Find Command mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>find &#8230;&#8203;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>FindCommandParser</code> is called first to create <code>StudentContainsKeywordsPredicate</code>, <code>ModuleContainsKeywordsPredicate</code>, and <code>AppealContainsKeywordsPredicate</code> by checking the prefixes.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. A new <code>FindCommand</code> is created by passing in the <code>List</code> of <code>Predicates</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>FindCommand.execute()</code> is called. Each <code>Predicate</code> object is examined and calls <code>Predicate.test()</code>. <code>Model#updateStudentList()</code>, <code>Model#updateModuleList()</code>, or <code>Module#updateAppealList()</code> is called accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. A <code>CommandResult</code> object is returned, which contains message about the number of items found in the target list. The target list only shows the item(s) that contain(s) any of the keywords.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the Find command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
+</div>
+<div class="title">Figure 11. Find Command Sequence Diagram - user input: "find m/cs1010"</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clash-feature"><a class="link" href="#clash-feature">3.2. Clash feature</a></h3>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The clash feature is facilitated by <code>ClashCommand</code> class.</p>
+</div>
+<div class="paragraph">
+<p>There are two additional static classes in <code>ClashCommand</code> to facilitate the feature. The two classes are:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ClashModCommand</code>&#8201;&#8212;&#8201;check time slots clashes within two modules and return messages accordingly.</p>
-</li>
-<li>
-<p><code>ClashStudentCommand</code>&#8201;&#8212;&#8201;check time slots clashes within a particular student&#8217;s timetable and return messages accordingly.</p>
-</li>
-<li>
-<p><code>ClashAppealCommand</code>&#8201;&#8212;&#8201;check time slots clashes between the requested module and the student&#8217;s existing timetable for a "Add Module" appeal .</p>
+<p><code>ClashCommandParameters</code>: Stores the details of the parsed parameters that a <code>ClashCommand</code> will operate on.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ClashCommandClassDiagram.png" alt="ClashCommandClassDiagram">
+<img src="images/ClashCommandParametersClassDiagram.png" alt="ClashCommandParametersClassDiagram">
 </div>
+<div class="title">Figure 12. ClashCommandParameters Class Diagram</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ClashCase</code>: Stores the details of the clash cases between two modules that a <code>ClashCommand</code> will operate on.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ClashCaseClassDiagram.png" alt="ClashCaseClassDiagram">
+</div>
+<div class="title">Figure 13. ClashCase Class Diagram</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Similar to how time slot is stored in <code>Module</code> class, the clashing slots in <code>ClashCase</code> are represented as Integers and
+each integer value corresponds to a particular 1-hour time slot in a week.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Each sub-class has a <code>execute()</code> method that takes in a <code>Model</code> object. Clash commands only retrieve information from model but do not alter anything in the existing lists.</p>
+<p>Each <code>ClashCommand</code> has a <code>execute()</code> method that takes in a <code>Model</code> object and a <code>FilterOnlyCommandHistory</code> object.
+<code>ClashCommand</code> only retrieves information from model and returns a message to be shown in the message bar but do not alter anything in the existing lists.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>There are a few formats allowed for user inputs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash a/INDEX</code>: check timetable clash for a add/drop module appeal</p>
+</li>
+<li>
+<p><code>clash m/INDEX m/INDEX</code> or <code>clash m/MODULE_CODE m/MODULE_CODE</code>: check timetable clash between two different modules</p>
+</li>
+<li>
+<p><code>clash s/INDEX</code>: check timetable clash in a student&#8217;s current timetable</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Below shows how the Clash Command mechanism behaves at each step.</p>
@@ -369,94 +450,100 @@ three sub-classes which extends <code>ClashCommand</code> to handle different ty
 <p>Step 1. The user inputs <code>clash &#8230;&#8203;</code> to check whether there is clash in the timetable.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The <code>ClashCommandParser</code> will be called first to check which of the three types of checking is evoked by checking the prefixes.</p>
+<p>Step 2. The <code>ClashCommandParser</code> will be called to create a new <code>ClashCommandParameters</code> and set the relevant parameter values accordingly.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. Relevant <code>ClashModCommand</code>, <code>ClashStudentCommand</code>, or <code>ClashAppealCommand</code> object will be created accordingly.</p>
+<p>Step 3. A new <code>ClashCommand</code> is created by passing in the <code>ClashCommandParameters</code> object.
+The following sequence diagram shows how <code>ClashCommandParser</code> works:</p>
 </div>
 <div class="paragraph">
-<p>Step 4. <code>ClashCommand.execute()</code> is called.</p>
+<p>Step 4. <code>ClashCommand.execute()</code> is called. The types of checking will be determined by checking the presence of relevant parameters in <code>ClashCommandParameters</code>.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="ulist NOTE">
+<ul class="NOTE">
 <li>
-<p>If the command is a <code>ClashModCommand</code>, it will get the relevant <code>Module</code> objects from the list <code>model.getFilteredModuleList()</code>.</p>
-</li>
-<li>
-<p>If the command is a <code>ClashStudentCommand</code>, it will get the relevant <code>Student</code> object from the list <code>model.getFilteredStudentList()</code>.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The student current modules are stored as String of module code to reduce coupling. Hence, modules taken by the student are retrieved from <code>model.getFilteredModuleList()</code> by matching module codes.
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If the command is a <code>ClashAppealCommand</code>, it will get the relevant <code>Appeal</code> object from the list <code>model.getFilteredAppealList()</code></p>
+<p>The <code>Student</code> who submits the appeal is stored as String of Matric ID and <code>Module</code> to add/drop is stored as String of module code in an <code>Appeal</code> object.
+Hence, <code>Student</code> who submits the appeal is retrieved from <code>model.getFullStudentList()</code> by matching Matric ID,
+and <code>Module</code> to add/drop is retrieved from <code>model.getFullModuleList()</code> by matching module codes.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>Student</code> who submits the appeal and requested <code>Module</code> are stored as String of Matric ID and module code respectively in an <code>Appeal</code> object to reduce coupling.
-Hence, <code>Student</code> who submits the appeal is retrieved from <code>model.getFilteredStudentList()</code> by matching Matric ID,
-and <code>Module</code> requested is retrieved from <code>model.getFilteredModuleList()</code> by matching module codes.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Step 5. Each <code>ClashCommand</code> returns a <code>CommandResult</code> object which contains the message of the clash details if there are clashes and 'No clashes detected' if there is no clash.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. Each <code>ClashCommand</code> returns a <code>CommandResult</code> object which contains the message of the clashing time slots if there are clashes and 'No clashes detected' if there is no clash.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the clash operation works:</p>
+<p>The following activity diagram shows how the clash command works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ClashSequenceDiagram.png" alt="ClashSequenceDiagram">
+<img src="images/ClashCommandActivityDiagram.png" alt="ClashCommandActivityDiagram">
 </div>
+<div class="title">Figure 14. Work Flow of Clash Command</div>
 </div>
 <div class="sect4">
-<h5 id="aspect-how-to-deal-with-different-user-inputs-for-different-checking"><a class="link" href="#aspect-how-to-deal-with-different-user-inputs-for-different-checking">Aspect: How to deal with different user inputs for different checking</a></h5>
+<h5 id="design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking"><a class="link" href="#design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking">Design Consideration: How to deal with different user input formats for different types of checking</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Create three different sub-classes extending <code>ClashCommand</code> class. <code>ClashCommand</code> will deal with differentiating cases for checking and create Command object accordingly.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: some of the code are different to be abstracted. (repeted codes in part of the two sub-classes to keep low coupling) May need to find a way to improve it in the future.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Only 1 <code>ClashCommand</code> class. The cases of checking are determined inside <code>ClashCommand</code>.</p>
+<p><strong>Current choice:</strong> Only 1 <code>ClashCommand</code> class. Every <code>ClashCommand</code> object keeps a <code>ClashCommandParameters</code> object which stores the parameters passed in.
+The value of parameters are set when parsing user inputs by a few setter methods.
+The cases of checking are determined in <code>ClashCommand.execute()</code> by checking the presence of each parameter.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Avoid having too many unnecessary constructors (or passing of null-values) caused by the optional nature of the parameters passed to ClashCommand.</p>
 </li>
 <li>
-<p>Cons: Violates Single Responsibility Principle. <code>ClashCommand</code> is doing part of the parsing work.</p>
+<p>If more user input formats are allowed in the future to improve user experience (not restricted to index and module codes),
+we can simply add more setter and getter methods in <code>ClashCommandParameters</code> accordingly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>More defensive programming is needed to ensure that no multiple parameters of different types of checking are present at the same time.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative considered:</strong> Create three different sub-classes (i.e. <code>ClashAppealCommand</code>, <code>ClashModuleCommand</code>, and <code>ClashStudentCommand</code>) which extend an abstract <code>ClashCommand</code> class.
+<code>ClashCommandParser</code> deals with differentiating cases for checking (by looking at prefixes) and create Command object accordingly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each <code>ClashCommand</code> has knowledge about what type of checking is evoked. Less checking is required in <code>ClashCommand.execute()</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each sub-class will have different attributes.</p>
+</li>
+<li>
+<p>Tedious modification will be needed if we allow more user input formats in the future to improve user experience.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -465,80 +552,75 @@ and <code>Module</code> requested is retrieved from <code>model.getFilteredModul
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-string-representation-of-clashing-time-slots"><a class="link" href="#aspect-string-representation-of-clashing-time-slots">Aspect: String representation of clashing time slots</a></h5>
+<h5 id="design-consideration-how-to-show-details-of-the-clashing-time-slots"><a class="link" href="#design-consideration-how-to-show-details-of-the-clashing-time-slots">Design Consideration: How to show details of the clashing time slots</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store time slot index and use them to create a temporary <code>Module</code> object.</p>
+<p><strong>Current choice:</strong> Use a static class <code>ClashCase</code> to store each clash case detected.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Can reuse <code>getTimeSlotToString()</code> to obtain the string representation</p>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No need to hardcode the string representation of clash details since all information needed is stored in the <code>ClashCase</code> and we can simply call <code>toString()</code>.
+Even if the way of representation is to be changed in the future, we only need to modify <code>toString()</code> (and add attributes in <code>ClashCase</code> if needed).</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Cons: Redundant objects are created. More memory space used.</p>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Additional objects being created for each clash detected between two modules. More memory space used.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><strong>Alternative considered:</strong> Every <code>ClashCommand</code> object keeps a list of to store time slot index and use them to create a temporary <code>Module</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement.</p>
+</li>
+<li>
+<p>Can reuse <code>getTimeSlotToString()</code> to obtain the string representation. (The current choice also keeps this part)</p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Redundant objects are created. More memory space used.</p>
+</li>
+<li>
+<p>Need to hardcode information like module codes of the two modules having clashes since the list only stores the clashing slots.</p>
+</li>
+<li>
+<p>Tedious modification needed if the way of response changes in the future. For example, instead of showing the clash details in the message bar,
+we decide to a pop-up window to show more detailed information or include graphic representation.</p>
+</li>
+</ul>
 </div>
+</li>
+</ul>
 </div>
-<div class="sect2">
-<h3 id="find-feature"><a class="link" href="#find-feature">3.2. Find feature</a></h3>
-<div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
-<div class="paragraph">
-<p>The find feature is facilitated by <code>FindCommand</code> class. The <code>FindCommand</code> constructor takes a <code>List</code> of <code>Predicates</code>, which can be <code>NameContainsKeywordsPredicate</code>, <code>ModuleContainsKeywordsPredicate</code>, or <code>AppealContainsKeywordsPredicate</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/PredicateClassDiagram.png" alt="PredicateClassDiagram">
-</div>
-</div>
-<div class="paragraph">
-<p>Find commands only retrieve information from model but do not alter anything in the existing lists.</p>
-</div>
-<div class="paragraph">
-<p>Below shows how the Find Command mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user inputs <code>find prefix/[KEYWORDS]&#8230;&#8203;</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. The <code>FindCommandParser</code> will be called first to check which of the three lists to search by checking the prefixes.
-<code>NameContainsKeywordsPredicate</code>, <code>ModuleContainsKeywordsPredicate</code>, and <code>AppealContainsKeywordsPredicate</code> will be created accordingly which stores all the keywords for the same list.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. A new <code>FindCommand</code> is created.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Even there is no keyword for a particular <code>Predicate</code>, a new <code>Predicate</code> object with an empty <code>List</code> of keywords will be passed in to create a new <code>FindCommand</code>.
-Eg. input: <code>find s/bob</code>. A new <code>FindCommand</code> is created with a <code>NameContainsKeywordsPredicate</code> with a <code>List</code> of keywords containing <code>bob</code>, and <code>ModuleContainsKeywordsPredicate</code>, and <code>AppealContainsKeywordsPredicate</code> with empty <code>List</code> of keywords.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. <code>FindCommand.execute()</code> is called. Each <code>Predicate</code> object is examined and calls <code>Predicate.test()</code>. <code>Model#updateStudentList()</code>, <code>Model#updateModuleList()</code>, or <code>Module#updateAppealList()</code> is called accordingly.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. A <code>CommandResult</code> object is returned, which contains message about the number of items found in the target list. The target list only shows the item contains keyword.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the Find operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2670,4 +2752,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:13:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:17:17 UTC</div></div></div></body></html>

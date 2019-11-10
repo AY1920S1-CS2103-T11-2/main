@@ -1,0 +1,763 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Chen Su - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Chen Su - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-module-appeal-management-system-mams"><a class="link" href="#project-module-appeal-management-system-mams">PROJECT: Module Appeal Management System (MAMS)</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Module Appeal Management System (MAMS) is a desktop app that aims to combine Command Line Interface (CLI) style commands
+with a triple-pane GUI for easy navigation of appeals, module information, and student particulars. This app is particularly
+aimed towards <strong>module appeal administrators who prefer to work through their heavy backload of module appeals without ever having to
+leave the comfort of the keyboard for their mouse</strong>. The MAMS system can quickly bring up entire lists of students, appeals, and modules for
+side-by-side comparison, with specific display commands to view the expanded details of any particular object in question. The MAMS system also provides
+a suite of commands for resolving appeals, overriding MC limits, and leaving special notes on students.</p>
+</div>
+<div class="paragraph">
+<p>The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This portfolio was adapted from the AddressBook project. All information written herein (28th Septemeber 2019) is not yet revised for the new application.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to clash clashes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+</li>
+<li>
+<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: modified the find command that allows the user to &#8230;&#8203;</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+</li>
+<li>
+<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+</li>
+<li>
+<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
+</li>
+<li>
+<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="show-clashes-code-clash-code"><a class="link" href="#show-clashes-code-clash-code">Show clashes: <code>clash</code></a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you execute <code>clash</code> command by index, the index will refer for the current index in the current showing list. Please
+use <code>list</code> command to go back to the full list if your target appeal/module/student is not shown in the current list.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="show-clashes-in-an-appeal"><a class="link" href="#show-clashes-in-an-appeal">Show clashes in an appeal</a></h4>
+<div class="paragraph">
+<p>Checks if there is clash between the module which a student is requesting to add or drop and his/her current modules.
+Only appeals requesting to add or drop module will need for clash checks. If the target appeal is not of any of the two
+types, a reminder message will be shown.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clash a/INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash a/1</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ClashCommandInvalidAppealType.png" alt="ClashCommandInvalidAppealType" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash a/6</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AppealClashDetected.png" alt="AppealClashDetected" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-clashes-in-student-timetable"><a class="link" href="#show-clashes-in-student-timetable">Show clashes in student timetable</a></h4>
+<div class="paragraph">
+<p>Checks if there are clashes in a student’s (pre-allocated) timetable. This command is typically used to verify whether
+there is really a timetable clash in the student&#8217;s pre-allocated timetable if the student submits an appeal to drop a
+pre-allocated module due to timetable clash.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clash s/INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash s/2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StudentClashDetected.png" alt="StudentClashDetected" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-clashes-between-2-modules"><a class="link" href="#show-clashes-between-2-modules">Show clashes between 2 modules</a></h4>
+<div class="paragraph">
+<p>This command checks to see if the lecture slots of 2 modules clashes, and displays the result to the user.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clash m/MODULE_CODE m/MODULE_CODE</code> or <code>clash m/INDEX m/INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash m/cs1010 m/cs1020</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/NoClashDetectedResponse.png" alt="NoClashDetectedResponse" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash m/1 m/3</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModuleClashDetected.png" alt="ModuleClashDetected" width="790">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-keywords-code-find-code"><a class="link" href="#find-keywords-code-find-code">Find keywords: <code>find</code></a></h3>
+<div class="paragraph">
+<p>Displays item(s) that contain(s) any of the keyword(s) in the specified list(s).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find [a/KEYWORD&#8230;&#8203;] [m/KEYWORD&#8230;&#8203;] [s/KEYWORD&#8230;&#8203;]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tags can be in any sequence. User may enter multiple keywords after a tag.
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Searching Criteria</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find</code> supports searching in multiple lists for multiple keywords. All items contains the keyword as a word or a part of word (See examples for more details).</p>
+</li>
+<li>
+<p>Searching is case-insensitive.</p>
+</li>
+<li>
+<p>In Appeal list, items that contains any of the keywords in Appeal Type, Appeal ID, Status(resolved/unresolved),
+Requested Module or Module to Drop will be displayed.</p>
+</li>
+<li>
+<p>In Module list, items that contains any of the keywords in Module Code, Module Name, or Module Description (is be shown in expanded view) wil be displayed.</p>
+</li>
+<li>
+<p>In Student list, items that contains any of the keywords in Student Name or Matric ID will be displayed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Searching criteria listed above are evaluated to be the most useful ones in order to filter the lists quickly and obtain
+necessary information. Wider range of searching will be implemented in v2.0.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find s/larry m/programming</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="paragraph">
+<p>All items containing "larry" in Student list and all items containing "programming" are displayed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindDemoSingleKeyword.png" alt="FindDemoSingleKeyword" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find a/add drop</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="paragraph">
+<p>All items containing "add" or "drop" in Appeal list are displayed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindDemoMultipleKeywords.png" alt="FindDemoMultipleKeywords" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find m/cs10</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="paragraph">
+<p>All items containing "cs10" in Module list are displayed. (i.e. CS1010, CS1020, CS2030)</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+CS2030 is also displayed since it contains "cs10" in its module description.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindDemoModuleSearch.png" alt="FindDemoModuleSearch" width="790">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
+</div>
+<div class="title">Figure 1. Structure of the Logic Component</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ParserClassDiagram.png" alt="ParserClassDiagram">
+</div>
+<div class="title">Figure 2. Structure of the Parser Component</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CommandClassDiagram.png" alt="CommandClassDiagram">
+</div>
+<div class="title">Figure 3. Structure of the Command Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> :
+<a href="{repoURL}/src/main/java/mams/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Logic</code> uses the <code>MamsParser</code> class to parse the user command.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a module to a student).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="clash-feature"><a class="link" href="#clash-feature">Clash feature</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The clash feature is facilitated by <code>ClashCommand</code> class.</p>
+</div>
+<div class="paragraph">
+<p>There are two additional static classes in <code>ClashCommand</code> to facilitate the feature. The two classes are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ClashCommandParameters</code>: Stores the details of the parsed parameters that a <code>ClashCommand</code> will operate on.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ClashCommandParametersClassDiagram.png" alt="ClashCommandParametersClassDiagram">
+</div>
+<div class="title">Figure 4. ClashCommandParameters Class Diagram</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ClashCase</code>: Stores the details of the clash cases between two modules that a <code>ClashCommand</code> will operate on.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ClashCaseClassDiagram.png" alt="ClashCaseClassDiagram">
+</div>
+<div class="title">Figure 5. ClashCase Class Diagram</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Similar to how time slot is stored in <code>Module</code> class, the clashing slots in <code>ClashCase</code> are represented as Integers and
+each integer value corresponds to a particular 1-hour time slot in a week.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Each <code>ClashCommand</code> has a <code>execute()</code> method that takes in a <code>Model</code> object and a <code>FilterOnlyCommandHistory</code> object.
+<code>ClashCommand</code> only retrieves information from model and returns a message to be shown in the message bar but do not alter anything in the existing lists.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>There are a few formats allowed for user inputs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clash a/INDEX</code>: check timetable clash for a add/drop module appeal</p>
+</li>
+<li>
+<p><code>clash m/INDEX m/INDEX</code> or <code>clash m/MODULE_CODE m/MODULE_CODE</code>: check timetable clash between two different modules</p>
+</li>
+<li>
+<p><code>clash s/INDEX</code>: check timetable clash in a student&#8217;s current timetable</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Below shows how the Clash Command mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>clash &#8230;&#8203;</code> to check whether there is clash in the timetable.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>ClashCommandParser</code> will be called to create a new <code>ClashCommandParameters</code> and set the relevant parameter values accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. A new <code>ClashCommand</code> is created by passing in the <code>ClashCommandParameters</code> object.
+The following sequence diagram shows how <code>ClashCommandParser</code> works:</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>ClashCommand.execute()</code> is called. The types of checking will be determined by checking the presence of relevant parameters in <code>ClashCommandParameters</code>.</p>
+</div>
+<div class="ulist NOTE">
+<ul class="NOTE">
+<li>
+<p>The <code>Student</code> who submits the appeal is stored as String of Matric ID and <code>Module</code> to add/drop is stored as String of module code in an <code>Appeal</code> object.
+Hence, <code>Student</code> who submits the appeal is retrieved from <code>model.getFullStudentList()</code> by matching Matric ID,
+and <code>Module</code> to add/drop is retrieved from <code>model.getFullModuleList()</code> by matching module codes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Step 5. Each <code>ClashCommand</code> returns a <code>CommandResult</code> object which contains the message of the clash details if there are clashes and 'No clashes detected' if there is no clash.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows how the clash command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ClashCommandActivityDiagram.png" alt="ClashCommandActivityDiagram">
+</div>
+<div class="title">Figure 6. Work Flow of Clash Command</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking"><a class="link" href="#design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking">Design Consideration: How to deal with different user input formats for different types of checking</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice:</strong> Only 1 <code>ClashCommand</code> class. Every <code>ClashCommand</code> object keeps a <code>ClashCommandParameters</code> object which stores the parameters passed in.
+The value of parameters are set when parsing user inputs by a few setter methods.
+The cases of checking are determined in <code>ClashCommand.execute()</code> by checking the presence of each parameter.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Avoid having too many unnecessary constructors (or passing of null-values) caused by the optional nature of the parameters passed to ClashCommand.</p>
+</li>
+<li>
+<p>If more user input formats are allowed in the future to improve user experience (not restricted to index and module codes),
+we can simply add more setter and getter methods in <code>ClashCommandParameters</code> accordingly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>More defensive programming is needed to ensure that no multiple parameters of different types of checking are present at the same time.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative considered:</strong> Create three different sub-classes (i.e. <code>ClashAppealCommand</code>, <code>ClashModuleCommand</code>, and <code>ClashStudentCommand</code>) which extend an abstract <code>ClashCommand</code> class.
+<code>ClashCommandParser</code> deals with differentiating cases for checking (by looking at prefixes) and create Command object accordingly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each <code>ClashCommand</code> has knowledge about what type of checking is evoked. Less checking is required in <code>ClashCommand.execute()</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each sub-class will have different attributes.</p>
+</li>
+<li>
+<p>Tedious modification will be needed if we allow more user input formats in the future to improve user experience.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-how-to-show-details-of-the-clashing-time-slots"><a class="link" href="#design-consideration-how-to-show-details-of-the-clashing-time-slots">Design Consideration: How to show details of the clashing time slots</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice:</strong> Use a static class <code>ClashCase</code> to store each clash case detected.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No need to hardcode the string representation of clash details since all information needed is stored in the <code>ClashCase</code> and we can simply call <code>toString()</code>.
+Even if the way of representation is to be changed in the future, we only need to modify <code>toString()</code> (and add attributes in <code>ClashCase</code> if needed).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Additional objects being created for each clash detected between two modules. More memory space used.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative considered:</strong> Every <code>ClashCommand</code> object keeps a list of to store time slot index and use them to create a temporary <code>Module</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement.</p>
+</li>
+<li>
+<p>Can reuse <code>getTimeSlotToString()</code> to obtain the string representation. (The current choice also keeps this part)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Redundant objects are created. More memory space used.</p>
+</li>
+<li>
+<p>Need to hardcode information like module codes of the two modules having clashes since the list only stores the clashing slots.</p>
+</li>
+<li>
+<p>Tedious modification needed if the way of response changes in the future. For example, instead of showing the clash details in the message bar,
+we decide to a pop-up window to show more detailed information or include graphic representation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-feature"><a class="link" href="#find-feature">Find feature</a></h3>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<div class="paragraph">
+<p>The find feature is facilitated by <code>FindCommand</code> class. The <code>FindCommand</code> stores a <code>List</code> of <code>Predicates</code>, which can be
+StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>, or <code>AppealContainsKeywordsPredicate</code>. Each <code>Predicate</code> stores a <code>List</code> of String of keywords.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PredicateClassDiagram.png" alt="PredicateClassDiagram">
+</div>
+<div class="title">Figure 7. Predicate Class Diagram</div>
+</div>
+<div class="paragraph">
+<p>Each <code>FindCommand</code> has a <code>execute()</code> method that takes in a <code>Model</code> object and a <code>FilterOnlyCommandHistory</code> object.
+<code>FindCommand</code> only retrieves information from model and returns a message to be shown in the message bar but do not alter anything in the existing lists.</p>
+</div>
+<div class="paragraph">
+<p>Below shows how the Find Command mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>find &#8230;&#8203;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>FindCommandParser</code> is called first to create <code>StudentContainsKeywordsPredicate</code>, <code>ModuleContainsKeywordsPredicate</code>, and <code>AppealContainsKeywordsPredicate</code> by checking the prefixes.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. A new <code>FindCommand</code> is created by passing in the <code>List</code> of <code>Predicates</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>FindCommand.execute()</code> is called. Each <code>Predicate</code> object is examined and calls <code>Predicate.test()</code>. <code>Model#updateStudentList()</code>, <code>Model#updateModuleList()</code>, or <code>Module#updateAppealList()</code> is called accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. A <code>CommandResult</code> object is returned, which contains message about the number of items found in the target list. The target list only shows the item(s) that contain(s) any of the keywords.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the Find command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
+</div>
+<div class="title">Figure 8. Find Command Sequence Diagram - user input: "find m/cs1010"</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:17:18 UTC</div></div></div></body></html>

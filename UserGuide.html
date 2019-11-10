@@ -35,7 +35,12 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Module Appeal Management System (MAMS) is a desktop app that aims to combine Command Line Interface (CLI) style commands with a dual-pane GUI for easy navigation of module appeals, module information, and student particulars. This app is particularly aimed towards <strong>module appeal administrators who prefer to work through their heavy backload of module appeals without ever having to leave the comfort of the keyboard for their mouse</strong>. The MAMS system can quickly bring up entire lists of students, appeals, and modules for side-by-side comparison, with specific display commands to view the expanded details of any particular object in question. Once reviewing of the information is complete, the MAMS system also provides a suite of commands for resolving appeals, overriding MC limits, and leaving special notes on students.</p>
+<p>The Module Appeal Management System (MAMS) is a desktop app that aims to combine Command Line Interface (CLI) style commands
+with a triple-pane GUI for easy navigation of appeals, module information, and student particulars. This app is particularly
+aimed towards <strong>module appeal administrators who prefer to work through their heavy backload of module appeals without ever having to
+leave the comfort of the keyboard for their mouse</strong>. The MAMS system can quickly bring up entire lists of students, appeals, and modules for
+side-by-side comparison, with specific display commands to view the expanded details of any particular object in question. The MAMS system also provides
+a suite of commands for resolving appeals, overriding MC limits, and leaving special notes on students.</p>
 </div>
 </div>
 </div>
@@ -445,10 +450,10 @@ Tags can be in any sequence. User may enter multiple keywords after a tag.
 </li>
 <li>
 <p>In Appeal list, items that contains any of the keywords in Appeal Type, Appeal ID, Status(resolved/unresolved),
-Module Requested or Module to Drop will be displayed.</p>
+Requested Module or Module to Drop will be displayed.</p>
 </li>
 <li>
-<p>In Module list, items that contains any of the keywords in Module Code, Module Name, or Module Description wil be displayed.</p>
+<p>In Module list, items that contains any of the keywords in Module Code, Module Name, or Module Description (is be shown in expanded view) wil be displayed.</p>
 </li>
 <li>
 <p>In Student list, items that contains any of the keywords in Student Name or Matric ID will be displayed.</p>
@@ -563,7 +568,7 @@ Only appeals requesting to add or drop module will need for clash checks. If the
 types, a reminder message will be shown.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>clash [a/INDEX]</code></p>
+<p>Format: <code>clash a/INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -607,7 +612,7 @@ there is really a timetable clash in the student&#8217;s pre-allocated timetable
 pre-allocated module due to timetable clash.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>clash [s/INDEX]</code></p>
+<p>Format: <code>clash s/INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -615,7 +620,7 @@ pre-allocated module due to timetable clash.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>clash s/1</code></p>
+<p><code>clash s/2</code></p>
 </li>
 </ul>
 </div>
@@ -634,7 +639,7 @@ pre-allocated module due to timetable clash.</p>
 <p>This command checks to see if the lecture slots of 2 modules clashes, and displays the result to the user.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>clash [m/MODULE_CODE] [m/MODULE_CODE]</code> or <code>clash [m/INDEX] [m/INDEX]</code></p>
+<p>Format: <code>clash m/MODULE_CODE m/MODULE_CODE</code> or <code>clash m/INDEX m/INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -657,7 +662,7 @@ pre-allocated module due to timetable clash.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>clash m/1 m/2</code></p>
+<p><code>clash m/1 m/3</code></p>
 </li>
 </ul>
 </div>
@@ -1083,7 +1088,7 @@ can be used. If both are given, index takes priority.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>clash [m/MODULE_CODE] [m/MODULE_CODE]</code> or <code>clash [m/INDEX] [M/INDEX]</code></p>
+<p><code>clash m/MODULE_CODE m/MODULE_CODE</code> or <code>clash m/INDEX m/INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1094,7 +1099,7 @@ Or <code>clash m/2 m/4</code> to shows clash details between the modules at indi
 </div>
 </li>
 <li>
-<p><code>clash [s/INDEX]</code></p>
+<p><code>clash s/INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1104,7 +1109,7 @@ Or <code>clash m/2 m/4</code> to shows clash details between the modules at indi
 </div>
 </li>
 <li>
-<p><code>clash [a/INDEX]</code></p>
+<p><code>clash a/INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1251,4 +1256,4 @@ Redo do last Undo if availiable.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:13:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:17:17 UTC</div></div></div></body></html>
