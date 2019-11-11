@@ -444,7 +444,7 @@ The following sequence diagram shows how ApproveCommand works:
 
 .ResolveCommand Sequence Diagram
 image::ResolveSequenceDiagram.png[]
-
+//end::resolve[]
 
 Below shows how the ResolveCommand mechanism behaves at each step when resolving multiple appeals.
 
@@ -534,7 +534,7 @@ image::ResolveAltClassDiagram.png[]
 *** Harder to implement as the mass resolve command Parser will have to parse the inputs for different resolve types.
 *** User prone to input mistakes while performing mass resolve.
 
-//end::resolve[]
+
 
 // tag::history[]
 === Command History
