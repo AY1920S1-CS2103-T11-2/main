@@ -39,7 +39,7 @@
 <li><a href="#documentation">4. Documentation</a></li>
 <li><a href="#testing">5. Testing</a></li>
 <li><a href="#dev-ops">6. Dev Ops</a></li>
-<li><a href="#product-scope">Appendix A: Product Scope</a></li>
+<li><a href="#productScope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a>
 <ul class="sectlevel2">
 <li><a href="#epic-as-a-admin-i-want-to-be-able-to-view-module-student-appeal-data">B.1. Epic: As a admin, I want to be able to view module/student/appeal data.</a></li>
@@ -54,9 +54,9 @@
 <li><a href="#instructions-for-manual-testing">Appendix E: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">E.1. Launch and Shutdown</a></li>
-<li><a href="#viewing-a-mams-data-item">E.2. Viewing a MAMS data item</a></li>
-<li><a href="#listing-mams-items">E.3. Listing MAMS items</a></li>
-<li><a href="#cycling-through-command-history-in-command-box">E.4. Cycling through command history in command box</a></li>
+<li><a href="#testingView">E.2. Viewing a MAMS data item</a></li>
+<li><a href="#testingList">E.3. Listing MAMS items</a></li>
+<li><a href="#testingHistory">E.4. Cycling through command history in command box</a></li>
 <li><a href="#opening-the-history-window">E.5. Opening the history window</a></li>
 <li><a href="#using-hot-keys-in-the-history-window">E.6. Using hot-keys in the history window</a></li>
 <li><a href="#persistent-serialization-deserialization-of-command-history-to-from-disk">E.7. Persistent serialization/deserialization of command history to/from disk</a></li>
@@ -204,7 +204,7 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 <div class="title">Figure 5. A more detailed view of the classes within the <code>History</code> package. Note that the abstract class <code>UiPart</code> is intentionally omitted for neatness of representation.</div>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFX UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -337,6 +337,9 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 </li>
 <li>
 <p>can save the Mams data in json format and read it back.</p>
+</li>
+<li>
+<p>can save the command history data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -1309,6 +1312,9 @@ to accommodate the changes.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>TimeStamp</code>: Class representing a time-stamp. Internally, it functions as a higher-level wrapper around <code>java.util.Date</code>.</p>
+</li>
+<li>
 <p><code>InputOutput</code>: Class representing a single command history entry. Comprises of an <code>input</code> and <code>output</code> String,
 a <code>TimeStamp</code> object, and a flag indicating whether execution was successful.</p>
 </li>
@@ -1348,7 +1354,7 @@ through previous inputs in the command box.</p>
 <div class="content">
 <img src="images/CycleCommandHistoryClassDiagram.png" alt="CycleCommandHistoryClassDiagram">
 </div>
-<div class="title">Figure 25. Class Diagram depicting classes involved in cycling through command history.</div>
+<div class="title">Figure 25. Class Diagram depicting classes involved in cycling through the command history.</div>
 </div>
 <div class="paragraph">
 <p><code>CommandHistory</code> provides an unmodifiable view into the command history using an <code>ObservableList</code>
@@ -1478,6 +1484,10 @@ about the command history to the user</p>
 read and filter the internal list in <code>CommandHistory</code>, while restricting modification access.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>In addition to the above, a GUI for the history window was also written and implemented using JavaFX and styled with CSS.
+Refer to an earlier section of this guide for a class diagram of the classes used to implement the history GUI window: <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</a></p>
 </div>
 <div class="paragraph">
 <p>The following activity sequence diagram provides a high-level view
@@ -1727,7 +1737,7 @@ raised in the returned <code>CommandResult</code> object to indicate to the GUI 
 <ul>
 <li>
 <p>The history window will update itself automatically (regardless of whether it is showing)
-after every change to the commandHistory, without the need to explicitly pass a list object to
+after every change to <code>CommandHistory</code>, without the need to explicitly pass a list object to
 the GUI controller (except during initialization) after every execution.</p>
 </li>
 <li>
@@ -1737,8 +1747,8 @@ require knowledge of past commands eg. an undo command that can be specified to 
 </li>
 <li>
 <p>Using such an interface to access <code>CommandHistory</code> also prevents future commands by other developers
-from unwittingly modifying the <code>CommandHistory</code>, which should only take place after execution of command
-in <code>LogicManager</code> in order to maintain a true record of the executed commands.</p>
+from unwittingly modifying the <code>CommandHistory</code>, which should only be performed by <code>LogicManager</code> after
+command executions. This is to maintain a true record of the executed commands.</p>
 </li>
 </ul>
 </div>
@@ -1882,6 +1892,92 @@ and contains methods for freely converting itself back to the native <code>Input
 <img src="images/CommandHistoryStorageClassDiagram.png" alt="CommandHistoryStorageClassDiagram">
 </div>
 <div class="title">Figure 29. Class diagram of the classes involved in saving and loading of <code>CommandHistory</code> from disk.</div>
+</div>
+<div class="paragraph">
+<p><strong>Design Considerations:</strong></p>
+</div>
+<div class="paragraph">
+<p>Aspect: Integrating storage mechanism for command history component with current MAMS architecture</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation: Introduce architecture for saving <code>CommandHistory</code> to a separate JSON file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Command history saving is now separate from saving of <code>Model</code> data. If deserialization of <code>CommandHistory</code> fails,
+it should not affect the loading of <code>Model</code> data, and vice versa. This is especially important as command history is
+a non-critical portion of MAMS, whereas <code>Model</code> data is critical to operation of MAMS.</p>
+</li>
+<li>
+<p>If <code>Model</code> JSON data is corrupted, <code>CommandHistory</code> JSON data might not be since it is in a separate file,
+with its own pipeline for loading and saving within the <code>Storage</code> class. Moreover, the <code>CommandHistory</code> can be used
+to restore the <code>Model</code> data by repeating the same sequence of commands on the original data source for that semester, or from a
+backup copy of MAMS.</p>
+</li>
+<li>
+<p>Command history data file can be imported and archived separately (eg. for viewing on 3rd-party applications,
+for maintaining an archived log of administrator actions). This can improve future extensibility and potential areas of development
+for this feature, to fulfil its goal of maintaining a permanent record of administrator actions for accountability and logging purposes
+(possibly conducted by a third-party other than the administrator).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Harder to implement, with more more code to be written and bug-proofed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative Implementation: Serialize <code>CommandHistory</code> to the same file used by MAMS for its <code>Model</code> data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easier to implement and integrate into existing MAMS architecture.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Corruption of the non-critical <code>CommandHistory</code> data can cause <code>Model</code> data loading to fail, even if nothing is
+wrong with the serialized <code>Model</code> data.</p>
+</li>
+<li>
+<p>In the grand scheme of things, it may not be particularly useful to couple <code>Model</code> data to <code>CommandHistory</code> data.
+MAMS is designed as an intermediate application that takes in Appeal, Module, and Student information from a data source
+(eg. EduRec), allows administrators to resolve the appeal, then passes back the resolved appeal, module, and student data.
+Applications receiving the resolved data file in the form of the serialized data may not have any use for the command history.
+Of course, there can be alternative design solutions to this as well.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -2114,7 +2210,7 @@ The save states are stored in the same format as the mams.json data file to redu
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
+<h2 id="productScope"><a class="link" href="#productScope">Appendix A: Product Scope</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Target user profile</strong>:</p>
@@ -2152,7 +2248,7 @@ and modules to/from the current database (out of job purview)</p>
 </li>
 <li>
 <p>needs to keep a permanent log of all actions taken when resolving appeals
-for accountability purposes</p>
+for accountability and logging purposes</p>
 </li>
 </ul>
 </div>
@@ -2450,7 +2546,7 @@ warnings of modules likely to receive appeal requests</p></td>
 <p>(For all use cases below, the System is the MAMS application and the
 Actor is the admin, unless specified otherwise)</p>
 </div>
-<h3 id="uc01-resolving-an-appeal-request-to-drop-a-pre-allocated-module" class="discrete">UC01: Resolving an Appeal Request to Drop a Pre-allocated Module</h3>
+<h3 id="uc01" class="discrete">UC01: Resolving an Appeal Request to Drop a Pre-allocated Module</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2749,7 +2845,7 @@ student and student’s existing modules.</p>
 <p>2b1. Admin navigates to history entry of interest (using extension 2a or otherwise).</p>
 </li>
 <li>
-<p>2b1. Admin copies contents of command to clipboard (hotkey or otherwise)</p>
+<p>2b1. Admin copies contents of command to clipboard (hotkey or otherwise).</p>
 <div class="paragraph">
 <p><strong>Use case resumes at step 3.</strong></p>
 </div>
@@ -2757,14 +2853,20 @@ student and student’s existing modules.</p>
 </ul>
 </div>
 </li>
-</ul>
-</div>
+<li>
+<p>2d. Admin wants to undo a certain command entry in the history (not necessarily the last executed command) (Coming in v2.0)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2c. Admin uses hot-keys to exit command history view.</p>
+<p>2d1. Admin specifies this intention as an instruction to MAMS (hot-key or otherwise).</p>
+</li>
+<li>
+<p>2d1. MAMS attempts to undo the command, and shows the corresponding feedback.</p>
 <div class="paragraph">
 <p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ul>
 </div>
 </li>
 </ul>
@@ -3067,7 +3169,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-mams-data-item"><a class="link" href="#viewing-a-mams-data-item">E.2. Viewing a MAMS data item</a></h3>
+<h3 id="testingView"><a class="link" href="#testingView">E.2. Viewing a MAMS data item</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3223,7 +3325,7 @@ Command fails, and details are shown in error message.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-mams-items"><a class="link" href="#listing-mams-items">E.3. Listing MAMS items</a></h3>
+<h3 id="testingList"><a class="link" href="#testingList">E.3. Listing MAMS items</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3318,7 +3420,7 @@ Command fails, and details are shown in error message.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="cycling-through-command-history-in-command-box"><a class="link" href="#cycling-through-command-history-in-command-box">E.4. Cycling through command history in command box</a></h3>
+<h3 id="testingHistory"><a class="link" href="#testingHistory">E.4. Cycling through command history in command box</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3733,4 +3835,4 @@ The message shown in the message bar will display the changes made to the studen
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:32:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:15:55 UTC</div></div></div></body></html>
