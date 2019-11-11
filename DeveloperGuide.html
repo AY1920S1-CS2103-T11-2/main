@@ -32,9 +32,8 @@
 <li><a href="#command-history">3.5. Command History</a></li>
 <li><a href="#ui-ux">3.6. UI/UX</a></li>
 <li><a href="#backup-and-undo-actions-feature">3.7. Backup and undo actions feature</a></li>
-<li><a href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -55,8 +54,8 @@
 <li><a href="#instructions-for-manual-testing">Appendix E: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">E.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">E.2. Deleting a person</a></li>
-<li><a href="#saving-data">E.3. Saving data</a></li>
+<li><a href="#backup-and-restoring">E.2. Backup and Restoring</a></li>
+<li><a href="#undo-and-redo">E.3. Undo and Redo</a></li>
 </ul>
 </li>
 </ul>
@@ -1727,6 +1726,9 @@ three sub-classes which extends <code>StoreCommand</code> to handle different ty
 <li>
 <p><code>RedoCommand</code>&#8201;&#8212;&#8201;Redo last undo.</p>
 </li>
+<li>
+<p><code>RestoreCommand</code>&#8201;&#8212;&#8201;Restores a previous snapshot created by the SaveCommand.</p>
+</li>
 </ul>
 </div>
 <div class="imageblock">
@@ -1741,7 +1743,7 @@ three sub-classes which extends <code>StoreCommand</code> to handle different ty
 <p>Below shows how the Store Command mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user inputs <code>undo/redo/backup &#8230;&#8203;</code>.</p>
+<p>Step 1. The user inputs <code>undo/redo/backup/restore &#8230;&#8203;</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The relevant parser class is called.</p>
@@ -1762,6 +1764,9 @@ three sub-classes which extends <code>StoreCommand</code> to handle different ty
 </li>
 <li>
 <p>If the command is a <code>SaveCommand</code>, it will store a snapshot in the data file under its given tag or a tagged with a timestamp to avoid overwriting previous data if tag is not given.</p>
+</li>
+<li>
+<p>If the command is a <code>RestoreCommand</code>, it will restore a previous snapshot in the data folder with its given tag.</p>
 </li>
 </ul>
 </div>
@@ -1857,20 +1862,14 @@ The save states are stored in the same format as the mams.json data file to redu
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1901,7 +1900,7 @@ The save states are stored in the same format as the mams.json data file to redu
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2854,39 +2853,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">E.2. Deleting a person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Deleting a person while all persons are listed</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
-</li>
-<li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
-</li>
-<li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">E.3. Saving data</a></h3>
+<h3 id="backup-and-restoring"><a class="link" href="#backup-and-restoring">E.2. Backup and Restoring</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2894,16 +2861,40 @@ Expected: Similar to previous.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Default MAMS data is generated, each individual field is made invalid and tested separately.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="undo-and-redo"><a class="link" href="#undo-and-redo">E.3. Undo and Redo</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with non-undoable commands</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>All non-undoable commands are tested with an undo with a new set of data, it would return a failed command result</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Dealing with undoable commands</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>All undoable commands are undid, the final result is checked against the previous state to ensure that the undo function correctly reverts the data back to the previous state.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:05:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:22:29 UTC</div></div></div></body></html>
