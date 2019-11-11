@@ -225,7 +225,7 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ParserClassDiagram.png" alt="ParserClassDiagram">
+<img src="images/ParserClassDiagram.png" alt="ParserClassDiagram" width="650">
 </div>
 <div class="title">Figure 7. Structure of the Parser Component</div>
 </div>
@@ -356,7 +356,7 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The find feature is facilitated by <code>FindCommand</code> class. The <code>FindCommand</code> stores a <code>List</code> of <code>Predicates</code>, which can be
-StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>, or <code>AppealContainsKeywordsPredicate</code>. Each <code>Predicate</code> stores a <code>List</code> of String of keywords.</p>
+<code>StudentContainsKeywordsPredicate</code>, <code>ModuleContainsKeywordsPredicate</code>, or <code>AppealContainsKeywordsPredicate</code>. Each <code>Predicate</code> stores a <code>List</code> of String of keywords.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -365,26 +365,22 @@ StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>,
 <div class="title">Figure 12. Predicate Class Diagram</div>
 </div>
 <div class="paragraph">
-<p>Each <code>FindCommand</code> has a <code>execute()</code> method that takes in a <code>Model</code> object and a <code>FilterOnlyCommandHistory</code> object.
-<code>FindCommand</code> only retrieves information from model and returns a message to be shown in the message bar but do not alter anything in the existing lists.</p>
-</div>
-<div class="paragraph">
 <p>Below shows how the Find Command mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user inputs <code>find &#8230;&#8203;</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The <code>FindCommandParser</code> is called first to create <code>StudentContainsKeywordsPredicate</code>, <code>ModuleContainsKeywordsPredicate</code>, and <code>AppealContainsKeywordsPredicate</code> by checking the prefixes.</p>
+<p>Step 2. The <code>FindCommandParser</code> is called first to create relevant <code>Predicate</code> by checking the prefixes.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. A new <code>FindCommand</code> is created by passing in the <code>List</code> of <code>Predicates</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. <code>FindCommand.execute()</code> is called. Each <code>Predicate</code> object is examined and calls <code>Predicate.test()</code>. <code>Model#updateStudentList()</code>, <code>Model#updateModuleList()</code>, or <code>Module#updateAppealList()</code> is called accordingly.</p>
+<p>Step 4. <code>FindCommand.execute()</code> is called. Each <code>Predicate</code> calls respective <code>Predicate.test()</code>. <code>Model#updateStudentList()</code>, <code>Model#updateModuleList()</code>, or <code>Module#updateAppealList()</code> is called accordingly.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. A <code>CommandResult</code> object is returned, which contains message about the number of items found in the target list. The target list only shows the item(s) that contain(s) any of the keywords.</p>
+<p>Step 5. A <code>CommandResult</code> object is returned, which contains message about the number of items found in the target list.</p>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the Find command works:</p>
@@ -402,10 +398,7 @@ StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>,
 <div class="sect3">
 <h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The clash feature is facilitated by <code>ClashCommand</code> class.</p>
-</div>
-<div class="paragraph">
-<p>There are two additional static classes in <code>ClashCommand</code> to facilitate the feature. The two classes are:</p>
+<p>The clash feature is facilitated by <code>ClashCommand</code> class, and two additional static classes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -446,10 +439,6 @@ each integer value corresponds to a particular 1-hour time slot in a week.
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Each <code>ClashCommand</code> has a <code>execute()</code> method that takes in a <code>Model</code> object and a <code>FilterOnlyCommandHistory</code> object.
-<code>ClashCommand</code> only retrieves information from model and returns a message to be shown in the message bar but do not alter anything in the existing lists.</p>
-</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -477,23 +466,13 @@ each integer value corresponds to a particular 1-hour time slot in a week.
 <p>Step 1. The user inputs <code>clash &#8230;&#8203;</code> to check whether there is clash in the timetable.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The <code>ClashCommandParser</code> will be called to create a new <code>ClashCommandParameters</code> and set the relevant parameter values accordingly.</p>
+<p>Step 2. The <code>ClashCommandParser</code> is called to create a new <code>ClashCommandParameters</code> and set the relevant parameter values accordingly.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. A new <code>ClashCommand</code> is created by passing in the <code>ClashCommandParameters</code> object.
-The following sequence diagram shows how <code>ClashCommandParser</code> works:</p>
+<p>Step 3. A new <code>ClashCommand</code> is created by passing in the <code>ClashCommandParameters</code> object.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. <code>ClashCommand.execute()</code> is called. The types of checking will be determined by checking the presence of relevant parameters in <code>ClashCommandParameters</code>.</p>
-</div>
-<div class="ulist NOTE">
-<ul class="NOTE">
-<li>
-<p>The <code>Student</code> who submits the appeal is stored as String of Matric ID and <code>Module</code> to add/drop is stored as String of module code in an <code>Appeal</code> object.
-Hence, <code>Student</code> who submits the appeal is retrieved from <code>model.getFullStudentList()</code> by matching Matric ID,
-and <code>Module</code> to add/drop is retrieved from <code>model.getFullModuleList()</code> by matching module codes.</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
 <p>Step 5. Each <code>ClashCommand</code> returns a <code>CommandResult</code> object which contains the message of the clash details if there are clashes and 'No clashes detected' if there is no clash.</p>
@@ -507,13 +486,27 @@ and <code>Module</code> to add/drop is retrieved from <code>model.getFullModuleL
 </div>
 <div class="title">Figure 16. Work Flow of Clash Command</div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Student</code> who submits the appeal is stored as String of Matric ID and <code>Module</code> to add/drop is stored as String of module code in an <code>Appeal</code> object.
+Hence, <code>Student</code> who submits the appeal is retrieved from <code>model.getFullStudentList()</code> by matching Matric ID,
+and <code>Module</code> to add/drop is retrieved from <code>model.getFullModuleList()</code> by matching module codes.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect4">
-<h5 id="design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking"><a class="link" href="#design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking">Design Consideration: How to deal with different user input formats for different types of checking</a></h5>
+<h5 id="design-consideration-1-how-to-deal-with-different-user-input-formats-for-different-types-of-checking"><a class="link" href="#design-consideration-1-how-to-deal-with-different-user-input-formats-for-different-types-of-checking">Design Consideration 1: How to deal with different user input formats for different types of checking</a></h5>
 <div class="ulist">
 <ul>
 <li>
 <p><strong>Current choice:</strong> Only 1 <code>ClashCommand</code> class. Every <code>ClashCommand</code> object keeps a <code>ClashCommandParameters</code> object which stores the parameters passed in.
-The value of parameters are set when parsing user inputs by a few setter methods.
+The value of parameters are set when parsing user inputs using a few setter methods.
 The cases of checking are determined in <code>ClashCommand.execute()</code> by checking the presence of each parameter.</p>
 <div class="ulist">
 <ul>
@@ -536,7 +529,7 @@ we can simply add more setter and getter methods in <code>ClashCommandParameters
 <div class="ulist">
 <ul>
 <li>
-<p>More defensive programming is needed to ensure that no multiple parameters of different types of checking are present at the same time.</p>
+<p>More defensive programming is needed to ensure that no parameters of different types of checking are present at the same time.</p>
 </li>
 </ul>
 </div>
@@ -545,8 +538,8 @@ we can simply add more setter and getter methods in <code>ClashCommandParameters
 </div>
 </li>
 <li>
-<p><strong>Alternative considered:</strong> Create three different sub-classes (i.e. <code>ClashAppealCommand</code>, <code>ClashModuleCommand</code>, and <code>ClashStudentCommand</code>) which extend an abstract <code>ClashCommand</code> class.
-<code>ClashCommandParser</code> deals with differentiating cases for checking (by looking at prefixes) and create Command object accordingly.</p>
+<p><strong>Alternative considered:</strong> Create three different sub-classes (i.e. <code>ClashAppealCommand</code>, <code>ClashModuleCommand</code>, and <code>ClashStudentCommand</code>) which extend from an abstract <code>ClashCommand</code> class.
+<code>ClashCommandParser</code> deals with differentiating cases for checking (by looking at prefixes) and creates <code>ClashCommand</code> object accordingly.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -564,10 +557,7 @@ we can simply add more setter and getter methods in <code>ClashCommandParameters
 <div class="ulist">
 <ul>
 <li>
-<p>Each sub-class will have different attributes.</p>
-</li>
-<li>
-<p>Tedious modification will be needed if we allow more user input formats in the future to improve user experience.</p>
+<p>Each sub-class will have different attributes. Tedious modification will be needed if we allow more user input formats in the future to improve user experience.</p>
 </li>
 </ul>
 </div>
@@ -579,11 +569,11 @@ we can simply add more setter and getter methods in <code>ClashCommandParameters
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-how-to-show-details-of-the-clashing-time-slots"><a class="link" href="#design-consideration-how-to-show-details-of-the-clashing-time-slots">Design Consideration: How to show details of the clashing time slots</a></h5>
+<h5 id="design-consideration-2-how-to-show-details-of-the-clashing-time-slots"><a class="link" href="#design-consideration-2-how-to-show-details-of-the-clashing-time-slots">Design Consideration 2: How to show details of the clashing time slots</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current choice:</strong> Use a static class <code>ClashCase</code> to store each clash case detected.</p>
+<p><strong>Current choice:</strong> Use a static class <code>ClashCase</code> to store each clash case.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -602,7 +592,7 @@ Even if the way of representation is to be changed in the future, we only need t
 <div class="ulist">
 <ul>
 <li>
-<p>Additional objects being created for each clash detected between two modules. More memory space used.</p>
+<p>Additional objects created for each clash detected between two modules. More memory space used.</p>
 </li>
 </ul>
 </div>
@@ -619,9 +609,6 @@ Even if the way of representation is to be changed in the future, we only need t
 <div class="ulist">
 <ul>
 <li>
-<p>Easy to implement.</p>
-</li>
-<li>
 <p>Can reuse <code>getTimeSlotToString()</code> to obtain the string representation. (The current choice also keeps this part)</p>
 </li>
 </ul>
@@ -631,9 +618,6 @@ Even if the way of representation is to be changed in the future, we only need t
 <p>Cons:</p>
 <div class="ulist">
 <ul>
-<li>
-<p>Redundant objects are created. More memory space used.</p>
-</li>
 <li>
 <p>Need to hardcode information like module codes of the two modules having clashes since the list only stores the clashing slots.</p>
 </li>
@@ -3580,6 +3564,9 @@ Expected: History window contains command history from previous sessions.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Prerequisites: At least one or more items shown in the lists.</p>
+</li>
+<li>
 <p>Check timetable clashes for in an appeal</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
@@ -3643,6 +3630,9 @@ Example: <code>clash a/1 a/2</code> <code>clash y/ s/1</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Prerequisites: At least one or more items shown in the lists.</p>
+</li>
+<li>
 <p>Valid input format: <code>find [a/KEYWORD&#8230;&#8203;] [m/KEYWORD..] [s/KEYWORD]</code></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
@@ -3702,4 +3692,4 @@ Specified lists will be updated to show items containing any of the keywords.</p
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:27:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:00:45 UTC</div></div></div></body></html>

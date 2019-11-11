@@ -17,7 +17,7 @@
 <li><a href="#listing-objects-by-specified-lists-code-list-code">3.2. Listing objects by specified lists: <code>list</code></a></li>
 <li><a href="#command-history">3.3. Command History</a></li>
 <li><a href="#find-keywords-code-find-code">3.4. Find keywords: <code>find</code></a></li>
-<li><a href="#show-clashes-code-clash-code">3.5. Show clashes: <code>clash</code></a></li>
+<li><a href="#check-clashes-code-clash-code">3.5. Check clashes: <code>clash</code></a></li>
 <li><a href="#add-or-remove-modules-code-addmod-code-code-removemod-code">3.6. Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></li>
 <li><a href="#update-maximum-workload-for-a-student-code-setcredits-code">3.7. Update maximum workload for a student: <code>setcredits</code></a></li>
 <li><a href="#undo-and-redo-code-undo-redo-code">3.8. Undo and Redo: <code>undo/redo</code></a></li>
@@ -488,17 +488,8 @@ In other words, command history is persistent across usage sessions of MAMS.</p>
 <div class="paragraph">
 <p>Format: <code>find [a/KEYWORD&#8230;&#8203;] [m/KEYWORD&#8230;&#8203;] [s/KEYWORD&#8230;&#8203;]</code></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Tags can be in any order. User may enter multiple keywords after a tag.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><em>Tags can be in any order. User may enter multiple keywords after a tag.</em></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -508,7 +499,7 @@ Tags can be in any order. User may enter multiple keywords after a tag.
 <div class="ulist">
 <ul>
 <li>
-<p><code>find</code> supports searching in multiple lists for multiple keywords. All items contains the keyword as a word or a part of word (See examples for more details).</p>
+<p><code>find</code> supports searching in the specified lists for all items containing the keyword as a word or a part of word (See examples for more details).</p>
 </li>
 <li>
 <p>Searching is case-insensitive.</p>
@@ -523,22 +514,13 @@ Requested Module or Module to Drop will be displayed.</p>
 <li>
 <p>In Student list, items that contains any of the keywords in Student Name or Matric ID will be displayed.</p>
 </li>
+<li>
+<p>Searching criteria listed above are evaluated to be the most useful ones in order to filter the lists quickly and obtain
+necessary information. Wider range of searching will be implemented in v2.0.</p>
+</li>
 </ul>
 </div>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Searching criteria listed above are evaluated to be the most useful ones in order to filter the lists quickly and obtain
-necessary information. Wider range of searching will be implemented in v2.0.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -554,7 +536,11 @@ necessary information. Wider range of searching will be implemented in v2.0.
 <p>Sample Output:</p>
 </div>
 <div class="paragraph">
-<p>All items containing "larry" in Student list and all items containing "programming" are displayed.</p>
+<p>All items containing "larry" in Student list and all items containing "programming" are displayed.
+Student list defaults to expanded view since there is only 1 search result.</p>
+</div>
+<div class="paragraph">
+<p><em>CS1020 and CS2105 are displayed since they contain "programming" in their Module Description. You may use <code>view</code> command to see.</em></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -592,17 +578,8 @@ necessary information. Wider range of searching will be implemented in v2.0.
 <div class="paragraph">
 <p>All items containing "cs10" in Module list are displayed. (i.e. CS1010, CS1020, CS2030)</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-CS2030 is also displayed since it contains "cs10" in its module description.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><em>CS2030 is also displayed since it contains "cs10" in its module description.</em></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -611,7 +588,7 @@ CS2030 is also displayed since it contains "cs10" in its module description.
 </div>
 </div>
 <div class="sect2">
-<h3 id="show-clashes-code-clash-code"><a class="link" href="#show-clashes-code-clash-code">3.5. Show clashes: <code>clash</code></a></h3>
+<h3 id="check-clashes-code-clash-code"><a class="link" href="#check-clashes-code-clash-code">3.5. Check clashes: <code>clash</code></a></h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -619,16 +596,16 @@ CS2030 is also displayed since it contains "cs10" in its module description.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If you execute <code>clash</code> command by index, the index will refer for the current index in the current showing list. Please
+If you execute <code>clash</code> command by index, the index will refer for the current index in the list showing currently. Please
 use <code>list</code> command to go back to the full list if your target appeal/module/student is not shown in the current list.
 </td>
 </tr>
 </table>
 </div>
 <div class="sect3">
-<h4 id="show-clashes-in-an-appeal"><a class="link" href="#show-clashes-in-an-appeal">3.5.1. Show clashes in an appeal</a></h4>
+<h4 id="check-clashes-in-an-appeal"><a class="link" href="#check-clashes-in-an-appeal">3.5.1. Check clashes in an appeal</a></h4>
 <div class="paragraph">
-<p>Checks if there is clash between the module which a student is requesting to add or drop and his/her current modules.
+<p>This command checks if there is clash between the module which a student is requesting to add or drop and his/her current modules.
 Only appeals requesting to add or drop module will need for clash checks. If the target appeal is not of any of the two
 types, a reminder message will be shown.</p>
 </div>
@@ -670,10 +647,10 @@ types, a reminder message will be shown.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="show-clashes-in-student-timetable"><a class="link" href="#show-clashes-in-student-timetable">3.5.2. Show clashes in student timetable</a></h4>
+<h4 id="check-clashes-in-a-student-s-timetable"><a class="link" href="#check-clashes-in-a-student-s-timetable">3.5.2. Check clashes in a student&#8217;s timetable</a></h4>
 <div class="paragraph">
-<p>Checks if there are clashes in a student’s (pre-allocated) timetable. This command is typically used to verify whether
-there is really a timetable clash in the student&#8217;s pre-allocated timetable if the student submits an appeal to drop a
+<p>This command checks if there are clashes in a student’s current timetable. This command is typically used to verify whether
+there is really a timetable clash in the student&#8217;s timetable if the student submits an appeal to drop a
 pre-allocated module due to timetable clash.</p>
 </div>
 <div class="paragraph">
@@ -699,9 +676,9 @@ pre-allocated module due to timetable clash.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="show-clashes-between-2-modules"><a class="link" href="#show-clashes-between-2-modules">3.5.3. Show clashes between 2 modules</a></h4>
+<h4 id="check-clashes-between-2-modules"><a class="link" href="#check-clashes-between-2-modules">3.5.3. Check clashes between 2 modules</a></h4>
 <div class="paragraph">
-<p>This command checks to see if the lecture slots of 2 modules clashes, and displays the result to the user.</p>
+<p>This command checks if the lecture slots of 2 modules have clashes, and displays the result to the user.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>clash m/MODULE_CODE m/MODULE_CODE</code> or <code>clash m/INDEX m/INDEX</code></p>
@@ -1397,4 +1374,4 @@ Redo do last Undo if availiable.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:27:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:00:45 UTC</div></div></div></body></html>
