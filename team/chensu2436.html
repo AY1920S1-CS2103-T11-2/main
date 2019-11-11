@@ -10,27 +10,10 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Module Appeal Management System (MAMS) is a desktop app that aims to combine Command Line Interface (CLI) style commands
-with a triple-pane GUI for easy navigation of appeals, module information, and student particulars. This app is particularly
-aimed towards <strong>module appeal administrators who prefer to work through their heavy backload of module appeals without ever having to
-leave the comfort of the keyboard for their mouse</strong>. The MAMS system can quickly bring up entire lists of students, appeals, and modules for
+<p>The Module Appeal Management System (MAMS) is a desktop appeal management app for module appeal administrators. The MAMS system can quickly bring up entire lists of students, appeals, and modules for
 side-by-side comparison, with specific display commands to view the expanded details of any particular object in question. The MAMS system also provides
-a suite of commands for resolving appeals, overriding MC limits, and leaving special notes on students.</p>
-</div>
-<div class="paragraph">
-<p>The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This portfolio was adapted from the AddressBook project. All information written herein (28th Septemeber 2019) is not yet revised for the new application.
-</td>
-</tr>
-</table>
+a suite of commands for resolving appeals, overriding MC limits, and leaving special notes on students.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -40,29 +23,44 @@ This portfolio was adapted from the AddressBook project. All information written
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to clash clashes</strong></p>
+<p><strong>Major enhancement 1: added the ability to check clashes for various cases</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the admin to check timetable clash between 2 modules or in a student&#8217;s current timetable;
+Provides a shortcut for the admin to retrieve information on timetable clash in appeals requesting to add or drop modules.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: Checking timetable clash is one of the most important checks that an admin needs to perform before he/she decides to approve or reject an appeal.
+This feature improves the user experience significantly because it provides a convenient way for the admin who needs to perform such checks constantly.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: There are a few types of checks can be performed. Therefore, the user inputs for this command can take various forms and are highly flexible.
+An in-depth analysis of design alternatives is required to deal with these variations.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: modified the find command that allows the user to &#8230;&#8203;</p>
+<p><strong>Major enhancement 2: enhanced the find command that allows the user to search in different lists</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the admin to search multiple keywords in multiple lists at the same time.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: There are a huge number of appeals, modules and students given the size of the university.
+This feature improves the user experience significantly by providing a convenient way to search items that he/she is more interested in.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects other commands since it will be used together with other commands often.
+For example, to filter all appeals requesting to add a particular module and perform checks in one go.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/mams">Functional code</a>] [<a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/test/java/mams">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -73,7 +71,29 @@ This portfolio was adapted from the AddressBook project. All information written
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed project schedule tracking</p>
+</li>
+<li>
+<p>Migrated user stories to GitHub issues</p>
+</li>
+<li>
+<p>Managed issues on GitHub and assigned issues to corresponding Milestones and team members</p>
+</li>
+<li>
+<p>Managed releases <code>v1.3</code> on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Refactoring of original code base:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Removed original Add/Delete/Clear commands and related tests <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/60">#60</a></p>
+</li>
+<li>
+<p>Changed prefixes to suit our app and performed related refactoring <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/85">#85</a></p>
 </li>
 </ul>
 </div>
@@ -83,10 +103,10 @@ This portfolio was adapted from the AddressBook project. All information written
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Rectified disagreement in sample data <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/206">#206</a></p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Edited TestUtils to rectify data disagreement for more meaningful tests <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/211">#211</a></p>
 </li>
 </ul>
 </div>
@@ -96,7 +116,10 @@ This portfolio was adapted from the AddressBook project. All information written
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Converted the first draft of User Guide to ascii doc <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/25">#25</a></p>
+</li>
+<li>
+<p>Enhanced the class diagram of logic component in Developer Guide <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/214">#214</a></p>
 </li>
 </ul>
 </div>
@@ -106,16 +129,13 @@ This portfolio was adapted from the AddressBook project. All information written
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/92">#92</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
+<p>Reported bugs and suggestions for other teams (examples:  <a href="https://github.com/chensu2436/ped/issues/8">1</a>, <a href="https://github.com/chensu2436/ped/issues/6">2</a>, <a href="https://github.com/chensu2436/ped/issues/7">3</a>)</p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reviewed User Guide and Developer Guide, and reported suggestions for other teams in class</p>
 </li>
 </ul>
 </div>
@@ -286,7 +306,7 @@ pre-allocated module due to timetable clash.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Tags can be in any sequence. User may enter multiple keywords after a tag.
+Tags can be in any order. User may enter multiple keywords after a tag.
 </td>
 </tr>
 </table>
@@ -416,47 +436,6 @@ CS2030 is also displayed since it contains "cs10" in its module description.
 </tr>
 </tbody>
 </table>
-<div id="fig-LogicClassDiagram" class="imageblock">
-<div class="content">
-<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
-</div>
-<div class="title">Figure 1. Structure of the Logic Component</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ParserClassDiagram.png" alt="ParserClassDiagram">
-</div>
-<div class="title">Figure 2. Structure of the Parser Component</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommandClassDiagram.png" alt="CommandClassDiagram">
-</div>
-<div class="title">Figure 3. Structure of the Command Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> :
-<a href="{repoURL}/src/main/java/mams/logic/Logic.java"><code>Logic.java</code></a></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>Logic</code> uses the <code>MamsParser</code> class to parse the user command.</p>
-</li>
-<li>
-<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
-</li>
-<li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a module to a student).</p>
-</li>
-<li>
-<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
-</li>
-<li>
-<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
-</li>
-</ol>
-</div>
 <div class="sect2">
 <h3 id="clash-feature"><a class="link" href="#clash-feature">Clash feature</a></h3>
 <div class="sect3">
@@ -478,7 +457,7 @@ CS2030 is also displayed since it contains "cs10" in its module description.
 <div class="content">
 <img src="../images/ClashCommandParametersClassDiagram.png" alt="ClashCommandParametersClassDiagram">
 </div>
-<div class="title">Figure 4. ClashCommandParameters Class Diagram</div>
+<div class="title">Figure 1. ClashCommandParameters Class Diagram</div>
 </div>
 <div class="ulist">
 <ul>
@@ -491,7 +470,7 @@ CS2030 is also displayed since it contains "cs10" in its module description.
 <div class="content">
 <img src="../images/ClashCaseClassDiagram.png" alt="ClashCaseClassDiagram">
 </div>
-<div class="title">Figure 5. ClashCase Class Diagram</div>
+<div class="title">Figure 2. ClashCase Class Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -565,7 +544,7 @@ and <code>Module</code> to add/drop is retrieved from <code>model.getFullModuleL
 <div class="content">
 <img src="../images/ClashCommandActivityDiagram.png" alt="ClashCommandActivityDiagram">
 </div>
-<div class="title">Figure 6. Work Flow of Clash Command</div>
+<div class="title">Figure 3. Work Flow of Clash Command</div>
 </div>
 <div class="sect4">
 <h5 id="design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking"><a class="link" href="#design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking">Design Consideration: How to deal with different user input formats for different types of checking</a></h5>
@@ -724,7 +703,7 @@ StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>,
 <div class="content">
 <img src="../images/PredicateClassDiagram.png" alt="PredicateClassDiagram">
 </div>
-<div class="title">Figure 7. Predicate Class Diagram</div>
+<div class="title">Figure 4. Predicate Class Diagram</div>
 </div>
 <div class="paragraph">
 <p>Each <code>FindCommand</code> has a <code>execute()</code> method that takes in a <code>Model</code> object and a <code>FilterOnlyCommandHistory</code> object.
@@ -755,9 +734,143 @@ StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>,
 <div class="content">
 <img src="../images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
 </div>
-<div class="title">Figure 8. Find Command Sequence Diagram - user input: "find m/cs1010"</div>
+<div class="title">Figure 5. Find Command Sequence Diagram - user input: "find m/cs1010"</div>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="uc04-approve-request-from-a-student-to-add-a-module-with-clashes-in-timetable"><a class="link" href="#uc04-approve-request-from-a-student-to-add-a-module-with-clashes-in-timetable">UC04: Approve request from a student to add a module with clashes in timetable</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:22:29 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>Pre-condition: MAMS shows an expanded view of an appeal from a student requesting to add a module.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Admin requests to check potential clash between module requested by
+student and student’s existing modules.</p>
+</li>
+<li>
+<p>MAMS shows that there are clashes.</p>
+</li>
+<li>
+<p>Admin reads the appeal reason and requests to add the module to the student, allowing clashes.</p>
+</li>
+<li>
+<p>MAMS asks for confirmation to add the module to the student.</p>
+</li>
+<li>
+<p>Admin confirms to add the module to the student.</p>
+</li>
+<li>
+<p>MAMS adds the module to the student.</p>
+</li>
+<li>
+<p>Admin resolves the approval case and adds a remark saying timetable clash allowed.</p>
+</li>
+<li>
+<p>MAMS marks appeal as approved.</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="check-clash"><a class="link" href="#check-clash">Check Clash</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check timetable clashes for in an appeal</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Input format: <code>clash a/INDEX</code> example: <code>clash a/1</code></p>
+</li>
+<li>
+<p>Expected output:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>If it is an appeal requesting to add or drop module, clash details will be shown in the message bar when clash is detected, or "no clash detected" when there is no clash.</p>
+</li>
+<li>
+<p>If For other types of appeal, a reminder of "no need to check clash" will be shown in the message bar.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Check timetable clashes between 2 modules</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Input format: <code>clash m/INDEX m/INDEX</code> or <code>clash m/MODULE_CODE m/MODULE_CODE</code> example: <code>clash m/1 m/2</code> <code>clash m/cs1010 m/cs1231</code></p>
+</li>
+<li>
+<p>Expected output: relevant clash details will be shown in the message bar</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Check timetable clashes in a student&#8217;s current timetable</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Input format: <code>clash s/INDEX</code> example: <code>clash s/3</code></p>
+</li>
+<li>
+<p>Expected output: relevant clash details will be shown in the message bar</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Other forms of input will be considered invalid and a message of command usage or other relevant message will be shown in the message bar.
+Example: <code>clash a/1 a/2</code> <code>clash y/ s/1</code></p>
+</li>
+<li>
+<p>Invalid index or module code will be detected and relevant message will be shown in the message bar. Example: <code>clash m/123 m/3</code> <code>clash a/999999</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find"><a class="link" href="#find">Find</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Valid input format: <code>find [a/KEYWORD&#8230;&#8203;] [m/KEYWORD..] [s/KEYWORD]</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Example: <code>find a/unresolved</code> <code>find s/larry m/cs1231</code> <code>find m/cs10 data</code></p>
+</li>
+<li>
+<p>Expected: Number of results found will be shown in the message bar.
+Specified lists will be updated to show items containing any of the keywords.</p>
+</li>
+<li>
+<p>The order of the prefixes does not matter.</p>
+</li>
+<li>
+<p>If there is only 1 search result in a list, it will default to show the expanded view of that item.</p>
+</li>
+<li>
+<p>Invalid prefix will be considered as a keyword. eg. <code>find s/celina y/</code> "y/" will be taken as a keyword to be found in the student list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:12:25 UTC</div></div></div></body></html>

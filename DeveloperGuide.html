@@ -56,6 +56,8 @@
 <li><a href="#launch-and-shutdown">E.1. Launch and Shutdown</a></li>
 <li><a href="#backup-and-restoring">E.2. Backup and Restoring</a></li>
 <li><a href="#undo-and-redo">E.3. Undo and Redo</a></li>
+<li><a href="#check-clash">E.4. Check Clash</a></li>
+<li><a href="#find">E.5. Find</a></li>
 </ul>
 </li>
 </ul>
@@ -649,6 +651,7 @@ There are the two sub-classes which extends <code>ModCommand</code> used to hand
 <div class="content">
 <img src="images/ModCommandClassDiagram.png" alt="ModCommandClassDiagram">
 </div>
+<div class="title">Figure 15. Structure of ModCommand</div>
 </div>
 <div class="paragraph">
 <p>Each addmod or removemod command has a <code>execute()</code> method that takes in a <code>Model</code> object. These commands
@@ -698,6 +701,7 @@ student identifier. <code>m/</code> prefix will also be detected and parsed for 
 <div class="content">
 <img src="images/AddModCommandActivityDiagram.png" alt="AddModCommandActivityDiagram">
 </div>
+<div class="title">Figure 16. AddModCommand Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p><code>ApproveCommand.execute()</code></p>
@@ -748,6 +752,7 @@ with the newly created objects. The success message of addmod request will be re
 <div class="content">
 <img src="images/AddModSequenceDiagram.png" alt="AddModSequenceDiagram">
 </div>
+<div class="title">Figure 17. AddModCommand Sequence Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -830,6 +835,7 @@ To reduce vision clutter, only two of the six checks are shown.
 <div class="content">
 <img src="images/ResolveCommandClassDiagram.png" alt="ResolveCommandClassDiagram">
 </div>
+<div class="title">Figure 18. Structure of ResolveCommand</div>
 </div>
 <div class="paragraph">
 <p>Each appeal resolution command has a <code>execute()</code> method that takes in a <code>Model</code> object. Resolve commands retrieve information of all students and modules from model to get the relevant student and module.
@@ -938,6 +944,7 @@ Reject commands behaves the same way as approve commands, except it will not mak
 <div class="content">
 <img src="images/ApproveCommandActivityDiagram.png" alt="ApproveCommandActivityDiagram">
 </div>
+<div class="title">Figure 19. ApproveCommand Activity Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -988,6 +995,7 @@ and <code>Module</code> requested is retrieved from <code>model.getFullModuleLis
 <div class="content">
 <img src="images/ResolveSequenceDiagram.png" alt="ResolveSequenceDiagram">
 </div>
+<div class="title">Figure 20. ResolveCommand Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Below shows how the ResolveCommand mechanism behaves at each step when resolving multiple appeals.</p>
@@ -1095,6 +1103,7 @@ Also, because Mass resolve commands operates on appeal IDs, <code>model.getFullA
 <div class="content">
 <img src="images/MassApproveActivityDiagram.png" alt="MassApproveActivityDiagram">
 </div>
+<div class="title">Figure 21. MassApprove Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>Step 5.  After resolving all the appeal IDs in the valid Appeal list, <code>MassApprove</code> will return a <code>CommandResult</code> object which contains the feedback message.  Feedback message will show a list of successfully approved appeal IDs,
@@ -1105,6 +1114,7 @@ and a list of appeal IDs with time table clash detected.</p>
 <div class="content">
 <img src="images/MassResolveSequenceDiagram.png" alt="MassResolveSequenceDiagram">
 </div>
+<div class="title">Figure 22. MassResolve Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Design Consideration: How to handle different user input formats for individual and mass appeal resolution</p>
@@ -1329,6 +1339,7 @@ through previous inputs in the command box.</p>
 <div class="content">
 <img src="images/CycleCommandHistoryClassDiagram.png" alt="CycleCommandHistoryClassDiagram">
 </div>
+<div class="title">Figure 23. CommandHistory Class Diagram</div>
 </div>
 <div class="paragraph">
 <p><code>CommandHistory</code> provides an unmodifiable view into the command history using an <code>ObservableList</code>
@@ -1346,6 +1357,7 @@ depicted for brevity.</p>
 <div class="content">
 <img src="images/CycleCommandHistorySequenceDiagram.png" alt="CycleCommandHistorySequenceDiagram">
 </div>
+<div class="title">Figure 24. CommandHistory Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The diagram above first shows how <code>CommandBox</code> re-initializes and updates <code>ListPointer</code> after
@@ -1397,6 +1409,7 @@ of how the command is executed:</p>
 <div class="content">
 <img src="images/HistoryCommandActivityDiagram.png" alt="HistoryCommandActivityDiagram">
 </div>
+<div class="title">Figure 25. HistoryCommand Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>One specific execution example of the show-history feature with
@@ -1437,6 +1450,7 @@ methods are omitted for brevity.</p>
 <div class="content">
 <img src="images/HistoryCommandSequenceDiagram.png" alt="HistoryCommandSequenceDiagram">
 </div>
+<div class="title">Figure 26. HistoryCommand Sequence Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1735,6 +1749,7 @@ three sub-classes which extends <code>StoreCommand</code> to handle different ty
 <div class="content">
 <img src="images/StoreCommandClassDiagram.png" alt="StoreCommandClassDiagram">
 </div>
+<div class="title">Figure 27. Structure of StoreCommand</div>
 </div>
 <div class="paragraph">
 <p>Each sub-class has a <code>execute()</code> method that takes in a <code>Model</code> object. Store commands only retrieve information from /data file and replaces the current state with the targeted state.</p>
@@ -1792,6 +1807,7 @@ The save states are stored in the same format as the mams.json data file to redu
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
+<div class="title">Figure 28. UndoCommand Sequence Diagram</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-dealing-with-storage-of-states"><a class="link" href="#aspect-dealing-with-storage-of-states">Aspect: Dealing with storage of states</a></h5>
@@ -2349,8 +2365,8 @@ of appeals by default.</p>
 <p>MAMS shows the appeal details(student particulars, module requested)</p>
 </li>
 <li>
-<p>Admin requests to check potential clash of module requested by
-student with student’s existing modules</p>
+<p>Admin requests to check potential clash between module requested by
+student and student’s existing modules</p>
 </li>
 <li>
 <p>MAMS shows that there are no clashes</p>
@@ -2453,32 +2469,31 @@ higher workload</p>
 <p><strong>MSS</strong></p>
 </div>
 <div class="paragraph">
-<p>Pre-condition: System has only just been opened, and is showing a list
-of appeals by default.</p>
+<p>Pre-condition: MAMS shows an expanded view of an appeal from a student requesting to add a module.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Admin requests to check potential clash of module requested by
-student with student’s existing modules.</p>
+<p>Admin requests to check potential clash between module requested by
+student and student’s existing modules.</p>
 </li>
 <li>
 <p>MAMS shows that there are clashes.</p>
 </li>
 <li>
-<p>Admin requests to add the module to the student with clashes.</p>
+<p>Admin reads the appeal reason and requests to add the module to the student, allowing clashes.</p>
 </li>
 <li>
 <p>MAMS asks for confirmation to add the module to the student.</p>
 </li>
 <li>
-<p>Admin adds a remark to the approval case.</p>
+<p>Admin confirms to add the module to the student.</p>
 </li>
 <li>
-<p>Admin adds the student to the module.</p>
+<p>MAMS adds the module to the student.</p>
 </li>
 <li>
-<p>Admin requests to approve appeal.</p>
+<p>Admin resolves the approval case and adds a remark saying timetable clash allowed.</p>
 </li>
 <li>
 <p>MAMS marks appeal as approved.</p>
@@ -2848,9 +2863,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="backup-and-restoring"><a class="link" href="#backup-and-restoring">E.2. Backup and Restoring</a></h3>
@@ -2896,5 +2908,98 @@ Expected: The most recent window size and location is retained.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="check-clash"><a class="link" href="#check-clash">E.4. Check Clash</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check timetable clashes for in an appeal</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Input format: <code>clash a/INDEX</code> example: <code>clash a/1</code></p>
+</li>
+<li>
+<p>Expected output:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>If it is an appeal requesting to add or drop module, clash details will be shown in the message bar when clash is detected, or "no clash detected" when there is no clash.</p>
+</li>
+<li>
+<p>If For other types of appeal, a reminder of "no need to check clash" will be shown in the message bar.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:22:29 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Check timetable clashes between 2 modules</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Input format: <code>clash m/INDEX m/INDEX</code> or <code>clash m/MODULE_CODE m/MODULE_CODE</code> example: <code>clash m/1 m/2</code> <code>clash m/cs1010 m/cs1231</code></p>
+</li>
+<li>
+<p>Expected output: relevant clash details will be shown in the message bar</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Check timetable clashes in a student&#8217;s current timetable</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Input format: <code>clash s/INDEX</code> example: <code>clash s/3</code></p>
+</li>
+<li>
+<p>Expected output: relevant clash details will be shown in the message bar</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Other forms of input will be considered invalid and a message of command usage or other relevant message will be shown in the message bar.
+Example: <code>clash a/1 a/2</code> <code>clash y/ s/1</code></p>
+</li>
+<li>
+<p>Invalid index or module code will be detected and relevant message will be shown in the message bar. Example: <code>clash m/123 m/3</code> <code>clash a/999999</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find"><a class="link" href="#find">E.5. Find</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Valid input format: <code>find [a/KEYWORD&#8230;&#8203;] [m/KEYWORD..] [s/KEYWORD]</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Example: <code>find a/unresolved</code> <code>find s/larry m/cs1231</code> <code>find m/cs10 data</code></p>
+</li>
+<li>
+<p>Expected: Number of results found will be shown in the message bar.
+Specified lists will be updated to show items containing any of the keywords.</p>
+</li>
+<li>
+<p>The order of the prefixes does not matter.</p>
+</li>
+<li>
+<p>If there is only 1 search result in a list, it will default to show the expanded view of that item.</p>
+</li>
+<li>
+<p>Invalid prefix will be considered as a keyword. eg. <code>find s/celina y/</code> "y/" will be taken as a keyword to be found in the student list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:12:25 UTC</div></div></div></body></html>
