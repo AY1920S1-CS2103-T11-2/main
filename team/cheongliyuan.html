@@ -95,8 +95,158 @@ MAMS is written primarily in Java, and features a GUI created with JavaFX, with 
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="add-or-remove-modules-code-addmod-code-code-removemod-code"><a class="link" href="#add-or-remove-modules-code-addmod-code-code-removemod-code">Add or remove modules <code>addmod</code> &amp; <code>removemod</code></a></h3>
+<div class="sect3">
+<h4 id="add-a-module-to-a-student"><a class="link" href="#add-a-module-to-a-student">Add a module to a student</a></h4>
 <div class="paragraph">
-<p>Sections under addmod and removemod</p>
+<p>This command adds a module to specific student.
+For student identifier, it can either be the matric id or index in the student list.
+For module identifier, it can either be the module code or index in the module list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addmod s/STUDENT_ID m/MODULE_CODE</code> or</p>
+</div>
+<div class="paragraph">
+<p><code>addmod s/STUDENT_INDEX m/MODULE_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample input 1:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addmod s/1 m/7</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/AddModCommandDemoBefore1.png" alt="AddModCommandDemoBefore1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="paragraph">
+<p><code>Added module to : Celina Conyers</code></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/AddModCommandDemoAfter1.png" alt="AddModCommandDemoAfter1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample input 2:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addmod s/1 m/1</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/AddModCommandDemoBefore2.png" alt="AddModCommandDemoBefore2" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>`Unable to add module to student as the student already has already completed the module `</p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/AddModCommandDemoAfter2.png" alt="AddModCommandDemoAfter2" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removing-a-module-from-student-s-timetable"><a class="link" href="#removing-a-module-from-student-s-timetable">Removing a module from student&#8217;s timetable</a></h4>
+<div class="paragraph">
+<p>This command removes a existing module from a student.
+For student identifier, it can either be the matric id or index in the student list.
+For module identifier, it can either be the module code or index in the module list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>removemod s/STUDENT_ID m/MODULE_CODE</code></p>
+</div>
+<div class="paragraph">
+<p><code>removemod s/STUDENT_INDEX m/MODULE_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample input 1:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removemod s/1 m/CS2101</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/RemoveModCommandDemoBefore1.png" alt="RemoveModCommandDemoBefore1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Removed module from : Celina Conyers</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/RemoveModCommandDemoAfter1.png" alt="RemoveModCommandDemoAfter1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample input 2:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removemod s/A0180001 m/CS2105</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/RemoveModCommandDemoBefore2.png" alt="RemoveModCommandDemoBefore2" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample output:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Student is not registered for this module.</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/RemoveModCommandDemoAfter2.png" alt="RemoveModCommandDemoAfter2" width="790">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -270,4 +420,4 @@ To reduce vision clutter, only two of the six checks are shown.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:30:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:38:08 UTC</div></div></div></body></html>
