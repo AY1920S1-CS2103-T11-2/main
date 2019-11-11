@@ -64,6 +64,7 @@
 <li><a href="#undo-and-redo">E.9. Undo and Redo</a></li>
 <li><a href="#check-clash">E.10. Check Clash</a></li>
 <li><a href="#find">E.11. Find</a></li>
+<li><a href="#resolve">E.12. Resolve</a></li>
 </ul>
 </li>
 </ul>
@@ -3667,5 +3668,38 @@ Specified lists will be updated to show items containing any of the keywords.</p
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="resolve"><a class="link" href="#resolve">E.12. Resolve</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Valid input format for single resolution: <code>approve a/INDEX [r/REASON]</code> or <code>reject a/INDEX [r/REASON]</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Example: 'approve a/2' <code>reject a/3 r/student cannot cope</code></p>
+</li>
+<li>
+<p>Expected: appeals selected will be resolved and changes on affected modules and students will be performed accordingly.  The message shown in the message bar will display the changes made to the related module and student.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:33:43 UTC</div></div></div></body></html>
+</li>
+<li>
+<p>Valid input format for mass resolution: <code>approve mass/[APPEALID]&#8230;&#8203;</code> <code>reject mass/[APPEALID]&#8230;&#8203;</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Example: <code>approve mass/C000000 C000023</code> <code>reject mass/C001230  C0sdfsd</code></p>
+</li>
+<li>
+<p>Expected: Appeals that have not yet been resolved will be resolved and will be resolved.  Invalid appeal IDs will not be resolved.  The result message in the message bar will show the following - appeals that were successfully resolved, appeals that were already resolved, invalid appeal IDs, and appeal IDs that do not exist.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:27:49 UTC</div></div></div></body></html>

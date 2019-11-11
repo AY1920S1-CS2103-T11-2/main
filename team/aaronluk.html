@@ -1,0 +1,816 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Luk Chi Heng - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">MAMS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103-t11-2.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Luk Chi Heng - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-module-appeal-management-system-mams"><a class="link" href="#project-module-appeal-management-system-mams">PROJECT: Module Appeal Management System (MAMS)</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" height="50%">
+</div>
+<div class="title">Figure 1. Sample User Interface of MAMS</div>
+</div>
+<div class="paragraph">
+<p>Every semester, administrators from the National University of Singapore (NUS) have to
+systematically work their way through a heavy backlog of special requests, known as "appeals".
+These appeals are usually made by frantic students during Module Registration,
+a system where students register for their
+desired courses in the upcoming academic term, and represent special circumstances that require
+human judgement to resolve.</p>
+</div>
+<div class="paragraph">
+<p><strong>The Module Appeal Management System (MAMS)</strong> is hence a desktop app that aims
+to fuse a Command Line Interface (CLI) style command input with a triple-pane
+GUI for easy navigation of appeals, module information, and student
+particulars all in a single display. By combining the precision and speed of a CLI
+input with the powerful side-by-side overview afforded by a GUI,
+this app is particularly aimed towards <strong>appeal
+administrators who prefer to blaze through their heavy backload of appeals
+without ever having to leave the comfort of the keyboard for their mouse</strong>. MAMS aims
+to be a self-contained application for fetching appeal, module, and student information, while
+providing a complete suite of tools for intuitive navigation of the comprehensive data display and
+resolving appeals. These include, but may not be limited to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <strong>powerful side-by-side triple-pane list cell display of appeal, module, and student data</strong>, with commands to quickly navigate between
+compact list views of multiple items and comprehensive expanded displays of single items.</p>
+</li>
+<li>
+<p>A <strong>command history feature</strong> for administrators to quickly cycle through and re-use old commands, while providing a comprehensive
+and permanent log of all actions performed within the application.</p>
+</li>
+<li>
+<p>A <strong>clash feature</strong> that allows administrators to accurately determine any potential timetable clashes in appeal cases,
+student workloads, or any two particular modules.</p>
+</li>
+<li>
+<p>A <strong>find feature</strong> that enables administrators to quickly locate specific appeal, module, and student data, narrowing down clutter within the display.</p>
+</li>
+<li>
+<p>An <strong>add/remove module feature</strong> that allows administrators to allocate or remove modules from students, while automatically checking for
+potential hiccups like duplicate assignments.</p>
+</li>
+<li>
+<p>An <strong>approve/reject feature</strong> that allows administrators to close or resolve appeals in fast succession, and even provides functionality for mass operations.</p>
+</li>
+<li>
+<p>A <strong>set credits feature</strong> that provides administrator with the functionality to override allowable student workloads.</p>
+</li>
+<li>
+<p>An <strong>undo/redo feature</strong> to correct any recent unwanted data changes that may have been accidentally committed by the administrator.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MAMS is written primarily in Java, and features a GUI created with JavaFX, with CSS used to augment the GUI for improved user experience. It has about
+13 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to resolve single and multiple appeals</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to approve or reject one or many appeals.  Upon approval, MAMS will automatically make changes to modules and students related to the resolved appeal.  Timetable clash checks will also be performed to inform user if an appeal cannot be approved due to clashes.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because it streamlines the process of resolving appeals.  The user&#8217;s quality of life will be improved as the user need not perform the other functions separately to resolve an appeal as the resolve function performs all changes and checks in the background.</p>
+</li>
+<li>
+<p>Highlights: Appeals may be submitted in the hundreds and will be overwhelming for the user.  As such this enhancement allows the user to carry out his job more efficiently by reducing the time taking and the number of commands to resolve appeals.  This implementation was challenging as it requires the integration of many other function like <code>clash</code>, <code>addmod</code>.</p>
+</li>
+<li>
+<p>Credits: [<a href="https://github.com/AY1920S1-CS2103-T11-2/main/blob/master/src/main/java/mams/logic/commands/ClashCommand.java">Clash Command</a>] [<a href="https://github.com/AY1920S1-CS2103-T11-2/main/blob/master/src/main/java/mams/logic/commands/AddModCommand.java">Addmod Command</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added <strong>the ability to add reason for the approval or rejection for an appeal</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to add a reason to the approval or rejection of an appeal.  The reason will be added to the MAMS.json data file for future references.</p>
+</li>
+<li>
+<p>Justification:  This feature is important as it allows the user to provide justifications to why an appeal was approved or rejected.  Supervisors of the user can also check the reasons should there be any complaints from students with regards to their appeals the reasons added help justify the decisions of the user.</p>
+</li>
+<li>
+<p>Highlights:  This enhancement allows users to provide students with the reason for their choices to approve or reject their appeals.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=aaronluk&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=AaronLuk&amp;tabRepo=AY1920S1-CS2103-T11-2%2Fmain%5Bmaster%5D">RepoSense Link</a>] (Use provided RepoSense filters to view "Functional" and "Test" Code)</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit documentation for MAMS - DeveloperGuide: <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/207">#207</a></p>
+</li>
+<li>
+<p>Update storage component for MAMS in Developer Guide <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/217">#217</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Implemented tests for new features increasing coverage by ~9% (Pull request: <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/213">#213</a>)
+<strong>*</strong></p>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/77">#77</a>, <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/65">#65</a></p>
+</li>
+<li>
+<p>Reviewed User Guide and Developer Guide, and reported suggestions for other teams in class</p>
+</li>
+<li>
+<p>Edit MAMS.json data file with the valid data (Pull request <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/109">#109</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="approve-an-appeal-code-approve-code"><a class="link" href="#approve-an-appeal-code-approve-code">Approve an appeal: <code>approve</code></a></h3>
+<div class="paragraph">
+<p>Marks an existing appeal as approved, with an optional message that can be supplied in the remarks section of the appeal results.</p>
+</div>
+<div class="sect3">
+<h4 id="approve-appeals-individually"><a class="link" href="#approve-appeals-individually">Approve appeals individually</a></h4>
+<div class="paragraph">
+<p>Format: <code>approve a/INDEX [r/APPEAL_REMARK]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approve a/4 r/watch your workload</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/beforeApprove.png" alt="beforeApprove" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/afterApprove.png" alt="afterApprove" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="approve-appeals-in-bulk"><a class="link" href="#approve-appeals-in-bulk">Approve appeals in bulk</a></h4>
+<div class="paragraph">
+<p>Format: <code>approve mass/ [APPEAL_ID]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approve mass/ C0000005  C000006 C000002  C000212 Cdfdsf</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/beforemassapprove.png" alt="beforemassapprove" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/aftermassapprove.png" alt="aftermassapprove" width="790">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reject-an-appeal-code-reject-code"><a class="link" href="#reject-an-appeal-code-reject-code">Reject an appeal: <code>reject</code></a></h3>
+<div class="paragraph">
+<p>Marks an existing appeal as rejected. with an optional message that can be supplied in the remarks section of the appeal results.</p>
+</div>
+<div class="sect3">
+<h4 id="reject-appeals-individually"><a class="link" href="#reject-appeals-individually">Reject appeals individually</a></h4>
+<div class="paragraph">
+<p>Format: <code>reject a/INDEX [r/APPEAL_REMARK]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reject a/1 r/student not suitable for high work load</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/beforeReject.png" alt="beforeReject" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/afterReject.png" alt="afterReject" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reject-appeals-in-bulk"><a class="link" href="#reject-appeals-in-bulk">Reject appeals in bulk</a></h4>
+<div class="paragraph">
+<p>Format: <code>reject mass/ [APPEAL_ID]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reject mass/ C000000  C000007</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/beforemassreject.png" alt="beforemassreject" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/aftermassreject.png" alt="aftermassreject" width="790">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="resolve-feature"><a class="link" href="#resolve-feature">Resolve feature</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The resolve feature is facilitated by an abstract <code>ResolveCommand</code> class which extends abstract <code>Command</code> class and
+2 sub-classes which extends <code>ResolveCommand</code> for different types of appeal resolution.</p>
+</div>
+<div class="paragraph">
+<p>The 2 type of appeal resolution are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Approve</code>&#8201;&#8212;&#8201;approves an appeal.</p>
+</li>
+<li>
+<p><code>Reject</code>&#8201;&#8212;&#8201;rejects an appeal.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each appeal resolution type has an individual and mass resolution command which extends its base type</p>
+</div>
+<div class="paragraph">
+<p>The 2 types of resolution commands for <code>Approve</code> are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ApproveCommand</code>&#8201;&#8212;&#8201;approves an individual appeal by index shown in the in-app UI</p>
+</li>
+<li>
+<p><code>MassApprove</code>&#8201;&#8212;&#8201;approves multiple appeals by the ID of appeals</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Similarly the types of resolution commands for <code>Reject</code> are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>RejectCommand</code>&#8201;&#8212;&#8201;rejects an individual appeal by index shown in the in-app UI</p>
+</li>
+<li>
+<p><code>MassReject</code>&#8201;&#8212;&#8201;rejects multiple appeals by the ID of appeals</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ResolveCommandClassDiagram.png" alt="ResolveCommandClassDiagram">
+</div>
+<div class="title">Figure 2. Structure of ResolveCommand</div>
+</div>
+<div class="paragraph">
+<p>Each appeal resolution command has a <code>execute()</code> method that takes in a <code>Model</code> object. Resolve commands retrieve information of all students and modules from model to get the relevant student and module.
+It then creates a copy of the relevant items and replaces the original ones in the global list of students and modules</p>
+</div>
+<div class="paragraph">
+<p>Below shows how the ResolveCommand mechanism behaves at each step when resolving a single appeal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Reject commands behaves the same way as approve commands, except it will not make any changes to any students or module. For this developer guide, only approve commands sequence will be elaborated
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>approve a/2 r/Student meets requirements</code> to approve an appeal of index specified.  In this example the appeal index is 2.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>ApproveCommandParser</code> will be called to parse the individual approve command .</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When parsing the input, the <code>a/</code> prefix will be detected and <code>ApproveCommandParser</code> will parse a single index and the remark after the optional field <code>r/</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>ApproveCommand</code> object will be created.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>ApproveCommand.execute()</code> is called.</p>
+</div>
+<div class="paragraph">
+<p><code>ApproveCommand.execute()</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1. It will check the type of appeal of the appeal index specified by the user, it will check through <code>model.getFilteredAppealList()</code> and get the index of the appeal that matches that of the given one.</p>
+</li>
+<li>
+<p>Step 2. Checks whether the appeal has already been resolved with <code>Appeal.isResolved()</code></p>
+</li>
+<li>
+<p>Step 3. If is not yet resolved, nature of appeal will be retrieved with <code>Appeal.getAppealType()</code>.  There are 3 types of appeal cases - add module, drop module and increase workload</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check if relevant module and student exists by getting <code>model.getFullModuleList()</code> and <code>model.getFullStudentList()</code></p>
+</li>
+<li>
+<p>Check for clashes between module requested and the modules the student is current taking (refer to 3.1 for implementation for <code>ClashCommand</code>)</p>
+</li>
+<li>
+<p>If no clashes are detected add student to module class list and module to the student&#8217;s list of modules</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Drop module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check if relevant module and student exists by getting <code>model.getFullModuleList()</code> and <code>model.getFullStudentList()</code></p>
+</li>
+<li>
+<p>Check if student is taking the module</p>
+</li>
+<li>
+<p>Removes specified module from student and student from module</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Increase workload</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Increases the specified student&#8217;s workload to the one specified in the appeal</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows how <code>ApproveCommand.execute()</code> works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ApproveCommandActivityDiagram.png" alt="ApproveCommandActivityDiagram">
+</div>
+<div class="title">Figure 3. ApproveCommand Activity Diagram</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The student current modules are stored as String of module code to reduce coupling. Hence, modules taken by the student are retrieved from <code>model.getFilteredModuleList()</code> by matching module codes.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Student</code> who submits the appeal and requested <code>Module</code> are stored as String of Matric ID and module code respectively in an <code>Appeal</code> object to reduce coupling.
+Hence, <code>Student</code> who submits the appeal is retrieved from <code>model.getFullStudentList()</code> by matching Matric ID,
+and <code>Module</code> requested is retrieved from <code>model.getFullModuleList()</code> by matching module codes.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 5.  Upon approval of an appeal, <code>ApproveCommand</code> will return a <code>CommandResult</code> object which contains the message of the action performed.  Each appeal type will give a different feedback message.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add module will inform user if approval is not allowed due to clashes in time table, else it will feedback the specified module has been added to the student by their IDs</p>
+</li>
+<li>
+<p>Drop module will inform user if approval is not allowed due to the student not having the module to be dropped in the first place, else if will feedback the specified module was removed from the student by their IDs</p>
+</li>
+<li>
+<p>Increase workload will inform user of the increase inthe student&#8217;s Modular Credits limit</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how ApproveCommand works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ResolveSequenceDiagram.png" alt="ResolveSequenceDiagram">
+</div>
+<div class="title">Figure 4. ResolveCommand Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Below shows how the ResolveCommand mechanism behaves at each step when resolving multiple appeals.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user inputs <code>approve mass/C000000 C000001 C000010</code> to approve all the appeals specifed.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>ApproveCommandParser</code> will be called to parse the mass approve command.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When parsing the input, the <code>mass/</code> prefix will be detected and <code>ApproveCommandParser</code> will parse all the appeal IDs specifed.  Valid and invalid IDs will be separated into 2 lists.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>MassApprove</code> object will be created with both the lists of valid and invalid IDs.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>MassApprove.execute()</code> is called.</p>
+</div>
+<div class="paragraph">
+<p><code>MassApprove.execute()</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Mass resolve commands <code>execute()</code> methods works the same as individual Resolve commands except it will loop through the list of valid Appeal IDs to resolve each one.
+Successful resolution of each appeal in the valid appeal list will add the ID to successful list.
+Similarly, appeal IDs from valid Appeal IDs that were not approved/rejected will be added to the unsuccessful list.
+Also, because Mass resolve commands operates on appeal IDs, <code>model.getFullAppealList()</code> will be used instead of <code>model.getFilteredAppealList()</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1. It will check the type of appeal of the appeal index specified by the user, it will check through <code>model.getFullAppealList()</code> and get the index of the appeal that matches that of the given one.</p>
+</li>
+<li>
+<p>Step 2. Checks weather the appeal has already been resolved with <code>Appeal.isResolved()</code></p>
+</li>
+<li>
+<p>Step 3. If is not yet resolved, nature of appeal will be retrieved with <code>Appeal.getAppealType()</code>.  There are 3 types of appeal cases - add module, drop module and increase workload</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check if relevant module and the student exists by getting <code>model.getFullModuleList()</code> and <code>model.getFullStudentList()</code></p>
+</li>
+<li>
+<p>Check for clashes between module requested and the modules the student is current taking (refer to 3.1 for implementation for <code>ClashCommand</code>)</p>
+</li>
+<li>
+<p>If no clashes are detected add the student to module class list and module to the student&#8217;s list of modules</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Drop module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check if relevant module and student exists by getting <code>model.getFullModuleList()</code> and <code>model.getFullStudentList()</code></p>
+</li>
+<li>
+<p>Check if student is taking the module</p>
+</li>
+<li>
+<p>Removes specified module from student and student from module</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Increase workload</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Increases the specified student&#8217;s workload to the one specified in the appeal</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows how <code>MassApprove.execute()</code> works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MassApproveActivityDiagram.png" alt="MassApproveActivityDiagram">
+</div>
+<div class="title">Figure 5. MassApprove Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p>Step 5.  After resolving all the appeal IDs in the valid Appeal list, <code>MassApprove</code> will return a <code>CommandResult</code> object which contains the feedback message.  Feedback message will show a list of successfully approved appeal IDs,
+a list of unresolved modules which include the list of invalid appeal IDs entered by user and appeal IDs
+and a list of appeal IDs with time table clash detected.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MassResolveSequenceDiagram.png" alt="MassResolveSequenceDiagram">
+</div>
+<div class="title">Figure 6. MassResolve Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Design Consideration: How to handle different user input formats for individual and mass appeal resolution</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current choice: Resolving individual appeals, <code>ApproveCommand</code> and <code>RejectCommand</code> takes in a single index relative to the displayed list of appeals while resolving multiple appeals, <code>MassApprove</code> and <code>MassReject</code> takes in IDs of exisiting appeals.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User can easily resolve a single appeal since needs to enter the index of the appeal of choice shown in the appeal list.</p>
+</li>
+<li>
+<p>When resolving in bulk, typing the full appeal IDs will allow user to be certain that the appeal that is about to be resolved is indeed the correct one.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users have to type the full appeal IDs of appeals when resolving in bulk.</p>
+</li>
+<li>
+<p>Users cannot resolve multiple appeals by index as the displayed appeal list is may be changing constantly with the filter commands entered by user.  As a result, user will be more prone to resolving a wrong appeal due to carelessness when using index.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative consideration: Allow user to resolve individual and multiple appeals by both index and appeal ID.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User has options to perform appeal resolution.</p>
+</li>
+<li>
+<p>Easier to resolve multiple appeals in bulk, as it is quicker to type the index instead of the full ID</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Harder to implement.  <code>ApproveCommandParser</code> and <code>RejectCommandParser</code> will need to parse different type of parameters.</p>
+</li>
+<li>
+<p>Some index and parameters from  the input might refer to the same appeal if the user makes a mistake.  As such, feedback provided by MAMS will not be useful, as user might have used index to mass resolve rather than appeal ID.</p>
+</li>
+<li>
+<p>User could resolve the wrong appeals since user does not need to cross check with the appeal ID of the appeals-of-interest.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Design Consideration: How individual resolve and mass resolve extends from parent <code>ResolveCommand</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current implementation: Each resolve option <code>Approve</code> and <code>Reject</code> extends from <code>ResolveCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easier to implement.  Resolve option specified by user will be easily parsed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>More parameters required from user to specify whether to resolve single or multiple appeals.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative consideration: Having individual resolve commands and mass resolve commands extend from parent class <code>ResolveCommand</code> instead of <code>Approve</code> and <code>Reject</code>.  Refer to diagram below for better understanding.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ResolveAltClassDiagram.png" alt="ResolveAltClassDiagram">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User can specify whether to resolve single or multiple appeals with fewer keywords.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Harder to implement as the mass resolve command Parser will have to parse the inputs for different resolve types.</p>
+</li>
+<li>
+<p>User prone to input mistakes while performing mass resolve.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:27:49 UTC</div></div></div></body></html>
