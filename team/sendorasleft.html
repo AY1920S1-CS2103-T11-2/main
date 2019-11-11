@@ -1,19 +1,103 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>YongKuan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>YongKuan - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-module-appeal-management-system-mams-level-3"><a class="link" href="#project-module-appeal-management-system-mams-level-3">PROJECT: Module Appeal Management System (MAMS) - Level 3</a></h2>
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">MAMS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103-t11-2.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>YongKuan - Project Portfolio</h1><div id="toc" class="toc"><div id="toctitle">Table of Contents</div><ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#summary-of-contributions">Summary of contributions</a></li>
+<li><a href="#contributions-to-the-user-guide">Contributions to the User Guide</a>
+<ul class="sectlevel2">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#viewing-single-objects-code-view-code">Viewing single objects: <code>view</code></a></li>
+<li><a href="#listing-objects-by-specified-lists-code-list-code">Listing objects by specified lists: <code>list</code></a></li>
+<li><a href="#command-history">Command History</a></li>
+</ul>
+</li>
+<li><a href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a>
+<ul class="sectlevel2">
+<li><a href="#Design-Ui">UI component</a></li>
+<li><a href="#command-history-2">Command History</a></li>
+<li><a href="#sync-command-history-to-disk-2">Sync Command History to disk</a></li>
+<li><a href="#product-scope">Product Scope</a></li>
+<li><a href="#viewing-a-mams-data-item">Viewing a MAMS data item</a></li>
+<li><a href="#listing-mams-items">Listing MAMS items</a></li>
+<li><a href="#cycling-through-command-history-in-command-box">Cycling through command history in command box</a></li>
+<li><a href="#opening-the-history-window">Opening the history window</a></li>
+<li><a href="#using-hot-keys-in-the-history-window">Using hot-keys in the history window</a></li>
+<li><a href="#persistent-serialization-deserialization-of-command-history-to-from-disk">Persistent serialization/deserialization of command history to/from disk</a></li>
+</ul>
+</li>
+</ul></div></div><div id="content"><div id="preamble">
 <div class="sectionbody">
+<h2 id="project-module-appeal-management-system-mams" class="discrete">Project: Module Appeal Management System (MAMS)</h2>
 <hr>
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>MAMS - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" height="50%">
+</div>
+<div class="title">Figure 1. Sample User Interface of MAMS</div>
 </div>
 <div class="paragraph">
-<p>Note: This portfolio was adapted from the AddressBook project. All information written herein (28th Septemeber 2019) is not yet revised for the new application.</p>
+<p>Every semester, administrators from the National University of Singapore (NUS) have to
+systematically work their way through a heavy backlog of special requests, known as "appeals".
+These appeals are usually made by frantic students during Module Registration,
+a system where students register for their
+desired courses in the upcoming academic term, and represent special circumstances that require
+human judgement to resolve.</p>
+</div>
+<div class="paragraph">
+<p><strong>The Module Appeal Management System (MAMS)</strong> is hence a desktop app that aims
+to fuse a Command Line Interface (CLI) style command input with a triple-pane
+GUI for easy navigation of appeals, module information, and student
+particulars all in a single display. By combining the precision and speed of a CLI
+input with the powerful side-by-side overview afforded by a GUI,
+this app is particularly aimed towards <strong>appeal
+administrators who prefer to blaze through their heavy backload of appeals
+without ever having to leave the comfort of the keyboard for their mouse</strong>. MAMS aims
+to be a self-contained application for fetching appeal, module, and student information, while
+providing a complete suite of tools for intuitive navigation of the comprehensive data display and
+resolving appeals. These include, but may not be limited to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <strong>powerful side-by-side triple-pane list cell display of appeal, module, and student data</strong>, with commands to quickly navigate between
+compact list views of multiple items and comprehensive expanded displays of single items.</p>
+</li>
+<li>
+<p>A <strong>command history feature</strong> for administrators to quickly cycle through and re-use old commands, while providing a comprehensive
+and permanent log of all actions performed within the application.</p>
+</li>
+<li>
+<p>A <strong>clash feature</strong> that allows administrators to accurately determine any potential timetable clashes in appeal cases,
+student workloads, or any two particular modules.</p>
+</li>
+<li>
+<p>A <strong>find feature</strong> that enables administrators to quickly locate specific appeal, module, and student data, narrowing down clutter within the display.</p>
+</li>
+<li>
+<p>An <strong>add/remove module feature</strong> that allows administrators to allocate or remove modules from students, while automatically checking for
+potential hiccups like duplicate assignments.</p>
+</li>
+<li>
+<p>An <strong>approve/reject feature</strong> that allows administrators to close or resolve appeals in fast succession, and even provides functionality for mass operations.</p>
+</li>
+<li>
+<p>A <strong>set credits feature</strong> that provides administrator with the functionality to override allowable student workloads.</p>
+</li>
+<li>
+<p>An <strong>undo/redo feature</strong> to correct any recent unwanted data changes that may have been accidentally committed by the administrator.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MAMS is written primarily in Java, and features a GUI created with JavaFX, with CSS used to augment the GUI for improved user experience. It has about
+13 kLoC.</p>
 </div>
 </div>
 </div>
@@ -23,29 +107,84 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>a suite of history-related features and functionality</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Gives administrators the ability to cycle through previous commands for auto-filling of the command-box using <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> keys</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Keeps a permanent log of command execution by time-stamping each command, storing its result, and marking it according to execution success.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Enables administrator to open a new window displaying all command history.
+The display is updated in real-time, and can be filtered or toggled to hide verbose outputs.
+It also uses hot-keys for mouse-less navigation and triggering of clipboard functions.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Persistent serialization of command history to disk, with subsequent deserialization and loading on startup.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Justification:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Appeal resolution can drastically affect a student&#8217;s academic career. It is hence extremely
+important for the system (and those in supervisory positions over the administrators) to keep a permanent,
+time-stamped, displayable and filterable log of all executed commands and actions that an administrator performs.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Improves usability and convenience of the product significantly as administrators can easily recycle past commands using arrow keys, drastically cutting down
+on monotonous and repetitive typing, which is crucial for a CLI-style application.</p>
+</li>
+<li>
+<p>History window can also provide real-time display of recently entered commands, helping administrators to keep on track through a real-time display of recent commands. It also further enhances convenience
+by allowing users to quickly search through history (using hot-keys) and copy desired commands/parameters that may be too verbose or context-dependent to recall from memory
+or identify from cycling through the arrow keys alone.</p>
+</li>
+<li>
+<p>Lastly but not exhaustively, persistent logging of history can allow administrators to quickly orientate themselves to what they did in a previous session,
+allowing them to resume their work much more quickly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This enhancement can have useful and interesting implications for future command development. For example, an <code>undo</code> command having the knowledge of all previously
+executed commands, along with their details and execution status, can specifically target certain types of commands to be undone. Time-stamped history entries, along
+with the record of successful/non-successful commands, can provide valuable work statistics for the admin/NUS. The independent serialization of command history to disk can allow MAMS to recover from
+catastrophic data corruption by repeating the same sequence of commands on the original data source retrieved from NUS.</p>
+</li>
+<li>
+<p>This suite of history features was especially challenging as it required extensive end-to-end implementation across the whole of MAMS (from backend storage,
+to model and logic, and finally to extensive changes and creation of new element in GUI). To integrate the entire suite of features into MAMS smoothly, it
+required an in-depth analysis of design alternatives (eg. how existing commands can access history, placement of CommandHistory,
+implementing real-time updates of the history window) in order for it to mesh well with the existing code architecture.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Was solely in charge of the MAMS UI/UX. Re-worked entire GUI with revised layout/colour-scheme, and further improved the display and navigability of
+the visual data by implementing <code>list</code> and <code>view</code> commands to switch between side-by-side compact list views and expanded card views.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=sendorasleft&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=SendorasLeft&amp;tabRepo=AY1920S1-CS2103-T11-2%2Fmain%5Bmaster%5D">RepoSense Link</a>]
+(Use provided RepoSense filters to view "Functional" and "Test" Code)</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -56,7 +195,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.1</code> - <code>v1.4</code> (4 major releases, 1 minor) on GitHub</p>
+</li>
+<li>
+<p>Refactored and renamed the initial AB3 source code in preparation for MAMS development (<a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/39">#39</a>)</p>
+</li>
+<li>
+<p>Set up issue tracker</p>
+</li>
+<li>
+<p>Managed milestones <code>v1.2</code> - <code>v1.4</code> (3 milestones) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -66,39 +214,38 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Responsible for adapting and redesigning of the entire layout of GUI for new application
+(Pull requests <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/68">#68</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/75">#75</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/104">#104</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Updated the GUI color scheme (Pull requests <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/81">#81</a>, <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/112">#112</a>)</p>
+</li>
+<li>
+<p>Wrote and adapted the initial common test utilities for the new application</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Documentation:</p>
+<p>Implemented tests for the new features
+increasing coverage by ~10% (Pull requests <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/112">#112</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/203">#203</a>)</p>
 <div class="ulist">
 <ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
 <li>
 <p>Community:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/77">#77</a>, <a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/61">#61</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/33">1</a>, <a href="https://github.com/AY1920S1-CS2103-T14-3/main/issues/128">2</a>, <a href="https://github.com/AY1920S1-CS2103-T14-3/main/issues/132">3</a>, <a href="https://github.com/AY1920S1-CS2103-T14-3/main/issues/125">4</a>)</p>
 </li>
 </ul>
 </div>
@@ -108,10 +255,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Integrated Netlify (a third-party website deployment platform) into the team GitHub repository (<a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/197">#197</a>)</p>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Set up Coveralls for the team Github repository to track test coverage (<a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/105">#105</a>)</p>
+</li>
+<li>
+<p>Set up Codacy for the team Github repository to automatically identify coding quality issues (<a href="https://github.com/AY1920S1-CS2103-T11-2/main/pull/105">#105</a>)</p>
 </li>
 </ul>
 </div>
@@ -120,9 +270,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -139,6 +286,449 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="introduction"><a class="link" href="#introduction">Introduction</a></h3>
+<div class="paragraph">
+<p>The Module Appeal Management System (MAMS) is a desktop app that aims
+to combine Command Line Interface (CLI) style commands with a triple-pane
+GUI for easy navigation of module appeals, module information, and student
+particulars. This app is particularly aimed towards <strong>module appeal
+administrators who prefer to work through their heavy backload of module appeals
+without ever having to leave the comfort of the keyboard for their mouse</strong>.
+The MAMS system can quickly bring up entire lists of students, appeals,
+and modules for side-by-side comparison, with specific display commands
+to view the expanded details of any particular object in question.
+Once reviewing of the information is complete, the MAMS system also
+provides a suite of commands for resolving appeals,
+overriding MC limits, and allocation of modules to students.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quick-start"><a class="link" href="#quick-start">Quick Start</a></h3>
+<div class="olist discrete">
+<ol class="discrete">
+<li>
+<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
+</li>
+<li>
+<p>Download the latest <code>mams.jar</code>
+<a href="https://github.com/AY1920S1-CS2103-T11-2/main/releases">here</a>.</p>
+</li>
+<li>
+<p>Copy the file to the folder you want to use as the home folder
+for The Module Appeal Management System (MAMS).</p>
+</li>
+<li>
+<p><strong>Important</strong>: Unzip <code>data.zip</code>. Inside, there should be a folder
+containing <code>mams.json</code>, ie. <code>data/mams.json</code>.
+Copy the <code>data</code> folder containing <code>mams.json</code> to the same directory as <code>mams.jar</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is required due to the special nature of the application,
+where target users are specifically restricted from
+deleting/adding data entries since it does not fall under their job scope.
+We hence provide a sample data-set for testing purposes.
+This may be replaced with actual data differing on a semester-by-semester basis.</p>
+</li>
+<li>
+<p>Note that certain un-archiver tools may automatically create a
+new parent <code>data/</code> folder around the zipped <code>data/</code> folder.
+Should that happen, please only move the inner <code>data/</code> folder
+containing <code>mams.json</code> to the target directory.</p>
+</li>
+<li>
+<p><strong>Important</strong> : Before proceeding to the next step, check that the resulting
+folder structure/names look a little like the below:</p>
+<div class="literalblock">
+<div class="content">
+<pre>.
+├── mams.jar
+└── data/
+    └── mams.json</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" width="790">
+</div>
+</div>
+</li>
+<li>
+<p>NOTE: If the GUI does not display any items on startup,
+the previous step was performed incorrectly.
+Please close the application and review the folder structure.</p>
+</li>
+<li>
+<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.</p>
+</li>
+<li>
+<p>Refer to <a href="#features">Features</a> for details of each command.</p>
+</li>
+<li>
+<p>Note that the application is developed primarily for Windows
+or MacOS usage. If you use a different OS,
+you may face unexpected issues.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="features"><a class="link" href="#features">Features</a></h3>
+<div class="paragraph">
+<p>Broadly speaking, MAMS handles three main types of items: <strong>Appeals, Modules, and Students</strong>.</p>
+</div>
+<div class="paragraph">
+<p>An appeal request is uniquely identified by a prefix <code>C</code>, followed by a 6-digit Case ID, eg. <code>C123456</code></p>
+</div>
+<div class="paragraph">
+<p>A module is uniquely identified by a COURSE_PREFIX (eg. <code>CS</code> for Computer Science) and a 4 character sequence. eg. <code>CS2103</code>.</p>
+</div>
+<div class="paragraph">
+<p>A student is uniquely identified by his/her 8-character Matriculation Number starting with a letter, eg. <code>A0132243</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each command must begin with a command word. See each command
+below for the list of associated command words.</p>
+</li>
+<li>
+<p>Words in <code>UPPER_CASE</code> are the arguments to be supplied by the user eg. <code>INDEX</code> denotes
+that you should provide a numeric index in the command-specified format.</p>
+</li>
+<li>
+<p>Items enclosed by square brackets are optional, eg. <code>list [-a] [-m] [-s]</code>
+can be used as <code>list</code> or <code>list -s</code>.
+However, some commands may require that at
+least one of the optional parameters be present. These will be specified
+in the command itself.</p>
+</li>
+<li>
+<p>Any item that is followed by an ellipsis (<code>&#8230;&#8203;</code>) can be used multiple times including zero
+eg. <code>[m/PARAMETER]&#8230;&#8203;</code> can be supplied as <code>m/PARAMETER</code> or <code>m/PARAMETER1 m/PARAMETER2</code></p>
+</li>
+<li>
+<p>Arguments within square brackets can be supplied in any order.</p>
+</li>
+<li>
+<p>As a general rule, invalid or unnecessary parameters will cause
+the command to be treated as invalid. This is not
+definitive, however, and exceptions to this rule may be specified
+for specific commands, either now or in the future.</p>
+</li>
+<li>
+<p>Tags will often be used in the command to specify the targeted list for the command.
+Certain commands allow operations on multiple lists, eg.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>a/</code> : prefix for supplying values specific to the
+<code>Appeal List</code> (<code>a/VALUE_TO_BE_SUPPLIED</code>)</p>
+</li>
+<li>
+<p><code>m/</code> : prefix for supplying values specific to the
+<code>Module List</code> (<code>m/VALUE_TO_BE_SUPPLIED</code>)</p>
+</li>
+<li>
+<p><code>s/</code> : prefix for supplying values specific to the
+<code>Student List</code> (<code>m/VALUE_TO_BE_SUPPLIED</code>)</p>
+</li>
+<li>
+<p>This list is not exhaustive, and is for illustrative purposes only.
+Precise formats will be given in each command.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-single-objects-code-view-code"><a class="link" href="#viewing-single-objects-code-view-code">Viewing single objects: <code>view</code></a></h3>
+<div class="paragraph">
+<p>This command brings up an item with fully expanded details on a single pane.
+Multiple MAMS items can be displayed
+in one single command, as long as they are from different types.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>view [a/INDEX] [m/INDEX] [s/INDEX]</code></p>
+</div>
+<div class="paragraph">
+<p>Note: Even though all the parameter tags are marked as optional,
+at least one must be present for the command to
+execute. In the case where a parameter tag is used more than once,
+the last tag of that type will be accepted.</p>
+</div>
+<div class="paragraph">
+<p>Tags:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>a/INDEX</code>: displays the expanded details of the appeal at <code>INDEX</code> on the displayed appeal list</p>
+</li>
+<li>
+<p><code>m/INDEX</code>: displays the expanded details of the module at <code>INDEX</code> on the displayed module list</p>
+</li>
+<li>
+<p><code>s/INDEX</code>: displays the expanded details of the student at <code>INDEX</code> on the displayed student list</p>
+</li>
+<li>
+<p>All supplied <code>INDEX</code> values must be non-zero positive integers.</p>
+</li>
+<li>
+<p>When multiple tags of the same type are specified, only the last supplied tag of each type will be checked.</p>
+</li>
+<li>
+<p>Invalid parameters will cause the command to fail</p>
+</li>
+<li>
+<p>At least one prefix must be present for the command to execute successfully.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view m/7</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ViewCommandDemoBefore.png" alt="ViewCommandDemoBefore" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output: Fully expanded administrative details of the module at index 7.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ViewCommandDemoAfter.png" alt="ViewCommandDemoAfter" width="790">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-objects-by-specified-lists-code-list-code"><a class="link" href="#listing-objects-by-specified-lists-code-list-code">Listing objects by specified lists: <code>list</code></a></h3>
+<div class="paragraph">
+<p>Format: <code>list [-a] [-m] [-s]</code></p>
+</div>
+<div class="paragraph">
+<p>Options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-a</code>: lists out all appeals in MAMS</p>
+</li>
+<li>
+<p><code>-m</code>: lists out all modules in MAMS</p>
+</li>
+<li>
+<p><code>-s</code>: lists out all students in MAMS</p>
+</li>
+<li>
+<p>if no options are specified, <code>list</code> command will behave as
+though all three tags have be applied. ie. it will
+list out all appeals, modules, and students. This is for the convenience of the user.</p>
+</li>
+<li>
+<p>if an invalid parameter has been supplied, eg. <code>hello</code>, <code>-hs</code> or <code>-invalid</code>, an error/usage message will be shown,
+and the command will be aborted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>eg. for <code>list -a hello -invalid</code>, <code>hello</code> and <code>-invalid</code> will cause the command to fail.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list -a -s</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ListCommandDemoBefore.png" alt="ListCommandDemoBefore" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output: Lists all appeals and students in MAMS</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ListCommandDemoAfter.png" alt="ListCommandDemoAfter" width="790">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-history"><a class="link" href="#command-history">Command History</a></h3>
+<div class="sect3">
+<h4 id="cycle-through-command-history"><a class="link" href="#cycle-through-command-history">Cycle through command history</a></h4>
+<div class="paragraph">
+<p>In the command box (the area where you type in commands), you can cycle through your previous inputs by using the
+<kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrow keys. They will autofill the command box with the previous and next input stored
+in the command history respectively, in a style similar to most CLI terminals.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HistoryCommandArrowDemoBefore.png" alt="HistoryCommandArrowDemoBefore" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>After pressing <kbd>&uarr;</kbd></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HistoryCommandArrowDemoAfter.png" alt="HistoryCommandArrowDemoAfter" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-command-history-code-history-code"><a class="link" href="#show-command-history-code-history-code">Show command history: <code>history</code></a></h4>
+<div class="paragraph">
+<p>Opens a separate window displaying the command history in MAMS. The display of the command feedback can be turned
+off.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>history [-o] [-s]</code></p>
+</div>
+<div class="paragraph">
+<p>Options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-o</code>: hide the command feedback in the history window</p>
+</li>
+<li>
+<p><code>-s</code>: show only successful commands in the history window</p>
+</li>
+<li>
+<p>all options for this command must be space-delimited, as shown in the format above</p>
+</li>
+<li>
+<p>if no options are supplied, the <code>history</code> command will default to show
+both command input and command feedback history in the
+history window, as well as all executed commands (regardless of success status).</p>
+</li>
+<li>
+<p>if an invalid parameter has been supplied, eg. <code>hello</code>, <code>-hs</code> or <code>-invalid</code>, an error/usage message will be shown,
+and the command will be aborted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>eg. for <code>history -o hello -invalid</code>, <code>hello</code> and <code>-invalid</code> will cause the command to fail.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hot-key Usage:</p>
+</div>
+<div class="paragraph">
+<p>When the history window is focused, you may use several hot-keys to navigate around the window.
+They are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><kbd>&uarr;</kbd> <kbd>&darr;</kbd> Navigate up and down the history entries.</p>
+</li>
+<li>
+<p><kbd>q</kbd> Copy the command of the currently selected history entry to the system clipboard.</p>
+</li>
+<li>
+<p><kbd>esc</kbd> Close the history window.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Sample Input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>history</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HistoryCommandDemo.png" alt="HistoryCommandDemo" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Sample Output: Opens a window displaying command history</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HistoryWindowDemo.png" alt="HistoryWindowDemo" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>After pressing <kbd>&uarr;</kbd> two times,</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HistoryWindowUpArrowDemo.png" alt="HistoryWindowUpArrowDemo" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Now, after pressing <kbd>q</kbd>, the command text of the selected cell will be copied,</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/HistoryWindowCopyDemo.png" alt="HistoryWindowCopyDemo" width="790"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sync-command-history-to-disk"><a class="link" href="#sync-command-history-to-disk">Sync Command History to disk</a></h4>
+<div class="paragraph">
+<p>Command history is automatically saved to disk whenever it is updated with new inputs.
+Upon the next MAMS startup, previous command history will be loaded from disk as well.
+In other words, command history is persistent across usage sessions of MAMS.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -154,14 +744,1323 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiClassArchitectureDiagram.png" alt="UiClassArchitectureDiagram">
 </div>
+<div class="title">Figure 2. Overall Structure of the UI Component</div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/mams/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts
+e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StatusBarFooter</code>,
+ <code>AppealListPanel</code> (from <code>Appeal</code> UI package), <code>ModuleListPanel</code> (from <code>Module</code> UI package) ,
+ <code>StudentListPanel</code> (from <code>Student</code> UI package) etc.
+All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>A closer look at each of the packages within the UI component is given in the next two class diagrams.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiItemListClassDiagram.png" alt="UiItemListClassDiagram">
+</div>
+<div class="title">Figure 3. A more detailed view of the classes within the <code>Appeal</code>, <code>Module</code>, and <code>Student</code> packages. Note that the abstract class <code>UiPart</code> is intentionally omitted for neatness of representation.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiHistoryWindowClassDiagram.png" alt="UiHistoryWindowClassDiagram">
+</div>
+<div class="title">Figure 4. A more detailed view of the classes within the <code>History</code> package. Note that the abstract class <code>UiPart</code> is intentionally omitted for neatness of representation.</div>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Listens for changes to <code>Model</code> (Appeals, Modules, Students) and <code>Logic</code> (Command History) data so that the UI can be updated with the modified data.</p>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:12:25 UTC</div></div></div></body></html>
+<div class="sect2">
+<h3 id="command-history-2"><a class="link" href="#command-history-2">Command History</a></h3>
+<div class="paragraph">
+<p>The command history feature encapsulates a few related functions, mainly:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The ability to cycle through previous inputs in the <code>CommandBox</code> using the <kbd>&uarr;</kbd>
+and <kbd>&darr;</kbd> arrow keys.</p>
+</li>
+<li>
+<p>A command to open a new window displaying the command history</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Optional parameters can be specified to hide command output and show only successful commands.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Persistent storage of command history - the history is serialized to JSON file format
+and is loaded upon the next startup</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="cycling-through-previous-inputs"><a class="link" href="#cycling-through-previous-inputs">Cycling Through Previous Inputs</a></h4>
+<div class="paragraph">
+<p>The core of the cycle-command-history feature is implemented through three different classes:
+ <code>CommandHistory</code>, <code>ListPointer</code>, and <code>InputOutput</code>. In addition, the <code>CommandBox</code> from AB3 was modified
+to accommodate the changes.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>InputOutput</code>: Class representing a single command history entry. Comprises of an <code>input</code> and <code>output</code> String,
+a <code>TimeStamp</code> object, and a flag indicating whether execution was successful.</p>
+</li>
+<li>
+<p><code>CommandHistory</code>: A wrapper around a list of <code>InputOutput</code> objects along with specific methods, representing
+the command history of the command entered thus far.</p>
+</li>
+<li>
+<p><code>ListPointer</code>: An iterable pointer to a <code>List</code> of objects. This is used by the <code>CommandBox</code> to cycle through
+past commands.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This differs from <code>java.util.Iterator</code> in the sense that <code>ListPointer#next()</code> always advances the pointer first then returns the
+next element in the <code>List</code>, while <code>java.util.Iterator#next()</code> does the opposite: it returns
+the current value, then advances the pointer.</p>
+</li>
+<li>
+<p><code>ListPointer</code> was implemented using Java generics
+to serve as a common utility class in <code>mams.common.util</code>, but is used primarily for
+iterating a <code>List</code> of <code>InputOutput</code> objects for the command history feature.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>CommandBox</code>: The command box in MAMs was modified to respond to the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd>
+<code>KeyEvent</code>, auto-filling the text field with the previous commands when iterating through the command history.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is a class diagram depicting the relationship between the involved classes for cycling
+through previous inputs in the command box.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CycleCommandHistoryClassDiagram.png" alt="CycleCommandHistoryClassDiagram">
+</div>
+<div class="title">Figure 5. Class Diagram depicting classes involved in cycling through command history.</div>
+</div>
+<div class="paragraph">
+<p><code>CommandHistory</code> provides an unmodifiable view into the command history using an <code>ObservableList</code>
+passed to <code>CommandBox</code> upon initialization. <code>CommandBox</code> uses this list to reinitialize and
+update <code>ListPointer</code> after every command execution. Upon initialization, <code>ListPointer</code> keeps
+an internal copy of the InputOutput list. Finally, <code>CommandBox</code> responds to user key-presses and
+retrieves the previous commands by using <code>ListPointer</code> to iterate
+through its internal defensive list.</p>
+</div>
+<div class="paragraph">
+<p>Below is a simple sequence diagram depicting this function. Note that some methods/pathways are not
+depicted for brevity.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CycleCommandHistorySequenceDiagram.png" alt="CycleCommandHistorySequenceDiagram">
+</div>
+<div class="title">Figure 6. Sequence Diagram depicting a possible execution path for cycling through history entries.</div>
+</div>
+<div class="paragraph">
+<p>The diagram above first shows how <code>CommandBox</code> re-initializes and updates <code>ListPointer</code> after
+a command has been entered. Thereafter (in the period between command inputs),
+<code>KeyEvent</code> events are handled by <code>handleKeyPress</code>,
+which replaces the text in its text field accordingly.</p>
+</div>
+<div class="paragraph">
+<p><strong>Design Considerations</strong></p>
+</div>
+<div class="paragraph">
+<p>Aspect: How <code>ListPointer</code> (iterator used by <code>CommandBox</code>) is updated</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation: Stores a defensive copy of the command history in <code>ListPointer</code>.
+The <code>ListPointer</code> is re-initialized after every command
+execution in MAMS (when new entries are added to the command history).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ListPointer</code> only has a direct dependence on the passed <code>CommandHistory</code> list during initialization.
+If the reference to that list is invalidated for any reason while
+the user is iterating through the list, <code>ListPointer</code> will be unaffected since it stores a defensive copy.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It may be more computationally heavy to re-initialize <code>ListPointer</code> with a new defensive copy after every
+command execution, especially if the command history has many entries from long-term usage of the application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative Implementation: Do not store a defensive copy. After every re-initialization, <code>ListPointer</code>
+will instead store the direct reference to the command history list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ListPointer</code> re-initialization will most likely process in O(1) constant time (only needs to copy reference),
+which might be computationally more efficient than the current implementation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the reference to the list is invalidated for any reason (eg. new feature by future developers) in between command executions, <code>ListPointer</code>
+might run into an unrecoverable error (eg. <code>NullPointerException</code>) while user is cycling and iterating through command history.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="displaying-history-window-code-historycommand-code"><a class="link" href="#displaying-history-window-code-historycommand-code">Displaying History Window: <code>HistoryCommand</code></a></h4>
+<div class="paragraph">
+<p>The <code>HistoryCommand</code> feature allows users to display a separate window showing the
+MAMS input/output history upon command.</p>
+</div>
+<div class="paragraph">
+<p>The core of the <code>HistoryCommand</code> feature is facilitated by a few different classes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>HistoryCommand</code>: A sub-type of the abstract <code>Command</code> class. Represents a user command to trigger the display
+of the history window.</p>
+</li>
+<li>
+<p><code>HistoryCommandParser</code>: A class to parse user input in the context of a <code>HistoryCommand</code>,
+returning a <code>HistoryCommand</code>.</p>
+</li>
+<li>
+<p><code>HistoryWindow</code>: A UI class representing the controller for the history window. Displays information
+about the command history to the user</p>
+</li>
+<li>
+<p><code>CommandHistory</code>: see previous section.</p>
+</li>
+<li>
+<p><code>FilterOnlyCommandHistory</code>: An interface that inherits from <code>ReadOnlyCommandHistory</code>. Exposes methods to
+read and filter the internal list in <code>CommandHistory</code>, while restricting modification access.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity sequence diagram provides a high-level view
+of how the command is executed, along with the behaviour of the history window:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HistoryCommandActivityDiagram.png" alt="HistoryCommandActivityDiagram">
+</div>
+<div class="title">Figure 7. HistoryCommand Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p>One specific execution example of the show-history feature with
+more specific implementation details is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters <code>history -o -s</code> into command box. The <code>-o</code> option indicates user intention to hide all command output
+display in the history window, and the <code>-s</code> option indicates user intention to show only successful commands.</p>
+</li>
+<li>
+<p>A <code>HistoryCommand</code> object is created after parsing, with <code>hideOutput</code> set to true, and HistoryDisplaySettings set to
+<code>SHOW_ONLY_SUCCESSFUL</code>.</p>
+</li>
+<li>
+<p><code>HistoryCommand</code> object is executed on <code>Model</code> (unused) and <code>FilterOnlyCommandHistory</code>. The <code>FilterOnlyCommandHistory</code> taken in as a parameter is updated
+with a predicate to filter successful commands.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NOTE: Since the history window uses an observer pattern to update the history window (keeps reference to <code>ObservableList</code>),
+the history window is updated at this step.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>CommandResult</code> object is returned
+with <code>showHistory</code> and <code>hideOutput</code> flags set to true.</p>
+</li>
+<li>
+<p><code>Logic</code> updates <code>CommandHistory</code> with this command, as with any other command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NOTE: Again, the observer pattern used by the history window prompts a GUI update at this step.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The <code>CommandResult</code> object is passed to the calling GUI element (<code>MainWindow</code>), which is then used to set
+the flags in <code>HistoryWindow</code> controller accordingly.</p>
+</li>
+<li>
+<p><code>HistoryWindow</code> hides all command outputs in the history window.</p>
+</li>
+<li>
+<p>MAMS displays the history window.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This specific execution case is shown in the following sequence diagram. Note that some
+methods are omitted for brevity.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HistoryCommandSequenceDiagram.png" alt="HistoryCommandSequenceDiagram">
+</div>
+<div class="title">Figure 8. <code>HistoryCommand</code> Sequence Diagram for the specific input <code>history -o -s</code></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>HistoryCommandParser</code> and <code>HistoryCommand</code> should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Design Consideration</strong></p>
+</div>
+<div class="paragraph">
+<p>Aspect: Method for displaying command history</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation: Deploy a dedicated pop-up window for displaying command history. This window will retrieve the
+<code>CommandHistory</code> list directly to update itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>All display decisions (eg. formatting of the history text, navigability of the list) can be encapsulated
+within the UI component - specifically, within <code>HistoryWindow</code> and its related classes.</p>
+</li>
+<li>
+<p>Display can be optimized solely for displaying the command history, without the need to check for compatibility with
+other commands/features that may be using the same UI element to display.</p>
+</li>
+<li>
+<p>Since command history can be extremely verbose, having a separate pop-up window will ensure that the user is have enough
+space to view it properly.</p>
+</li>
+<li>
+<p>The history window can be kept open while running other commands to provide informative real-time feedback on commands
+that were performed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires a whole new GUI window (and its elements) to be created and debugged for any display issues, which can be a
+tedious process.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative Implementation: Format the entire history to text within the execution of <code>HistoryCommand</code> and pass it back to the GUI
+as a normal command feedback, to be displayed in the <code>ResultDisplay</code> box of the GUI.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires very minimal change to the AB3 GUI, since the GUI elements for <code>ResultDisplay</code> already exists
+to display normal command feedback.</p>
+</li>
+<li>
+<p>The history window GUI elements would no longer be required, eliminating the need to create, style, debug, and
+format an entirely new GUI window.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Text display filtering and formatting is now handled directly by the <code>HistoryCommand</code> class, which severely limits
+the ability of the GUI to customize the display (eg. colour code input and output differently)</p>
+</li>
+<li>
+<p>As a corollary to the above point, the <code>HistoryCommand</code> class is now
+in charge of one aspect of the display formatting, which is not a good separation of responsibilities
+between the <code>Logic</code> and <code>Ui</code> components of MAMS.</p>
+</li>
+<li>
+<p>The <code>ResultDisplay</code> on the main window of the GUI application is only optimized to display command feedback
+of short length (up to 3 or 4 lines on most monitors). It is hence not suitable for displaying
+output from the <code>HistoryCommand</code>, which can become extremely verbose especially if the application has
+been used extensively.</p>
+</li>
+<li>
+<p>If the command output in the history is to be displayed, special care must be taken not to recursively include
+the outputs of previous <code>history</code> commands in later <code>history</code> commands. (This is not an issue in the current implementation,
+which separates history command feedback from the history display through the means of a separate UI). A contrived example
+is shown below:</p>
+<div class="literalblock">
+<div class="content">
+<pre>&gt;&gt; history
+input: list -a
+output: listed all appeals
+&gt;&gt; history
+input: list -a
+output: listed all appeals
+input: history
+output: input: list -a
+        output: listed all appeals
+&gt;&gt; history
+input: list -a
+output: listed all appeals
+input: history
+output: input: list -a
+        output: listed all appeals
+input: history
+output: input: list -a
+        output: listed all appeals
+        input: history
+        output: input: list -a
+                output: listed all appeals</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each subsequent call to <code>history</code> command unnecessarily includes outputs of previous <code>history</code> commands</p>
+</li>
+<li>
+<p>Special conditional logic is hence required to exclude or handle <code>history</code> command output from the command history,
+which can obfuscate the code for command history and cause it
+to be less understandable to future developers if not implemented or documented properly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Whenever history is to be viewed, the <code>history</code> command has to be performed again.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Aspect: Implementation to allow existing <code>Command</code> sub-type classes like <code>HistoryCommand</code> to access and manipulate
+command history (eg. read past commands, perform filtering)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation: To allow <code>HistoryCommand</code> to access the command history, change the
+method signature in <code>Command#execute(Model model)</code>
+to accept another <code>FilterOnlyCommandHistory</code> object (to access <code>CommandHistory</code> through an API that only
+allows filtering and reading, not modification). The history window GUI elements will then use
+the observer pattern to update itself based on changes in the <code>FilteredCommandHistory</code>. A flag is also
+raised in the returned <code>CommandResult</code> object to indicate to the GUI that the history window is to be opened.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The history window will update itself automatically (regardless of whether it is showing)
+after every change to the commandHistory, without the need to explicitly pass a list object to
+the GUI controller (except during initialization) after every execution.</p>
+</li>
+<li>
+<p>Future commands will also have access to a version of <code>CommandHistory</code> that allows reading and filtering,
+which can be useful for commands that
+require knowledge of past commands eg. an undo command that can be specified to act only on certain commands.</p>
+</li>
+<li>
+<p>Using such an interface to access <code>CommandHistory</code> also prevents future commands by other developers
+from unwittingly modifying the <code>CommandHistory</code>, which should only take place after execution of command
+in <code>LogicManager</code> in order to maintain a true record of the executed commands.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires a change to the method signature of every existing command, which may cause unexpected
+regression problems if refactoring is not performed appropriately.</p>
+</li>
+<li>
+<p>Most commands may not need access to <code>CommandHistory</code>, so the extra parameter may be redundant in most
+calls of <code>#execute()</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative Implementation 1: Change the method signature of <code>Command#execute(Model model)</code>
+to directly take in a reference to the <code>CommandHistory</code> object in <code>Logic</code>. GUI will still update via the
+observer pattern as per the current implementation, and display command history in a separate window.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Same as the current implementation above, except for the last point.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Also requires a change to the method signature of every existing command, which can cause unexpected
+regression problems if refactoring is not performed appropriately.</p>
+</li>
+<li>
+<p>Future commands by other developers now have direct access to the <code>CommandHistory</code> object in <code>Logic</code>,
+and may cause unintentional modification to <code>CommandHistory</code> object during exeuction of command.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative Implementation 2: Instead of changing the <code>#execute()</code> signature of the <code>Command</code> abstract class,
+only use the flag in the returned <code>CommandResult</code> object to indicate to the GUI that the history window is to be displayed.
+This is similar to how the <code>HelpCommand</code> and <code>ExitCommand</code> is implemented in AB3.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Simple to implement, and requires very minimal changes to the existing code architecture (Only <code>CommandResults</code> and GUI
+needs to be changed/extended).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Although it still provides the same default display as the current implementation, the displayed command history
+can no longer be preferentially filtered based on the parameters passed in to the <code>history</code> command. This may
+limit the utility of the <code>history</code> command (even in future development), as the user now has to scroll
+through the entire history instead of filtering it based on certain criteria (which can even be expanded on in the future).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>One way of circumventing this is by
+passing more boolean flags (or parameters) to <code>CommandResult</code> for the <code>HistoryWindow</code> to process, but this would
+cause the <code>CommandResult</code> class to store too many attributes specific to just the <code>HistoryCommand</code>, which would not be
+a particularly good design since all <code>Command</code> objects have a dependency on the <code>CommandResult</code> class.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sync-command-history-to-disk-2"><a class="link" href="#sync-command-history-to-disk-2">Sync Command History to disk</a></h3>
+<div class="paragraph">
+<p>The command history in MAMS is persistent across sessions -
+history data is automatically saved to disk as a <code>.json</code> file whenever
+<code>CommandHistory</code> is updated with new command information.
+Upon startup, MAMS will load the history data from the same file.
+This is useful for resuming work from a previous session,
+or for supervisory figures within NUS to keep a permanent
+log of all data changes that the appeal administrator makes.</p>
+</div>
+<div class="paragraph">
+<p>This sub-feature of command history is facilitated by the following main classes/interfaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>JsonCommandHistoryStorage</code>: A class that manages the reading and writing of <code>CommandHistory</code> to disk</p>
+</li>
+<li>
+<p><code>JsonSerializableCommandHistory</code>: A class representing a <code>CommandHistory</code> object that is Jackson-compatible (able to be used for
+serializing to-and-from JSON format), with methods for converting it back to the native <code>CommandHistory</code> object used in MAMS.</p>
+</li>
+<li>
+<p><code>JsonAdaptedInputOutput</code>: A class representing an <code>InputOutput</code> object that is Jackson-compatible,
+and contains methods for freely converting itself back to the native <code>InputOutput</code> object used in MAMS.</p>
+</li>
+<li>
+<p><code>CommandHistoryStorage</code>: API that the main <code>StorageManager</code> class uses to manipulate JSON serializing of <code>CommandHistory</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is a class diagram depicting the relationship between the involved classes in JSON serializing of <code>CommandHistory</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CommandHistoryStorageClassDiagram.png" alt="CommandHistoryStorageClassDiagram">
+</div>
+<div class="title">Figure 9. Class diagram of the classes involved in saving and loading of <code>CommandHistory</code> from disk.</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="product-scope"><a class="link" href="#product-scope">Product Scope</a></h3>
+<div class="paragraph">
+<p><strong>Target user profile</strong>:</p>
+</div>
+<div class="paragraph">
+<p>A specialized Appeal Administrator that handles module appeals during
+the hectic start-of-semester module registration in the National
+University of Singapore. He/She:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>prefers desktop apps over other types</p>
+</li>
+<li>
+<p>prefers typing over mouse input</p>
+</li>
+<li>
+<p>can type fast</p>
+</li>
+<li>
+<p>is reasonably comfortable using CLI apps</p>
+</li>
+<li>
+<p>has a need to view large lists of modules, appeal cases, and student
+particulars</p>
+</li>
+<li>
+<p>has a need to edit current student/appeal/module information to
+resolve appeal cases</p>
+</li>
+<li>
+<p>has <strong>neither the authority nor need</strong> to add/remove students, appeals,
+and modules to/from the current database (out of job purview)</p>
+</li>
+<li>
+<p>needs to keep a permanent log of all actions taken when resolving appeals
+for accountability purposes</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Value proposition</strong>: View, manage, and resolve appeals as fast as or
+faster than a typical mouse/GUI driven app.</p>
+</div>
+<h3 id="uc01-resolving-an-appeal-request-to-drop-a-pre-allocated-module" class="discrete">UC01: Resolving an Appeal Request to Drop a Pre-allocated Module</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="paragraph">
+<p>Pre-condition: System has only just been opened, and is showing a list
+of appeals by default.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Admin views the details of the first appeal.</p>
+</li>
+<li>
+<p>Admin displays the full information of the module-of-interest.</p>
+</li>
+<li>
+<p>Admin displays the full information of the student-of-interest.</p>
+</li>
+<li>
+<p>Admin removes the pre-allocated module from student.</p>
+</li>
+<li>
+<p>Admin marks the appeal as approved, with an approval message to be
+displayed to the student.</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. MAMS suggests an autocomplete based on the displayed appeal
+information <strong>(Coming in v2.0)</strong></p>
+<div class="paragraph">
+<p><strong>Use case resumes at step 1.</strong></p>
+</div>
+</li>
+<li>
+<p>4a. Student workload goes below the minimum MC requirement for one
+semester <strong>(Coming in v2.0)</strong></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. MAMS alerts the admin and asks for confirmation</p>
+</li>
+<li>
+<p>4a2. Admin confirms the decision.</p>
+<div class="paragraph">
+<p><strong>Use case resumes at step 5.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="uc05-viewing-command-history" class="discrete">UC05: Viewing Command History</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Admin instructs MAMS to bring up command history</p>
+</li>
+<li>
+<p>MAMS opens a view of the command history.</p>
+</li>
+<li>
+<p>After viewing, admin closes the view.</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Admin wants to show only successful commands.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. Admin specifies intention to show only successful commands in instruction to MAMS.</p>
+</li>
+<li>
+<p>1a2. MAMS hides all unsuccessful commands in history.</p>
+<div class="paragraph">
+<p><strong>Use case resumes at step 2.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. Admin wants to hide all command outputs.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. Admin specifies intention to hide command output in instruction to MAMS.</p>
+</li>
+<li>
+<p>1b2. MAMS hides all command outputs.</p>
+<div class="paragraph">
+<p><strong>Use case resumes at step 2.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Admin uses hot-keys to navigate entries in command history view.</p>
+<div class="paragraph">
+<p><strong>Use case resumes at step 3.</strong></p>
+</div>
+</li>
+<li>
+<p>2b. Admin wants to copy a particular command in the history.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. Admin navigates to history entry of interest (using extension 2a or otherwise).</p>
+</li>
+<li>
+<p>2b1. Admin copies contents of command to clipboard (hotkey or otherwise)</p>
+<div class="paragraph">
+<p><strong>Use case resumes at step 3.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c. Admin uses hot-keys to exit command history view.</p>
+<div class="paragraph">
+<p><strong>Use case ends.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-a-mams-data-item"><a class="link" href="#viewing-a-mams-data-item">Viewing a MAMS data item</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viewing a single item when all items (appeals, modules, and students) are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all items using the <code>list</code> command. Multiple items in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view a/1</code><br>
+Expected: Appeal List now displays the fully expanded details of the appeal previously at index 1.</p>
+</li>
+<li>
+<p>Test case: <code>view a/0</code><br>
+Expected: 0 is an invalid index. No appeal is expanded. Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view m/1</code><br>
+Expected: Module List now displays the fully expanded details of the module previously at index 1.</p>
+</li>
+<li>
+<p>Test case: <code>view m/0</code><br>
+Expected: 0 is an invalid index. No module is expanded. Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/1</code><br>
+Expected: Student List now displays the fully expanded details of the student previously at index 1.</p>
+</li>
+<li>
+<p>Test case: <code>view s/0</code><br>
+Expected: 0 is an invalid index. No student is expanded. Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/invalid</code><br>
+Expected: <code>invalid</code> is not a valid index parameter. No student is expanded. Details are shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Viewing multiple items in a single command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all items using the <code>list</code> command. Multiple items (at least 3) in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view a/1 s/2</code><br>
+Expected: Appeal and Student Lists now displays the fully expanded details of the appeal and student
+previously at indexes 1 and 2 respectively.</p>
+</li>
+<li>
+<p>Test case: <code>view a/0 s/2</code><br>
+Expected: 0 is an invalid index. No appeals or students are expanded, and command execution fails.
+Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view m/1 a/3</code><br>
+Expected: Module and Appeal Lists now displays the fully expanded details of the module and appeal
+previously at indexes 1 and 3 respectively.</p>
+</li>
+<li>
+<p>Test case: <code>view m/-1 s/3</code><br>
+Expected: -1 is an invalid index. No modules or students are expanded. Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/1 a/3 m/2</code><br>
+Expected: Appeal, Module, and Student lists now displays the fully expanded details of
+the appeal, module, and student previously at indexes 3, 2, and 1 previously.</p>
+</li>
+<li>
+<p>Test case: <code>view a/1s/2m/1</code><br>
+Expected: Although the general prefixes are present, they need to be space separated. No items are expanded.
+Details are shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Viewing an item on a list where an item is already being displayed in expanded form:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>view a/1 m/1 s/1</code> after startup, on a non-empty
+data-source. Only one item in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view s/2</code><br>
+    Expected: Student List already contains a student being displayed in expanded form.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/1 a/3 m/2</code><br>
+    Expected: Each of the specified lists already contains an item being displayed in expanded form.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Viewing an item on an empty list:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>find a/adaa m/ada s/1fwfw</code> after startup, on a non-empty
+data-source. There should be no items in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view s/2</code><br>
+    Expected: Student List has no items to reference by index.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/1 a/3 m/2</code><br>
+    Expected: Each of the specified lists do not contain any items to reference by index.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Other invalid formats you can try:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all items using the <code>list</code> command. Multiple items (at least 3) in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view</code><br>
+    Expected: There are no parameters to be processed by the <code>view</code> command.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view everything in this world</code><br>
+    Expected: Invalid parameters specified.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view invalid a/1 s/2</code><br>
+    Expected: Invalid parameters specified.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view a/1 s/ m/3</code><br>
+    Expected: Prefix <code>s/</code> contains an empty field where an INDEX should have been specified.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-mams-items"><a class="link" href="#listing-mams-items">Listing MAMS items</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Listing out all items when all three list displays were previously in expanded views.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>view a/1 m/1 s/1</code> after startup, on a non-empty
+data-source (&gt; 3 items in each MAMS item category). Only one item in each list.</p>
+</li>
+<li>
+<p>Test case: <code>list</code><br>
+    Expected: No parameters specified.
+Defaults to listing out all Appeals, Modules, and Students in all three list displays.</p>
+</li>
+<li>
+<p>Test case: <code>list -a -s -m</code><br>
+    Expected: All Appeals, Modules, and Students in MAMS are
+listed out in all three list displays.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Listing out all specific items when all three displays were previously in expanded views.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>view a/1 m/1 s/1</code> after startup, on a non-empty
+data-source (&gt; 3 items in each MAMS item category). Only one item in each list.</p>
+</li>
+<li>
+<p>Test case: <code>list -a</code><br>
+    Expected: All Appeals in MAMS are
+listed out in the Appeal List display.</p>
+</li>
+<li>
+<p>Test case: <code>list -a -s</code><br>
+    Expected: All Appeals and Students in MAMS are
+listed out in the Appeal and Student List displays respectively.</p>
+</li>
+<li>
+<p>Test case: <code>list -m -s</code><br>
+    Expected: All Modules and Students in MAMS are
+listed out in the Module and Student List displays respectively.</p>
+</li>
+<li>
+<p>Test case: <code>list -m -m -m -m -m -s -s -s -s</code><br>
+    Expected: All Modules and Students in MAMS are
+listed out in the Module and Student List displays respectively (Duplicate valid options are accepted).</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid formats you can try:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>view a/1 m/1 s/1</code> after startup, on a non-empty
+data-source (&gt; 3 items in each MAMS item category). Only one item in each list.</p>
+</li>
+<li>
+<p>Test case: <code>list -</code><br>
+    Expected: Invalid parameter(s) <code>-</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>list -ssssss -a</code><br>
+    Expected: Invalid parameter(s) <code>-ssssss</code> detected (Partial matching is not allowed).
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>list items</code><br>
+    Expected: Invalid parameter(s) <code>items</code> detected (Not an option).
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>list items -a -s</code><br>
+    Expected: Invalid parameter(s) <code>items</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>list items -a -fsfs -invalid -s</code><br>
+    Expected: Invalid parameter(s) <code>items</code>, <code>-fsfs</code>, and <code>-invalid</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cycling-through-command-history-in-command-box"><a class="link" href="#cycling-through-command-history-in-command-box">Cycling through command history in command box</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Cycling back to previous commands from blank box (non empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one or more commands have have executed. No arrow keys have been
+pressed since the last command execution.</p>
+</li>
+<li>
+<p>Press <kbd>&uarr;</kbd> key once<br>
+    Expected: Command box should auto-fill with the last entered command.
+Caret should be moved to the end of the text.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cycling to next command (non empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least two commands have have executed. <kbd>&uarr;</kbd> key has been
+pressed twice since the last command execution, and is now auto-filled
+with the command entered two iterations ago.</p>
+</li>
+<li>
+<p>Press <kbd>&darr;</kbd> key once<br>
+Expected: Command box should auto-fill with the the next command in history
+(in this case, the previously executed command).
+Caret should be moved to the end of the text.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cycling through command history when no commands have been executed (empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: MAMS has been started up for the first time. No commands have been entered, and there is
+no command history. Command box is currently empty.</p>
+</li>
+<li>
+<p>Press <kbd>&darr;</kbd> key once<br>
+Expected: No response from the command box.</p>
+</li>
+<li>
+<p>Press <kbd>&uarr;</kbd> key once<br>
+Expected: No response from the command box.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cycling up past the earliest command entered in history (non-empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one or more commands have have executed. The <kbd>&uarr;</kbd> key has
+been pressed until the command box is auto-filled with the first ever executed command in the application.</p>
+</li>
+<li>
+<p>Press <kbd>&uarr;</kbd> key once<br>
+Expected: No change in text. Caret moves to the beginning of the text to indicate that
+no more history is present.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cycling down past the latest command entered in history (non-empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one or more commands have have executed. The <kbd>&uarr;</kbd> key has
+been pressed once, and command box is auto-filled with the last command entered.</p>
+</li>
+<li>
+<p>Press <kbd>&darr;</kbd> key once<br>
+Expected: Command box will be emptied to indicate that there is no next entry in history.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="opening-the-history-window"><a class="link" href="#opening-the-history-window">Opening the history window</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Opening the history window (valid command format):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: MAMS has been started up.</p>
+</li>
+<li>
+<p>Test case: <code>history</code><br>
+Expected: history pop-up window is opened.</p>
+</li>
+<li>
+<p>Test case: <code>history -o</code><br>
+Expected: history pop-up window is opened, with all command feedbacks hidden.</p>
+</li>
+<li>
+<p>Test case: <code>history -s</code><br>
+Expected: history pop-up window is opened. Only successful commands are shown.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Other invalid commands you can try:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: MAMS has been started up.</p>
+</li>
+<li>
+<p>Test case: <code>history invalid</code><br>
+    Expected: Invalid parameter(s) <code>invalid</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>history invalid -s -h</code><br>
+    Expected: Invalid parameter(s) <code>invalid</code> and <code>-h</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-hot-keys-in-the-history-window"><a class="link" href="#using-hot-keys-in-the-history-window">Using hot-keys in the history window</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> keys to navigate history entries.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: History window is open, and the history display is in focus. At least
+more than one entry is present in the window.</p>
+</li>
+<li>
+<p>Press <kbd>&uarr;</kbd> key once<br>
+Expected: The previous entry in the list is now selected, if any.</p>
+</li>
+<li>
+<p>Press <kbd>&darr;</kbd> key once<br>
+Expected: The next entry in the list is now selected, if any.</p>
+</li>
+<li>
+<p>Press <kbd>q</kbd> key once<br>
+Expected: The command text of the currently selected entry is copied to system clipboard.</p>
+</li>
+<li>
+<p>Press <kbd>esc</kbd> key once<br>
+Expected: History window is closed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persistent-serialization-deserialization-of-command-history-to-from-disk"><a class="link" href="#persistent-serialization-deserialization-of-command-history-to-from-disk">Persistent serialization/deserialization of command history to/from disk</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Resuming with saved command history</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: MAMS has been started up in the past before, and at least one command
+was attempted in one of the previous sessions.</p>
+</li>
+<li>
+<p>Close the currently running MAMS application, if any, and start up a brand new session of MAMS.
+Enter the <code>history</code> command.<br>
+Expected: History window contains command history from previous sessions.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:33:43 UTC</div></div></div></body></html>

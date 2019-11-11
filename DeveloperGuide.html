@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Module Appeal Management System (MAMS) - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Module Appeal Management System (MAMS) - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">MAMS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103-t11-2.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Module Appeal Management System (MAMS) - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>ay1920s1-cs2103-t11-2</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
@@ -30,7 +30,7 @@
 <li><a href="#add-and-remove-module-feature">3.3. Add and remove module feature</a></li>
 <li><a href="#resolve-feature">3.4. Resolve feature</a></li>
 <li><a href="#command-history">3.5. Command History</a></li>
-<li><a href="#ui-ux">3.6. UI/UX</a></li>
+<li><a href="#sync-command-history-to-disk">3.6. Sync Command History to disk</a></li>
 <li><a href="#backup-and-undo-actions-feature">3.7. Backup and undo actions feature</a></li>
 <li><a href="#logging">3.8. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
@@ -54,10 +54,16 @@
 <li><a href="#instructions-for-manual-testing">Appendix E: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">E.1. Launch and Shutdown</a></li>
-<li><a href="#backup-and-restoring">E.2. Backup and Restoring</a></li>
-<li><a href="#undo-and-redo">E.3. Undo and Redo</a></li>
-<li><a href="#check-clash">E.4. Check Clash</a></li>
-<li><a href="#find">E.5. Find</a></li>
+<li><a href="#viewing-a-mams-data-item">E.2. Viewing a MAMS data item</a></li>
+<li><a href="#listing-mams-items">E.3. Listing MAMS items</a></li>
+<li><a href="#cycling-through-command-history-in-command-box">E.4. Cycling through command history in command box</a></li>
+<li><a href="#opening-the-history-window">E.5. Opening the history window</a></li>
+<li><a href="#using-hot-keys-in-the-history-window">E.6. Using hot-keys in the history window</a></li>
+<li><a href="#persistent-serialization-deserialization-of-command-history-to-from-disk">E.7. Persistent serialization/deserialization of command history to/from disk</a></li>
+<li><a href="#backup-and-restoring">E.8. Backup and Restoring</a></li>
+<li><a href="#undo-and-redo">E.9. Undo and Redo</a></li>
+<li><a href="#check-clash">E.10. Check Clash</a></li>
+<li><a href="#find">E.11. Find</a></li>
 </ul>
 </li>
 </ul>
@@ -142,7 +148,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram in <a href="#fig-LogicClassDiagram">Figure 4, &#8220;Structure of the Logic Component&#8221;</a>) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+<p>For example, the <code>Logic</code> component (see the class diagram in <a href="#fig-LogicClassDiagram">Figure 6, &#8220;Structure of the Logic Component&#8221;</a>) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
@@ -162,15 +168,34 @@ The following class plays an important role at the architecture level:</p>
 <h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/UiClassDiagram.png" alt="UiClassDiagram">
+<img src="images/UiClassArchitectureDiagram.png" alt="UiClassArchitectureDiagram">
 </div>
-<div class="title">Figure 3. Structure of the UI Component</div>
+<div class="title">Figure 3. Overall Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/mams/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>AppealListPanel</code>, <code>ModuleListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts
+e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StatusBarFooter</code>,
+ <code>AppealListPanel</code> (from <code>Appeal</code> UI package), <code>ModuleListPanel</code> (from <code>Module</code> UI package) ,
+ <code>StudentListPanel</code> (from <code>Student</code> UI package) etc.
+All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>A closer look at each of the packages within the UI component is given in the next two class diagrams.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiItemListClassDiagram.png" alt="UiItemListClassDiagram">
+</div>
+<div class="title">Figure 4. A more detailed view of the classes within the <code>Appeal</code>, <code>Module</code>, and <code>Student</code> packages. Note that the abstract class <code>UiPart</code> is intentionally omitted for neatness of representation.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiHistoryWindowClassDiagram.png" alt="UiHistoryWindowClassDiagram">
+</div>
+<div class="title">Figure 5. A more detailed view of the classes within the <code>History</code> package. Note that the abstract class <code>UiPart</code> is intentionally omitted for neatness of representation.</div>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -184,7 +209,7 @@ The following class plays an important role at the architecture level:</p>
 <p>Executes user commands using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
+<p>Listens for changes to <code>Model</code> (Appeals, Modules, Students) and <code>Logic</code> (Command History) data so that the UI can be updated with the modified data.</p>
 </li>
 </ul>
 </div>
@@ -195,19 +220,19 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 4. Structure of the Logic Component</div>
+<div class="title">Figure 6. Structure of the Logic Component</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ParserClassDiagram.png" alt="ParserClassDiagram">
 </div>
-<div class="title">Figure 5. Structure of the Parser Component</div>
+<div class="title">Figure 7. Structure of the Parser Component</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/CommandClassDiagram.png" alt="CommandClassDiagram">
 </div>
-<div class="title">Figure 6. Structure of the Command Component</div>
+<div class="title">Figure 8. Structure of the Command Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -239,7 +264,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
-<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>undo</code> Command</div>
+<div class="title">Figure 9. Interactions Inside the Logic Component for the <code>undo</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -260,7 +285,7 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Model Component</div>
+<div class="title">Figure 10. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/tree/master/src/main/java/mams/model/Model.java"><code>Model.java</code></a></p>
@@ -291,7 +316,7 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 9. Structure of the Storage Component</div>
+<div class="title">Figure 11. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-2/main/blob/master/src/main/java/mams/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -336,7 +361,7 @@ StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>,
 <div class="content">
 <img src="images/PredicateClassDiagram.png" alt="PredicateClassDiagram">
 </div>
-<div class="title">Figure 10. Predicate Class Diagram</div>
+<div class="title">Figure 12. Predicate Class Diagram</div>
 </div>
 <div class="paragraph">
 <p>Each <code>FindCommand</code> has a <code>execute()</code> method that takes in a <code>Model</code> object and a <code>FilterOnlyCommandHistory</code> object.
@@ -367,7 +392,7 @@ StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>,
 <div class="content">
 <img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
 </div>
-<div class="title">Figure 11. Find Command Sequence Diagram - user input: "find m/cs1010"</div>
+<div class="title">Figure 13. Find Command Sequence Diagram - user input: "find m/cs1010"</div>
 </div>
 </div>
 </div>
@@ -392,7 +417,7 @@ StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>,
 <div class="content">
 <img src="images/ClashCommandParametersClassDiagram.png" alt="ClashCommandParametersClassDiagram">
 </div>
-<div class="title">Figure 12. ClashCommandParameters Class Diagram</div>
+<div class="title">Figure 14. ClashCommandParameters Class Diagram</div>
 </div>
 <div class="ulist">
 <ul>
@@ -405,7 +430,7 @@ StudentContainsKeywordsPredicate`, <code>ModuleContainsKeywordsPredicate</code>,
 <div class="content">
 <img src="images/ClashCaseClassDiagram.png" alt="ClashCaseClassDiagram">
 </div>
-<div class="title">Figure 13. ClashCase Class Diagram</div>
+<div class="title">Figure 15. ClashCase Class Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -479,7 +504,7 @@ and <code>Module</code> to add/drop is retrieved from <code>model.getFullModuleL
 <div class="content">
 <img src="images/ClashCommandActivityDiagram.png" alt="ClashCommandActivityDiagram">
 </div>
-<div class="title">Figure 14. Work Flow of Clash Command</div>
+<div class="title">Figure 16. Work Flow of Clash Command</div>
 </div>
 <div class="sect4">
 <h5 id="design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking"><a class="link" href="#design-consideration-how-to-deal-with-different-user-input-formats-for-different-types-of-checking">Design Consideration: How to deal with different user input formats for different types of checking</a></h5>
@@ -651,7 +676,7 @@ There are the two sub-classes which extends <code>ModCommand</code> used to hand
 <div class="content">
 <img src="images/ModCommandClassDiagram.png" alt="ModCommandClassDiagram">
 </div>
-<div class="title">Figure 15. Structure of ModCommand</div>
+<div class="title">Figure 17. Structure of ModCommand</div>
 </div>
 <div class="paragraph">
 <p>Each addmod or removemod command has a <code>execute()</code> method that takes in a <code>Model</code> object. These commands
@@ -701,7 +726,7 @@ student identifier. <code>m/</code> prefix will also be detected and parsed for 
 <div class="content">
 <img src="images/AddModCommandActivityDiagram.png" alt="AddModCommandActivityDiagram">
 </div>
-<div class="title">Figure 16. AddModCommand Activity Diagram</div>
+<div class="title">Figure 18. AddModCommand Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p><code>ApproveCommand.execute()</code></p>
@@ -752,7 +777,7 @@ with the newly created objects. The success message of addmod request will be re
 <div class="content">
 <img src="images/AddModSequenceDiagram.png" alt="AddModSequenceDiagram">
 </div>
-<div class="title">Figure 17. AddModCommand Sequence Diagram</div>
+<div class="title">Figure 19. AddModCommand Sequence Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -835,7 +860,7 @@ To reduce vision clutter, only two of the six checks are shown.
 <div class="content">
 <img src="images/ResolveCommandClassDiagram.png" alt="ResolveCommandClassDiagram">
 </div>
-<div class="title">Figure 18. Structure of ResolveCommand</div>
+<div class="title">Figure 20. Structure of ResolveCommand</div>
 </div>
 <div class="paragraph">
 <p>Each appeal resolution command has a <code>execute()</code> method that takes in a <code>Model</code> object. Resolve commands retrieve information of all students and modules from model to get the relevant student and module.
@@ -944,7 +969,7 @@ Reject commands behaves the same way as approve commands, except it will not mak
 <div class="content">
 <img src="images/ApproveCommandActivityDiagram.png" alt="ApproveCommandActivityDiagram">
 </div>
-<div class="title">Figure 19. ApproveCommand Activity Diagram</div>
+<div class="title">Figure 21. ApproveCommand Activity Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -995,7 +1020,7 @@ and <code>Module</code> requested is retrieved from <code>model.getFullModuleLis
 <div class="content">
 <img src="images/ResolveSequenceDiagram.png" alt="ResolveSequenceDiagram">
 </div>
-<div class="title">Figure 20. ResolveCommand Sequence Diagram</div>
+<div class="title">Figure 22. ResolveCommand Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Below shows how the ResolveCommand mechanism behaves at each step when resolving multiple appeals.</p>
@@ -1103,7 +1128,7 @@ Also, because Mass resolve commands operates on appeal IDs, <code>model.getFullA
 <div class="content">
 <img src="images/MassApproveActivityDiagram.png" alt="MassApproveActivityDiagram">
 </div>
-<div class="title">Figure 21. MassApprove Activity Diagram</div>
+<div class="title">Figure 23. MassApprove Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>Step 5.  After resolving all the appeal IDs in the valid Appeal list, <code>MassApprove</code> will return a <code>CommandResult</code> object which contains the feedback message.  Feedback message will show a list of successfully approved appeal IDs,
@@ -1114,7 +1139,7 @@ and a list of appeal IDs with time table clash detected.</p>
 <div class="content">
 <img src="images/MassResolveSequenceDiagram.png" alt="MassResolveSequenceDiagram">
 </div>
-<div class="title">Figure 22. MassResolve Sequence Diagram</div>
+<div class="title">Figure 24. MassResolve Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Design Consideration: How to handle different user input formats for individual and mass appeal resolution</p>
@@ -1266,7 +1291,7 @@ and a list of appeal IDs with time table clash detected.</p>
 <div class="sect2">
 <h3 id="command-history"><a class="link" href="#command-history">3.5. Command History</a></h3>
 <div class="paragraph">
-<p>The command history feature encapsulates a few different related functions, mainly:</p>
+<p>The command history feature encapsulates a few related functions, mainly:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1279,7 +1304,7 @@ and <kbd>&darr;</kbd> arrow keys.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Optional parameters can be specified to hide command output</p>
+<p>Optional parameters can be specified to hide command output and show only successful commands.</p>
 </li>
 </ul>
 </div>
@@ -1294,22 +1319,22 @@ and is loaded upon the next startup</p>
 <h4 id="cycling-through-previous-inputs"><a class="link" href="#cycling-through-previous-inputs">3.5.1. Cycling Through Previous Inputs</a></h4>
 <div class="paragraph">
 <p>The core of the cycle-command-history feature is implemented through three different classes:
- <code>CommandHistory</code>, <code>ListPointer</code>, and <code>InputOutput</code>. In addition, the <code>CommandBox</code> was modified
-to accomodate the UX changes.</p>
+ <code>CommandHistory</code>, <code>ListPointer</code>, and <code>InputOutput</code>. In addition, the <code>CommandBox</code> from AB3 was modified
+to accommodate the changes.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>InputOutput</code>: Class wrapper around two <code>String</code> objects representing the command input
-and command feedback output from MAMS. It is chiefly comprised of an input and an output, hence
-the name.</p>
+<p><code>InputOutput</code>: Class representing a single command history entry. Comprises of an <code>input</code> and <code>output</code> String,
+a <code>TimeStamp</code> object, and a flag indicating whether execution was successful.</p>
 </li>
 <li>
 <p><code>CommandHistory</code>: A wrapper around a list of <code>InputOutput</code> objects along with specific methods, representing
 the command history of the command entered thus far.</p>
 </li>
 <li>
-<p><code>ListPointer</code>: An iterable pointer to a <code>List</code> of objects.</p>
+<p><code>ListPointer</code>: An iterable pointer to a <code>List</code> of objects. This is used by the <code>CommandBox</code> to cycle through
+past commands.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1327,7 +1352,7 @@ iterating a <code>List</code> of <code>InputOutput</code> objects for the comman
 </li>
 <li>
 <p><code>CommandBox</code>: The command box in MAMs was modified to respond to the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd>
-arrows, constantly replacing the text field with the previous commands when iterating.</p>
+<code>KeyEvent</code>, auto-filling the text field with the previous commands when iterating through the command history.</p>
 </li>
 </ul>
 </div>
@@ -1339,13 +1364,13 @@ through previous inputs in the command box.</p>
 <div class="content">
 <img src="images/CycleCommandHistoryClassDiagram.png" alt="CycleCommandHistoryClassDiagram">
 </div>
-<div class="title">Figure 23. CommandHistory Class Diagram</div>
+<div class="title">Figure 25. Class Diagram depicting classes involved in cycling through command history.</div>
 </div>
 <div class="paragraph">
 <p><code>CommandHistory</code> provides an unmodifiable view into the command history using an <code>ObservableList</code>
 passed to <code>CommandBox</code> upon initialization. <code>CommandBox</code> uses this list to reinitialize and
 update <code>ListPointer</code> after every command execution. Upon initialization, <code>ListPointer</code> keeps
-an internal copy of the InputOutput list. Finally, <code>CommandBox</code> responds to key-presses and
+an internal copy of the InputOutput list. Finally, <code>CommandBox</code> responds to user key-presses and
 retrieves the previous commands by using <code>ListPointer</code> to iterate
 through its internal defensive list.</p>
 </div>
@@ -1357,7 +1382,7 @@ depicted for brevity.</p>
 <div class="content">
 <img src="images/CycleCommandHistorySequenceDiagram.png" alt="CycleCommandHistorySequenceDiagram">
 </div>
-<div class="title">Figure 24. CommandHistory Sequence Diagram</div>
+<div class="title">Figure 26. Sequence Diagram depicting a possible execution path for cycling through history entries.</div>
 </div>
 <div class="paragraph">
 <p>The diagram above first shows how <code>CommandBox</code> re-initializes and updates <code>ListPointer</code> after
@@ -1366,11 +1391,76 @@ a command has been entered. Thereafter (in the period between command inputs),
 which replaces the text in its text field accordingly.</p>
 </div>
 <div class="paragraph">
-<p>To be continued&#8230;&#8203;</p>
+<p><strong>Design Considerations</strong></p>
 </div>
 <div class="paragraph">
-<p>placement of commandHistory attribute
-alternatives: usage of ListPointer versus Iterator</p>
+<p>Aspect: How <code>ListPointer</code> (iterator used by <code>CommandBox</code>) is updated</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation: Stores a defensive copy of the command history in <code>ListPointer</code>.
+The <code>ListPointer</code> is re-initialized after every command
+execution in MAMS (when new entries are added to the command history).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ListPointer</code> only has a direct dependence on the passed <code>CommandHistory</code> list during initialization.
+If the reference to that list is invalidated for any reason while
+the user is iterating through the list, <code>ListPointer</code> will be unaffected since it stores a defensive copy.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It may be more computationally heavy to re-initialize <code>ListPointer</code> with a new defensive copy after every
+command execution, especially if the command history has many entries from long-term usage of the application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative Implementation: Do not store a defensive copy. After every re-initialization, <code>ListPointer</code>
+will instead store the direct reference to the command history list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ListPointer</code> re-initialization will most likely process in O(1) constant time (only needs to copy reference),
+which might be computationally more efficient than the current implementation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the reference to the list is invalidated for any reason (eg. new feature by future developers) in between command executions, <code>ListPointer</code>
+might run into an unrecoverable error (eg. <code>NullPointerException</code>) while user is cycling and iterating through command history.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -1385,7 +1475,7 @@ MAMS input/output history upon command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>HistoryCommand</code>: A sub-type of <code>Command</code>. Represents a user command to trigger the display
+<p><code>HistoryCommand</code>: A sub-type of the abstract <code>Command</code> class. Represents a user command to trigger the display
 of the history window.</p>
 </li>
 <li>
@@ -1399,17 +1489,21 @@ about the command history to the user</p>
 <li>
 <p><code>CommandHistory</code>: see previous section.</p>
 </li>
+<li>
+<p><code>FilterOnlyCommandHistory</code>: An interface that inherits from <code>ReadOnlyCommandHistory</code>. Exposes methods to
+read and filter the internal list in <code>CommandHistory</code>, while restricting modification access.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
 <p>The following activity sequence diagram provides a high-level view
-of how the command is executed:</p>
+of how the command is executed, along with the behaviour of the history window:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/HistoryCommandActivityDiagram.png" alt="HistoryCommandActivityDiagram">
 </div>
-<div class="title">Figure 25. HistoryCommand Activity Diagram</div>
+<div class="title">Figure 27. HistoryCommand Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>One specific execution example of the show-history feature with
@@ -1418,27 +1512,48 @@ more specific implementation details is as follows:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters <code>history -h</code> into command box.</p>
+<p>User enters <code>history -o -s</code> into command box. The <code>-o</code> option indicates user intention to hide all command output
+display in the history window, and the <code>-s</code> option indicates user intention to show only successful commands.</p>
 </li>
 <li>
-<p>A <code>HistoryCommand</code> object is created after parsing, with <code>hideOutput</code> set to true.</p>
+<p>A <code>HistoryCommand</code> object is created after parsing, with <code>hideOutput</code> set to true, and HistoryDisplaySettings set to
+<code>SHOW_ONLY_SUCCESSFUL</code>.</p>
 </li>
 <li>
-<p><code>HistoryCommand</code> is executed and produces a <code>CommandResult</code>
+<p><code>HistoryCommand</code> object is executed on <code>Model</code> (unused) and <code>FilterOnlyCommandHistory</code>. The <code>FilterOnlyCommandHistory</code> taken in as a parameter is updated
+with a predicate to filter successful commands.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NOTE: Since the history window uses an observer pattern to update the history window (keeps reference to <code>ObservableList</code>),
+the history window is updated at this step.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>CommandResult</code> object is returned
 with <code>showHistory</code> and <code>hideOutput</code> flags set to true.</p>
 </li>
 <li>
-<p><code>CommandResult</code> is passed to the calling GUI element (<code>MainWindow</code>), which is then used to set
-the flags in <code>HistoryWindow</code> contoller accordingly.</p>
+<p><code>Logic</code> updates <code>CommandHistory</code> with this command, as with any other command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NOTE: Again, the observer pattern used by the history window prompts a GUI update at this step.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The <code>CommandResult</code> object is passed to the calling GUI element (<code>MainWindow</code>), which is then used to set
+the flags in <code>HistoryWindow</code> controller accordingly.</p>
 </li>
 <li>
 <p><code>HistoryWindow</code> hides all command outputs in the history window.</p>
 </li>
 <li>
-<p><code>MainWindow</code> gets <code>CommandHistory</code> from <code>Logic</code>, and uses it to update <code>HistoryWindow</code>.</p>
-</li>
-<li>
-<p>GUI displays the history window.</p>
+<p>MAMS displays the history window.</p>
 </li>
 </ol>
 </div>
@@ -1450,7 +1565,7 @@ methods are omitted for brevity.</p>
 <div class="content">
 <img src="images/HistoryCommandSequenceDiagram.png" alt="HistoryCommandSequenceDiagram">
 </div>
-<div class="title">Figure 26. HistoryCommand Sequence Diagram</div>
+<div class="title">Figure 28. <code>HistoryCommand</code> Sequence Diagram for the specific input <code>history -o -s</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1465,14 +1580,16 @@ The lifeline for <code>HistoryCommandParser</code> and <code>HistoryCommand</cod
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Design Considerations</strong></p>
+<p><strong>Design Consideration</strong></p>
+</div>
+<div class="paragraph">
+<p>Aspect: Method for displaying command history</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Current Implementation: <code>HistoryCommand</code> sets boolean flags (<code>showHistory</code> and <code>hideOutput</code>)
-in <code>CommandResult</code> to prompt the GUI to display the history window and hide command outputs
-respectively.</p>
+<p>Current Implementation: Deploy a dedicated pop-up window for displaying command history. This window will retrieve the
+<code>CommandHistory</code> list directly to update itself.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1480,22 +1597,20 @@ respectively.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CommandHistory</code> does not need to be passed in as a parameter for
-<code>Command#execute</code>. There is thus no need to
-modify the existing <code>Command</code> abstract class, which will require
-changes to every single existing <code>Command</code> sub-type (for very little benefit,
-since <code>HistoryCommand</code> is the only existing <code>Command</code> that acts on <code>CommandHistory</code>).</p>
+<p>All display decisions (eg. formatting of the history text, navigability of the list) can be encapsulated
+within the UI component - specifically, within <code>HistoryWindow</code> and its related classes.</p>
 </li>
 <li>
-<p><code>HistoryCommand</code> does not need to handle the formatting and display of
-<code>CommandHistory</code> in the history GUI window. This separates their responsibilities
-better as such display options should be left up to the GUI classes.</p>
+<p>Display can be optimized solely for displaying the command history, without the need to check for compatibility with
+other commands/features that may be using the same UI element to display.</p>
 </li>
 <li>
-<p>Since <code>HistoryCommand</code> only sets parameter flags for the <code>HistoryWindow</code>, and
-the <code>HistoryWindow</code> controller gets the history data directly from an <code>ObservableList</code>, the
-history window GUI is able to update while adhering to the user-specified configuration
-(ie. hide output/ show output) after every command iteration, even if <code>HistoryCommand</code> is not executed.</p>
+<p>Since command history can be extremely verbose, having a separate pop-up window will ensure that the user is have enough
+space to view it properly.</p>
+</li>
+<li>
+<p>The history window can be kept open while running other commands to provide informative real-time feedback on commands
+that were performed.</p>
 </li>
 </ul>
 </div>
@@ -1505,11 +1620,8 @@ history window GUI is able to update while adhering to the user-specified config
 <div class="ulist">
 <ul>
 <li>
-<p>If more parameters need to be added to <code>HistoryCommand</code> (eg. filter history
-display by execution success) in future iterations of MAMS, more boolean flags
-will have to be added to the <code>CommandResult</code> class. This can eventually be
-unsustainable if there are too many parameters that needs to be communicated
-to the GUI.</p>
+<p>Requires a whole new GUI window (and its elements) to be created and debugged for any display issues, which can be a
+tedious process.</p>
 </li>
 </ul>
 </div>
@@ -1518,11 +1630,8 @@ to the GUI.</p>
 </div>
 </li>
 <li>
-<p>Alternative Implementation 1: Change the method signature in <code>Command#execute(Model model)</code>
-to accept a <code>CommandHistory</code> object. <code>HistoryCommand</code> will format the command history
-text based on the user specifications, then pass the formatted text as a single string in the
-<code>feedbackToUser</code> parameter. The <code>HistoyWindow</code> controller will then display this text on
-on the history window.</p>
+<p>Alternative Implementation: Format the entire history to text within the execution of <code>HistoryCommand</code> and pass it back to the GUI
+as a normal command feedback, to be displayed in the <code>ResultDisplay</code> box of the GUI.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1530,9 +1639,12 @@ on the history window.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Since all of the user specifications and flags are processed within execution of
-<code>HistoryCommand</code>, <code>CommandResult</code> does not need to store too many flags if future
-parameters are added to <code>HistoryCommand</code>. (Refer to the current implementation)</p>
+<p>Requires very minimal change to the AB3 GUI, since the GUI elements for <code>ResultDisplay</code> already exists
+to display normal command feedback.</p>
+</li>
+<li>
+<p>The history window GUI elements would no longer be required, eliminating the need to create, style, debug, and
+format an entirely new GUI window.</p>
 </li>
 </ul>
 </div>
@@ -1542,25 +1654,25 @@ parameters are added to <code>HistoryCommand</code>. (Refer to the current imple
 <div class="ulist">
 <ul>
 <li>
-<p>Requires a change to <code>execute()</code> method signature of the <code>Command</code> abstract class. Since all
-other commands are a sub-type of the <code>Command</code> class, this will require a change to every other
-command, which will necessitate huge changes across many classes and tests, and may result
-in regression problems,.</p>
+<p>Text display filtering and formatting is now handled directly by the <code>HistoryCommand</code> class, which severely limits
+the ability of the GUI to customize the display (eg. colour code input and output differently)</p>
 </li>
 <li>
-<p>Text display formatting is handled directly by the <code>HistoryCommand</code> class, which limits
-the ability of the GUI to customize the display. Moreover, the <code>HistoryCommand</code> class is now
+<p>As a corollary to the above point, the <code>HistoryCommand</code> class is now
 in charge of one aspect of the display formatting, which is not a good separation of responsibilities
 between the <code>Logic</code> and <code>Ui</code> components of MAMS.</p>
 </li>
 <li>
-<p>If the entire command history is passed to <code>Logic</code> as a <code>CommandResult</code> feedback of
-an executed <code>HistoryCommand</code>, future requests of the command history will also include
-that that particular <code>HistoryCommand</code> feedback.</p>
-<div class="ulist">
-<ul>
+<p>The <code>ResultDisplay</code> on the main window of the GUI application is only optimized to display command feedback
+of short length (up to 3 or 4 lines on most monitors). It is hence not suitable for displaying
+output from the <code>HistoryCommand</code>, which can become extremely verbose especially if the application has
+been used extensively.</p>
+</li>
 <li>
-<p>A crude CLI example of this is shown below.</p>
+<p>If the command output in the history is to be displayed, special care must be taken not to recursively include
+the outputs of previous <code>history</code> commands in later <code>history</code> commands. (This is not an issue in the current implementation,
+which separates history command feedback from the history display through the means of a separate UI). A contrived example
+is shown below:</p>
 <div class="literalblock">
 <div class="content">
 <pre>&gt;&gt; history
@@ -1586,11 +1698,152 @@ output: input: list -a
                 output: listed all appeals</pre>
 </div>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each subsequent call to <code>history</code> command unnecessarily includes outputs of previous <code>history</code> commands</p>
 </li>
 <li>
-<p>Special conditionals hence needs to be implemented to handle
-such cases when updating <code>CommandHistory</code>, which can make the implementation
-more complicated.</p>
+<p>Special conditional logic is hence required to exclude or handle <code>history</code> command output from the command history,
+which can obfuscate the code for command history and cause it
+to be less understandable to future developers if not implemented or documented properly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Whenever history is to be viewed, the <code>history</code> command has to be performed again.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Aspect: Implementation to allow existing <code>Command</code> sub-type classes like <code>HistoryCommand</code> to access and manipulate
+command history (eg. read past commands, perform filtering)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation: To allow <code>HistoryCommand</code> to access the command history, change the
+method signature in <code>Command#execute(Model model)</code>
+to accept another <code>FilterOnlyCommandHistory</code> object (to access <code>CommandHistory</code> through an API that only
+allows filtering and reading, not modification). The history window GUI elements will then use
+the observer pattern to update itself based on changes in the <code>FilteredCommandHistory</code>. A flag is also
+raised in the returned <code>CommandResult</code> object to indicate to the GUI that the history window is to be opened.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The history window will update itself automatically (regardless of whether it is showing)
+after every change to the commandHistory, without the need to explicitly pass a list object to
+the GUI controller (except during initialization) after every execution.</p>
+</li>
+<li>
+<p>Future commands will also have access to a version of <code>CommandHistory</code> that allows reading and filtering,
+which can be useful for commands that
+require knowledge of past commands eg. an undo command that can be specified to act only on certain commands.</p>
+</li>
+<li>
+<p>Using such an interface to access <code>CommandHistory</code> also prevents future commands by other developers
+from unwittingly modifying the <code>CommandHistory</code>, which should only take place after execution of command
+in <code>LogicManager</code> in order to maintain a true record of the executed commands.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires a change to the method signature of every existing command, which may cause unexpected
+regression problems if refactoring is not performed appropriately.</p>
+</li>
+<li>
+<p>Most commands may not need access to <code>CommandHistory</code>, so the extra parameter may be redundant in most
+calls of <code>#execute()</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative Implementation 1: Change the method signature of <code>Command#execute(Model model)</code>
+to directly take in a reference to the <code>CommandHistory</code> object in <code>Logic</code>. GUI will still update via the
+observer pattern as per the current implementation, and display command history in a separate window.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Same as the current implementation above, except for the last point.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Also requires a change to the method signature of every existing command, which can cause unexpected
+regression problems if refactoring is not performed appropriately.</p>
+</li>
+<li>
+<p>Future commands by other developers now have direct access to the <code>CommandHistory</code> object in <code>Logic</code>,
+and may cause unintentional modification to <code>CommandHistory</code> object during exeuction of command.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative Implementation 2: Instead of changing the <code>#execute()</code> signature of the <code>Command</code> abstract class,
+only use the flag in the returned <code>CommandResult</code> object to indicate to the GUI that the history window is to be displayed.
+This is similar to how the <code>HelpCommand</code> and <code>ExitCommand</code> is implemented in AB3.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Simple to implement, and requires very minimal changes to the existing code architecture (Only <code>CommandResults</code> and GUI
+needs to be changed/extended).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Although it still provides the same default display as the current implementation, the displayed command history
+can no longer be preferentially filtered based on the parameters passed in to the <code>history</code> command. This may
+limit the utility of the <code>history</code> command (even in future development), as the user now has to scroll
+through the entire history instead of filtering it based on certain criteria (which can even be expanded on in the future).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>One way of circumventing this is by
+passing more boolean flags (or parameters) to <code>CommandResult</code> for the <code>HistoryWindow</code> to process, but this would
+cause the <code>CommandResult</code> class to store too many attributes specific to just the <code>HistoryCommand</code>, which would not be
+a particularly good design since all <code>Command</code> objects have a dependency on the <code>CommandResult</code> class.</p>
 </li>
 </ul>
 </div>
@@ -1606,116 +1859,45 @@ more complicated.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-ux"><a class="link" href="#ui-ux">3.6. UI/UX</a></h3>
+<h3 id="sync-command-history-to-disk"><a class="link" href="#sync-command-history-to-disk">3.6. Sync Command History to disk</a></h3>
 <div class="paragraph">
-<p>The GUI interface from AddressBook-Level3 was re-designed to incorporate additional
-elements and features for MAMS. These include:</p>
+<p>The command history in MAMS is persistent across sessions -
+history data is automatically saved to disk as a <code>.json</code> file whenever
+<code>CommandHistory</code> is updated with new command information.
+Upon startup, MAMS will load the history data from the same file.
+This is useful for resuming work from a previous session,
+or for supervisory figures within NUS to keep a permanent
+log of all data changes that the appeal administrator makes.</p>
+</div>
+<div class="paragraph">
+<p>This sub-feature of command history is facilitated by the following main classes/interfaces:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Two additional types of List Panels, up to a total of 3. (<code>AppealListPanel</code>,
-<code>ModuleListPanel</code>, <code>StudentListPanel</code>)</p>
+<p><code>JsonCommandHistoryStorage</code>: A class that manages the reading and writing of <code>CommandHistory</code> to disk</p>
 </li>
 <li>
-<p>Two additional types of List Cards, up to a total of 3. (<code>AppealCard</code>, <code>ModuleCard</code>,
-<code>StudentCard</code>)</p>
+<p><code>JsonSerializableCommandHistory</code>: A class representing a <code>CommandHistory</code> object that is Jackson-compatible (able to be used for
+serializing to-and-from JSON format), with methods for converting it back to the native <code>CommandHistory</code> object used in MAMS.</p>
 </li>
 <li>
-<p>Three additional types of Expanded Cards, up to a total of 3. The purpose of these
-is to serve as a full display of information contained in each item type, as opposed to
-the brief summary shown on the normal List Cards. (<code>ExpandedAppealCard</code>, <code>ExpandedModuleCard</code>,
-<code>ExpandedStudentCard</code>) [Ongoing]</p>
+<p><code>JsonAdaptedInputOutput</code>: A class representing an <code>InputOutput</code> object that is Jackson-compatible,
+and contains methods for freely converting itself back to the native <code>InputOutput</code> object used in MAMS.</p>
 </li>
 <li>
-<p>CSS Theme redesign for a more vibrant dark mode interface</p>
-</li>
-<li>
-<p>Simple unix-style command history (up and down arrows to cycle
-through previously entered commands)</p>
+<p><code>CommandHistoryStorage</code>: API that the main <code>StorageManager</code> class uses to manipulate JSON serializing of <code>CommandHistory</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The existing elements adapted from AddressBook are:</p>
+<p>Below is a class diagram depicting the relationship between the involved classes in JSON serializing of <code>CommandHistory</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Command Box</p>
-</li>
-<li>
-<p>Result Box</p>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/CommandHistoryStorageClassDiagram.png" alt="CommandHistoryStorageClassDiagram">
 </div>
-<div class="paragraph">
-<p>Although it may at first seem natural to define a common ListPanel parent for all three types of ListPanels due
-to the similar semantics behind them, they share almost no fields or method signatures in common. The same goes for
-Cards and Expanded Cards.</p>
-</div>
-<div class="sect3">
-<h4 id="list-panel-code-appeallistpanel-code-code-modulelistpanel-code-code-studentlistpanel-code"><a class="link" href="#list-panel-code-appeallistpanel-code-code-modulelistpanel-code-code-studentlistpanel-code">3.6.1. List Panel (<code>AppealListPanel</code>, <code>ModuleListPanel</code>, <code>StudentListPanel</code>)</a></h4>
-<div class="paragraph">
-<p>Each type of List Panel is built to contain their respective cards (eg. <code>AppealListPanel</code> can contain a list of
-<code>AppealCard</code> or a <code>ExpandedAppealCard</code>). The fields shown on each card is specific to the type, but are similar in nature.
-As an example, the <code>ModuleCard</code> contains the following GUI elements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>ModuleCard#moduleCode</code> - <code>Label</code> element displaying module code</p>
-</li>
-<li>
-<p><code>ModuleCard#moduleName</code> - <code>Label</code> element displaying the module name</p>
-</li>
-<li>
-<p><code>ModuleCard#id</code> - <code>Label</code> element displaying the card&#8217;s index within the displayed list</p>
-</li>
-<li>
-<p><code>ModuleCard#lecturerName</code> - <code>Label</code> element displaying the name of the module coordinator</p>
-</li>
-<li>
-<p><code>ModuleCard#timeSlot</code> - <code>Label</code> element displaying the weekly lecture slots for the module</p>
-</li>
-<li>
-<p><code>ModuleCard#enrolment</code> - <code>Label</code> element displaying student enrolment in text form</p>
-</li>
-<li>
-<p><code>ModuleCard#quota</code> - <code>Label</code> element displaying total module capacity in text form</p>
-</li>
-<li>
-<p><code>ModuleCard#quotaBar</code> - <code>ProgressBar</code> element displaying the filled student capacity (enrolment &amp; total capacity) of the module in a
-visual bar representation.</p>
-</li>
-<li>
-<p>Miscellaneous <code>Label</code> elements as descriptors of some elements above (eg. <code>Coordinator:</code>)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In addition, the <code>ModuleListPanel</code> may also hold an <code>ExpandedModuleCard</code>. Although an Expanded Card contains all the fields
-present in their corresponding Card, they are formatted differently to take advantage of the additional height, and also have additional
-fields present. As an example, the <code>ExpandedModuleCard</code> contains the following fields in addition to the ones above:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>ExpandedModuleCard#description</code> - <code>Text</code> element displaying the full description of the module</p>
-</li>
-<li>
-<p><code>ExpandedModuleCard#students</code> - <code>Text</code> element displaying the full list of students in the module</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>When the GUI detects only one item in the List Panel to be displayed, it automatically defaults to using the Expanded Card
-for displaying the item, eg., performing a <code>find</code> command that returns only one module as the result will cause the GUI to display
-the single module using <code>ExpandedModuleCard</code>.</p>
-</div>
-<div class="paragraph">
-<p>to be continued&#8230;&#8203;</p>
-</div>
+<div class="title">Figure 29. Class diagram of the classes involved in saving and loading of <code>CommandHistory</code> from disk.</div>
 </div>
 </div>
 <div class="sect2">
@@ -1749,7 +1931,7 @@ three sub-classes which extends <code>StoreCommand</code> to handle different ty
 <div class="content">
 <img src="images/StoreCommandClassDiagram.png" alt="StoreCommandClassDiagram">
 </div>
-<div class="title">Figure 27. Structure of StoreCommand</div>
+<div class="title">Figure 30. Structure of StoreCommand</div>
 </div>
 <div class="paragraph">
 <p>Each sub-class has a <code>execute()</code> method that takes in a <code>Model</code> object. Store commands only retrieve information from /data file and replaces the current state with the targeted state.</p>
@@ -1807,7 +1989,7 @@ The save states are stored in the same format as the mams.json data file to redu
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
-<div class="title">Figure 28. UndoCommand Sequence Diagram</div>
+<div class="title">Figure 31. UndoCommand Sequence Diagram</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-dealing-with-storage-of-states"><a class="link" href="#aspect-dealing-with-storage-of-states">Aspect: Dealing with storage of states</a></h5>
@@ -1985,7 +2167,8 @@ resolve appeal cases</p>
 and modules to/from the current database (out of job purview)</p>
 </li>
 <li>
-<p>needs to keep a permanent log of all actions taken when resolving appeals.</p>
+<p>needs to keep a permanent log of all actions taken when resolving appeals
+for accountability purposes</p>
 </li>
 </ul>
 </div>
@@ -2328,7 +2511,7 @@ information <strong>(Coming in v2.0)</strong></p>
 </li>
 <li>
 <p>4a. Student workload goes below the minimum MC requirement for one
-semester</p>
+semester <strong>(Coming in v2.0)</strong></p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -2525,6 +2708,46 @@ student and student’s existing modules.</p>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Admin wants to show only successful commands.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. Admin specifies intention to show only successful commands in instruction to MAMS.</p>
+</li>
+<li>
+<p>1a2. MAMS hides all unsuccessful commands in history.</p>
+<div class="paragraph">
+<p><strong>Use case resumes at step 2.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. Admin wants to hide all command outputs.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. Admin specifies intention to hide command output in instruction to MAMS.</p>
+</li>
+<li>
+<p>1b2. MAMS hides all command outputs.</p>
+<div class="paragraph">
+<p><strong>Use case resumes at step 2.</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="ulist none">
 <ul class="none">
@@ -2759,10 +2982,6 @@ consideration and decision)</p>
 at the same time.</p>
 </li>
 <li>
-<p>Should be able to hold up to 40000 students and 1000 modules without
-a noticeable sluggishness in performance for typical usage.</p>
-</li>
-<li>
 <p>Should only load data from current semesters by default.</p>
 </li>
 <li>
@@ -2791,9 +3010,8 @@ student/appeal/module data from different semesters.</p>
 </dd>
 <dt class="hdlist1"><a id="module"></a> Module</dt>
 <dd>
-<p>A module refers to a course taken by a National Univerisity
-of Singapore (NUS) student during a semester. These can be semester-long
-or year-long.</p>
+<p>A module refers to a course taken by a National University
+of Singapore (NUS) student during a semester.</p>
 </dd>
 <dt class="hdlist1"><a id="appeal"></a> Appeal</dt>
 <dd>
@@ -2865,7 +3083,455 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="backup-and-restoring"><a class="link" href="#backup-and-restoring">E.2. Backup and Restoring</a></h3>
+<h3 id="viewing-a-mams-data-item"><a class="link" href="#viewing-a-mams-data-item">E.2. Viewing a MAMS data item</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viewing a single item when all items (appeals, modules, and students) are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all items using the <code>list</code> command. Multiple items in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view a/1</code><br>
+Expected: Appeal List now displays the fully expanded details of the appeal previously at index 1.</p>
+</li>
+<li>
+<p>Test case: <code>view a/0</code><br>
+Expected: 0 is an invalid index. No appeal is expanded. Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view m/1</code><br>
+Expected: Module List now displays the fully expanded details of the module previously at index 1.</p>
+</li>
+<li>
+<p>Test case: <code>view m/0</code><br>
+Expected: 0 is an invalid index. No module is expanded. Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/1</code><br>
+Expected: Student List now displays the fully expanded details of the student previously at index 1.</p>
+</li>
+<li>
+<p>Test case: <code>view s/0</code><br>
+Expected: 0 is an invalid index. No student is expanded. Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/invalid</code><br>
+Expected: <code>invalid</code> is not a valid index parameter. No student is expanded. Details are shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Viewing multiple items in a single command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all items using the <code>list</code> command. Multiple items (at least 3) in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view a/1 s/2</code><br>
+Expected: Appeal and Student Lists now displays the fully expanded details of the appeal and student
+previously at indexes 1 and 2 respectively.</p>
+</li>
+<li>
+<p>Test case: <code>view a/0 s/2</code><br>
+Expected: 0 is an invalid index. No appeals or students are expanded, and command execution fails.
+Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view m/1 a/3</code><br>
+Expected: Module and Appeal Lists now displays the fully expanded details of the module and appeal
+previously at indexes 1 and 3 respectively.</p>
+</li>
+<li>
+<p>Test case: <code>view m/-1 s/3</code><br>
+Expected: -1 is an invalid index. No modules or students are expanded. Details are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/1 a/3 m/2</code><br>
+Expected: Appeal, Module, and Student lists now displays the fully expanded details of
+the appeal, module, and student previously at indexes 3, 2, and 1 previously.</p>
+</li>
+<li>
+<p>Test case: <code>view a/1s/2m/1</code><br>
+Expected: Although the general prefixes are present, they need to be space separated. No items are expanded.
+Details are shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Viewing an item on a list where an item is already being displayed in expanded form:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>view a/1 m/1 s/1</code> after startup, on a non-empty
+data-source. Only one item in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view s/2</code><br>
+    Expected: Student List already contains a student being displayed in expanded form.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/1 a/3 m/2</code><br>
+    Expected: Each of the specified lists already contains an item being displayed in expanded form.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Viewing an item on an empty list:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>find a/adaa m/ada s/1fwfw</code> after startup, on a non-empty
+data-source. There should be no items in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view s/2</code><br>
+    Expected: Student List has no items to reference by index.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view s/1 a/3 m/2</code><br>
+    Expected: Each of the specified lists do not contain any items to reference by index.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Other invalid formats you can try:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all items using the <code>list</code> command. Multiple items (at least 3) in each list.</p>
+</li>
+<li>
+<p>Test case: <code>view</code><br>
+    Expected: There are no parameters to be processed by the <code>view</code> command.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view everything in this world</code><br>
+    Expected: Invalid parameters specified.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view invalid a/1 s/2</code><br>
+    Expected: Invalid parameters specified.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>view a/1 s/ m/3</code><br>
+    Expected: Prefix <code>s/</code> contains an empty field where an INDEX should have been specified.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-mams-items"><a class="link" href="#listing-mams-items">E.3. Listing MAMS items</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Listing out all items when all three list displays were previously in expanded views.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>view a/1 m/1 s/1</code> after startup, on a non-empty
+data-source (&gt; 3 items in each MAMS item category). Only one item in each list.</p>
+</li>
+<li>
+<p>Test case: <code>list</code><br>
+    Expected: No parameters specified.
+Defaults to listing out all Appeals, Modules, and Students in all three list displays.</p>
+</li>
+<li>
+<p>Test case: <code>list -a -s -m</code><br>
+    Expected: All Appeals, Modules, and Students in MAMS are
+listed out in all three list displays.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Listing out all specific items when all three displays were previously in expanded views.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>view a/1 m/1 s/1</code> after startup, on a non-empty
+data-source (&gt; 3 items in each MAMS item category). Only one item in each list.</p>
+</li>
+<li>
+<p>Test case: <code>list -a</code><br>
+    Expected: All Appeals in MAMS are
+listed out in the Appeal List display.</p>
+</li>
+<li>
+<p>Test case: <code>list -a -s</code><br>
+    Expected: All Appeals and Students in MAMS are
+listed out in the Appeal and Student List displays respectively.</p>
+</li>
+<li>
+<p>Test case: <code>list -m -s</code><br>
+    Expected: All Modules and Students in MAMS are
+listed out in the Module and Student List displays respectively.</p>
+</li>
+<li>
+<p>Test case: <code>list -m -m -m -m -m -s -s -s -s</code><br>
+    Expected: All Modules and Students in MAMS are
+listed out in the Module and Student List displays respectively (Duplicate valid options are accepted).</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid formats you can try:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Perform the command <code>view a/1 m/1 s/1</code> after startup, on a non-empty
+data-source (&gt; 3 items in each MAMS item category). Only one item in each list.</p>
+</li>
+<li>
+<p>Test case: <code>list -</code><br>
+    Expected: Invalid parameter(s) <code>-</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>list -ssssss -a</code><br>
+    Expected: Invalid parameter(s) <code>-ssssss</code> detected (Partial matching is not allowed).
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>list items</code><br>
+    Expected: Invalid parameter(s) <code>items</code> detected (Not an option).
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>list items -a -s</code><br>
+    Expected: Invalid parameter(s) <code>items</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>list items -a -fsfs -invalid -s</code><br>
+    Expected: Invalid parameter(s) <code>items</code>, <code>-fsfs</code>, and <code>-invalid</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cycling-through-command-history-in-command-box"><a class="link" href="#cycling-through-command-history-in-command-box">E.4. Cycling through command history in command box</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Cycling back to previous commands from blank box (non empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one or more commands have have executed. No arrow keys have been
+pressed since the last command execution.</p>
+</li>
+<li>
+<p>Press <kbd>&uarr;</kbd> key once<br>
+    Expected: Command box should auto-fill with the last entered command.
+Caret should be moved to the end of the text.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cycling to next command (non empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least two commands have have executed. <kbd>&uarr;</kbd> key has been
+pressed twice since the last command execution, and is now auto-filled
+with the command entered two iterations ago.</p>
+</li>
+<li>
+<p>Press <kbd>&darr;</kbd> key once<br>
+Expected: Command box should auto-fill with the the next command in history
+(in this case, the previously executed command).
+Caret should be moved to the end of the text.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cycling through command history when no commands have been executed (empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: MAMS has been started up for the first time. No commands have been entered, and there is
+no command history. Command box is currently empty.</p>
+</li>
+<li>
+<p>Press <kbd>&darr;</kbd> key once<br>
+Expected: No response from the command box.</p>
+</li>
+<li>
+<p>Press <kbd>&uarr;</kbd> key once<br>
+Expected: No response from the command box.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cycling up past the earliest command entered in history (non-empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one or more commands have have executed. The <kbd>&uarr;</kbd> key has
+been pressed until the command box is auto-filled with the first ever executed command in the application.</p>
+</li>
+<li>
+<p>Press <kbd>&uarr;</kbd> key once<br>
+Expected: No change in text. Caret moves to the beginning of the text to indicate that
+no more history is present.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cycling down past the latest command entered in history (non-empty history):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: At least one or more commands have have executed. The <kbd>&uarr;</kbd> key has
+been pressed once, and command box is auto-filled with the last command entered.</p>
+</li>
+<li>
+<p>Press <kbd>&darr;</kbd> key once<br>
+Expected: Command box will be emptied to indicate that there is no next entry in history.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="opening-the-history-window"><a class="link" href="#opening-the-history-window">E.5. Opening the history window</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Opening the history window (valid command format):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: MAMS has been started up.</p>
+</li>
+<li>
+<p>Test case: <code>history</code><br>
+Expected: history pop-up window is opened.</p>
+</li>
+<li>
+<p>Test case: <code>history -o</code><br>
+Expected: history pop-up window is opened, with all command feedbacks hidden.</p>
+</li>
+<li>
+<p>Test case: <code>history -s</code><br>
+Expected: history pop-up window is opened. Only successful commands are shown.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Other invalid commands you can try:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: MAMS has been started up.</p>
+</li>
+<li>
+<p>Test case: <code>history invalid</code><br>
+    Expected: Invalid parameter(s) <code>invalid</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+<li>
+<p>Test case: <code>history invalid -s -h</code><br>
+    Expected: Invalid parameter(s) <code>invalid</code> and <code>-h</code> detected.
+Command fails, and details are shown in error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-hot-keys-in-the-history-window"><a class="link" href="#using-hot-keys-in-the-history-window">E.6. Using hot-keys in the history window</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> keys to navigate history entries.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: History window is open, and the history display is in focus. At least
+more than one entry is present in the window.</p>
+</li>
+<li>
+<p>Press <kbd>&uarr;</kbd> key once<br>
+Expected: The previous entry in the list is now selected, if any.</p>
+</li>
+<li>
+<p>Press <kbd>&darr;</kbd> key once<br>
+Expected: The next entry in the list is now selected, if any.</p>
+</li>
+<li>
+<p>Press <kbd>q</kbd> key once<br>
+Expected: The command text of the currently selected entry is copied to system clipboard.</p>
+</li>
+<li>
+<p>Press <kbd>esc</kbd> key once<br>
+Expected: History window is closed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persistent-serialization-deserialization-of-command-history-to-from-disk"><a class="link" href="#persistent-serialization-deserialization-of-command-history-to-from-disk">E.7. Persistent serialization/deserialization of command history to/from disk</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Resuming with saved command history</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: MAMS has been started up in the past before, and at least one command
+was attempted in one of the previous sessions.</p>
+</li>
+<li>
+<p>Close the currently running MAMS application, if any, and start up a brand new session of MAMS.
+Enter the <code>history</code> command.<br>
+Expected: History window contains command history from previous sessions.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="backup-and-restoring"><a class="link" href="#backup-and-restoring">E.8. Backup and Restoring</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2882,7 +3548,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-and-redo"><a class="link" href="#undo-and-redo">E.3. Undo and Redo</a></h3>
+<h3 id="undo-and-redo"><a class="link" href="#undo-and-redo">E.9. Undo and Redo</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2909,7 +3575,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="check-clash"><a class="link" href="#check-clash">E.4. Check Clash</a></h3>
+<h3 id="check-clash"><a class="link" href="#check-clash">E.10. Check Clash</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2972,7 +3638,7 @@ Example: <code>clash a/1 a/2</code> <code>clash y/ s/1</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="find"><a class="link" href="#find">E.5. Find</a></h3>
+<h3 id="find"><a class="link" href="#find">E.11. Find</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3002,4 +3668,4 @@ Specified lists will be updated to show items containing any of the keywords.</p
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:12:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:33:43 UTC</div></div></div></body></html>
