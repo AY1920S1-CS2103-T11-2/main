@@ -65,6 +65,8 @@
 <li><a href="#check-clash">E.10. Check Clash</a></li>
 <li><a href="#find">E.11. Find</a></li>
 <li><a href="#resolve">E.12. Resolve</a></li>
+<li><a href="#addmod">E.13. Addmod</a></li>
+<li><a href="#removemod">E.14. Removemod</a></li>
 </ul>
 </li>
 </ul>
@@ -85,7 +87,7 @@
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
+<img src="images/ArchitectureDiagramMams.png" alt="ArchitectureDiagramMams">
 </div>
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
@@ -131,12 +133,15 @@ The following class plays an important role at the architecture level:</p>
 <p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
 </li>
 <li>
-<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
+<p><a href="#Design-Storage"><strong><code>MamsStorage</code></strong></a>: Reads data from, and writes data to, the hard disk. Holds data of Students, Modules and Appeals.</p>
+</li>
+<li>
+<p><a href="#Design-Storage"><strong><code>CommandHistoryStorage</code></strong></a>: Reads data from, and writes data to, the hard disk. Contains history of user inputs.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of the four components</p>
+<p>Each of the five components</p>
 </div>
 <div class="ulist">
 <ul>
@@ -153,13 +158,13 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>addmod s/1 m/1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
+<img src="images/ArchitectureSequenceDiagramMams.png" alt="ArchitectureSequenceDiagramMams">
 </div>
-<div class="title">Figure 2. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 2. Component interactions for <code>addmod s/1 m/1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -3691,5 +3696,47 @@ Specified lists will be updated to show items containing any of the keywords.</p
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="addmod"><a class="link" href="#addmod">E.13. Addmod</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Valid input format for single resolution: <code>addmod s/INDEX m/INDEX</code> or <code>addmod s/MATRIC_ID m/MODULE_CODE</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Example: <code>addmod s/1 m/7</code></p>
+</li>
+<li>
+<p>Expected: The student will register for the module, and the details are upgraded accordingly as seen in the list.
+The message shown in the message bar will display the changes made to the student.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:02:34 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removemod"><a class="link" href="#removemod">E.14. Removemod</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Valid input format for single resolution: <code>removemod s/INDEX m/INDEX</code> or <code>removemod s/MATRIC_ID m/MODULE_CODE</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Example: <code>removemod s/A0180000 m/CS2100</code></p>
+</li>
+<li>
+<p>Expected: The student will be dropped from the module, and the details are upgraded accordingly as seen in the list.
+The message shown in the message bar will display the changes made to the student.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:09:58 UTC</div></div></div></body></html>
